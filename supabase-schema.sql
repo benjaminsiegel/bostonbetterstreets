@@ -4,6 +4,27 @@
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
+-- Projects Table (created first because other tables reference it)
+CREATE TABLE projects (
+  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
+  name TEXT NOT NULL,
+  slug TEXT UNIQUE NOT NULL,
+  location TEXT NOT NULL,
+  neighborhood TEXT NOT NULL,
+  status TEXT NOT NULL CHECK (status IN ('stalled', 'in-progress', 'promised', 'completed', 'cancelled')),
+  description TEXT NOT NULL,
+  short_description TEXT NOT NULL,
+  start_year INTEGER NOT NULL,
+  expected_completion TEXT,
+  actual_completion TEXT,
+  latitude DECIMAL(10, 8) NOT NULL,
+  longitude DECIMAL(11, 8) NOT NULL,
+  featured BOOLEAN DEFAULT false,
+  community_impact TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW(),
+  updated_at TIMESTAMPTZ DEFAULT NOW()
+);
+
 -- Pain Points Table (verified, public-facing pain points)
 CREATE TABLE pain_points (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
@@ -38,27 +59,6 @@ CREATE TABLE pain_point_reports (
   reporter_email TEXT,
   status TEXT DEFAULT 'pending' CHECK (status IN ('pending', 'approved', 'rejected')),
   created_at TIMESTAMPTZ DEFAULT NOW()
-);
-
--- Projects Table
-CREATE TABLE projects (
-  id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
-  name TEXT NOT NULL,
-  slug TEXT UNIQUE NOT NULL,
-  location TEXT NOT NULL,
-  neighborhood TEXT NOT NULL,
-  status TEXT NOT NULL CHECK (status IN ('stalled', 'in-progress', 'promised', 'completed', 'cancelled')),
-  description TEXT NOT NULL,
-  short_description TEXT NOT NULL,
-  start_year INTEGER NOT NULL,
-  expected_completion TEXT,
-  actual_completion TEXT,
-  latitude DECIMAL(10, 8) NOT NULL,
-  longitude DECIMAL(11, 8) NOT NULL,
-  featured BOOLEAN DEFAULT false,
-  community_impact TEXT,
-  created_at TIMESTAMPTZ DEFAULT NOW(),
-  updated_at TIMESTAMPTZ DEFAULT NOW()
 );
 
 -- Project Timeline Events Table
