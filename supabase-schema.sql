@@ -1,6 +1,18 @@
 -- Supabase Schema for Boston Better Streets Coalition
 -- Run this in your Supabase SQL Editor to set up the database
 
+-- First, drop existing tables if they exist (in reverse order of dependencies)
+DROP TABLE IF EXISTS newsletter_subscribers CASCADE;
+DROP TABLE IF EXISTS project_issues CASCADE;
+DROP TABLE IF EXISTS project_timeline CASCADE;
+DROP TABLE IF EXISTS updates CASCADE;
+DROP TABLE IF EXISTS pain_point_reports CASCADE;
+DROP TABLE IF EXISTS pain_points CASCADE;
+DROP TABLE IF EXISTS projects CASCADE;
+
+-- Drop existing function if it exists
+DROP FUNCTION IF EXISTS update_updated_at_column CASCADE;
+
 -- Enable UUID extension
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
