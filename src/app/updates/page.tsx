@@ -1,15 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { updates, UpdateType } from "@/data/updates";
-import {
-  Newspaper,
-  AlertTriangle,
-  Trophy,
-  Calendar,
-  ArrowRight,
-  Bell,
-  XCircle,
-} from "lucide-react";
 import { format } from "date-fns";
 
 export const metadata: Metadata = {
@@ -20,37 +11,37 @@ export const metadata: Metadata = {
 
 const typeConfig: Record<
   UpdateType,
-  { label: string; color: string; bgColor: string; icon: React.ReactNode }
+  { label: string; color: string; bgColor: string; icon: string }
 > = {
   news: {
-    label: "News",
-    color: "text-blue-700",
-    bgColor: "bg-blue-100",
-    icon: <Newspaper className="w-4 h-4" />,
+    label: "NEWS",
+    color: "text-[#0a0a0a]",
+    bgColor: "bg-[#13ec25]",
+    icon: "newspaper",
   },
   "action-alert": {
-    label: "Action Alert",
-    color: "text-red-700",
-    bgColor: "bg-red-100",
-    icon: <AlertTriangle className="w-4 h-4" />,
+    label: "ACTION ALERT",
+    color: "text-white",
+    bgColor: "bg-[#ff3b3b]",
+    icon: "warning",
   },
   victory: {
-    label: "Victory",
-    color: "text-green-700",
-    bgColor: "bg-green-100",
-    icon: <Trophy className="w-4 h-4" />,
+    label: "VICTORY",
+    color: "text-[#0a0a0a]",
+    bgColor: "bg-[#13ec25]",
+    icon: "emoji_events",
   },
   setback: {
-    label: "Setback",
-    color: "text-amber-700",
-    bgColor: "bg-amber-100",
-    icon: <XCircle className="w-4 h-4" />,
+    label: "SETBACK",
+    color: "text-[#0a0a0a]",
+    bgColor: "bg-yellow-400",
+    icon: "report",
   },
   event: {
-    label: "Event",
-    color: "text-purple-700",
-    bgColor: "bg-purple-100",
-    icon: <Calendar className="w-4 h-4" />,
+    label: "EVENT",
+    color: "text-white",
+    bgColor: "bg-blue-500",
+    icon: "event",
   },
 };
 
@@ -64,15 +55,20 @@ export default function UpdatesPage() {
   const actionAlerts = sortedUpdates.filter((u) => u.type === "action-alert");
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#f0ece2]">
       {/* Header */}
-      <section className="bg-blue-900 text-white py-16">
+      <section className="bg-[#0a0a0a] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-4">
-            <Newspaper className="w-10 h-10" />
-            <h1 className="text-4xl md:text-5xl font-bold">Updates</h1>
+          <div className="inline-flex items-center px-4 py-2 bg-[#13ec25] text-[#0a0a0a] rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+            <span className="material-symbols-outlined text-sm mr-2">newspaper</span>
+            Updates
           </div>
-          <p className="text-xl text-blue-100 max-w-3xl">
+          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6">
+            Latest
+            <br />
+            <span className="text-[#13ec25]">Updates</span>
+          </h1>
+          <p className="text-xl text-white/70 max-w-3xl">
             The latest news, action alerts, and updates from our fight for safer
             streets in Boston.
           </p>
@@ -81,17 +77,17 @@ export default function UpdatesPage() {
 
       {/* Action Alert Banner (if any) */}
       {actionAlerts.length > 0 && (
-        <section className="bg-red-600 text-white">
+        <section className="bg-[#ff3b3b] text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
             <div className="flex items-center gap-4">
-              <Bell className="w-6 h-6 flex-shrink-0 animate-pulse" />
+              <span className="material-symbols-outlined text-2xl animate-pulse">notifications_active</span>
               <div className="flex-grow">
-                <span className="font-bold">ACTION ALERT:</span>{" "}
+                <span className="font-bold uppercase tracking-wider">ACTION ALERT:</span>{" "}
                 <span>{actionAlerts[0].title}</span>
               </div>
               <Link
                 href={`/updates/${actionAlerts[0].slug}`}
-                className="flex-shrink-0 px-4 py-2 bg-white text-red-600 font-semibold rounded-lg hover:bg-red-50 transition-colors"
+                className="flex-shrink-0 px-6 py-2 bg-white text-[#ff3b3b] font-bold uppercase tracking-wider rounded-full hover:bg-[#0a0a0a] hover:text-white transition-colors text-sm"
               >
                 Take Action
               </Link>
@@ -102,9 +98,9 @@ export default function UpdatesPage() {
 
       {/* Featured Updates */}
       {featuredUpdates.length > 0 && (
-        <section className="py-12 bg-white border-b border-gray-200">
+        <section className="py-16 bg-[#0a0a0a] text-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Featured</h2>
+            <h2 className="text-2xl font-bold uppercase tracking-tight mb-8">Featured</h2>
             <div className="grid md:grid-cols-2 gap-6">
               {featuredUpdates.slice(0, 2).map((update) => {
                 const config = typeConfig[update.type];
@@ -112,26 +108,26 @@ export default function UpdatesPage() {
                   <Link
                     key={update.id}
                     href={`/updates/${update.slug}`}
-                    className="bg-gray-50 rounded-lg p-6 hover:bg-gray-100 transition-colors group"
+                    className="border border-white/10 p-8 hover:border-[#13ec25] transition-colors group"
                   >
-                    <div className="flex items-center gap-2 mb-3">
+                    <div className="flex items-center gap-3 mb-4">
                       <span
-                        className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-medium ${config.bgColor} ${config.color}`}
+                        className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${config.bgColor} ${config.color}`}
                       >
-                        {config.icon}
+                        <span className="material-symbols-outlined text-sm">{config.icon}</span>
                         {config.label}
                       </span>
-                      <span className="text-sm text-gray-500">
+                      <span className="text-sm text-white/50">
                         {format(new Date(update.date), "MMM d, yyyy")}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-bold uppercase tracking-tight mb-3 group-hover:text-[#13ec25] transition-colors">
                       {update.title}
                     </h3>
-                    <p className="text-gray-600 mb-4">{update.excerpt}</p>
-                    <span className="inline-flex items-center text-blue-600 font-medium">
+                    <p className="text-white/60 mb-4">{update.excerpt}</p>
+                    <span className="inline-flex items-center text-[#13ec25] font-bold uppercase tracking-wider text-sm">
                       Read more
-                      <ArrowRight className="w-4 h-4 ml-1" />
+                      <span className="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">arrow_forward</span>
                     </span>
                   </Link>
                 );
@@ -142,9 +138,9 @@ export default function UpdatesPage() {
       )}
 
       {/* All Updates */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">All Updates</h2>
+          <h2 className="text-2xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-8">All Updates</h2>
           <div className="space-y-6">
             {sortedUpdates.map((update) => {
               const config = typeConfig[update.type];
@@ -152,37 +148,39 @@ export default function UpdatesPage() {
                 <Link
                   key={update.id}
                   href={`/updates/${update.slug}`}
-                  className="block bg-white rounded-lg border border-gray-200 p-6 hover:shadow-md transition-shadow group"
+                  className="block bg-[#0a0a0a] text-white p-6 hover:shadow-[6px_6px_0px_0px_#13ec25] transition-all group"
                 >
                   <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
                     <div className="flex-grow">
-                      <div className="flex items-center gap-2 mb-2">
+                      <div className="flex items-center gap-3 mb-3">
                         <span
-                          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium ${config.bgColor} ${config.color}`}
+                          className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${config.bgColor} ${config.color}`}
                         >
-                          {config.icon}
+                          <span className="material-symbols-outlined text-xs">{config.icon}</span>
                           {config.label}
                         </span>
-                        <span className="text-sm text-gray-500">
+                        <span className="text-sm text-white/50">
                           {format(new Date(update.date), "MMMM d, yyyy")}
                         </span>
                       </div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
+                      <h3 className="text-xl font-bold uppercase tracking-tight mb-2 group-hover:text-[#13ec25] transition-colors">
                         {update.title}
                       </h3>
-                      <p className="text-gray-600">{update.excerpt}</p>
-                      <div className="flex flex-wrap gap-2 mt-3">
+                      <p className="text-white/60">{update.excerpt}</p>
+                      <div className="flex flex-wrap gap-2 mt-4">
                         {update.tags.map((tag, index) => (
                           <span
                             key={index}
-                            className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded"
+                            className="px-3 py-1 bg-white/10 text-white/70 text-xs font-bold uppercase tracking-wider"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
                     </div>
-                    <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-blue-600 transition-colors flex-shrink-0 hidden md:block" />
+                    <span className="material-symbols-outlined text-white/30 group-hover:text-[#13ec25] transition-colors hidden md:block">
+                      arrow_forward
+                    </span>
                   </div>
                 </Link>
               );
@@ -192,11 +190,13 @@ export default function UpdatesPage() {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-16 bg-blue-900 text-white">
+      <section className="py-20 bg-[#13ec25]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <Bell className="w-12 h-12 mx-auto mb-4 text-blue-300" />
-          <h2 className="text-3xl font-bold mb-4">Stay Informed</h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <span className="material-symbols-outlined text-5xl text-[#0a0a0a] mb-6 block">notifications</span>
+          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-6">
+            Stay Informed
+          </h2>
+          <p className="text-xl text-[#0a0a0a]/70 mb-10">
             Get updates delivered to your inbox. Be the first to know about
             action alerts, victories, and opportunities to make a difference.
           </p>
@@ -204,13 +204,13 @@ export default function UpdatesPage() {
             <input
               type="email"
               placeholder="Enter your email"
-              className="flex-grow px-4 py-3 rounded-lg text-gray-900 placeholder-gray-500"
+              className="flex-grow px-6 py-4 bg-[#0a0a0a] text-white placeholder-white/50 border-2 border-[#0a0a0a] focus:outline-none focus:border-white"
             />
-            <button className="px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors">
+            <button className="px-8 py-4 bg-[#0a0a0a] text-white font-bold uppercase tracking-wider hover:bg-white hover:text-[#0a0a0a] transition-colors">
               Subscribe
             </button>
           </div>
-          <p className="text-sm text-blue-300 mt-4">
+          <p className="text-sm text-[#0a0a0a]/50 mt-6">
             Join 700+ supporters. Unsubscribe anytime.
           </p>
         </div>

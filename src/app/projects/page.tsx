@@ -1,15 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { projects, ProjectStatus } from "@/data/projects";
-import {
-  Clock,
-  AlertTriangle,
-  CheckCircle,
-  XCircle,
-  ArrowRight,
-  MapPin,
-  Calendar,
-} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Stalled Projects | Boston Better Streets Coalition",
@@ -19,37 +10,37 @@ export const metadata: Metadata = {
 
 const statusConfig: Record<
   ProjectStatus,
-  { label: string; color: string; bgColor: string; icon: React.ReactNode }
+  { label: string; color: string; bgColor: string; icon: string }
 > = {
   stalled: {
-    label: "Stalled",
-    color: "text-red-700",
-    bgColor: "bg-red-100",
-    icon: <AlertTriangle className="w-4 h-4" />,
+    label: "STALLED",
+    color: "text-white",
+    bgColor: "bg-[#ff3b3b]",
+    icon: "warning",
   },
   "in-progress": {
-    label: "In Progress",
-    color: "text-amber-700",
-    bgColor: "bg-amber-100",
-    icon: <Clock className="w-4 h-4" />,
+    label: "IN PROGRESS",
+    color: "text-[#0a0a0a]",
+    bgColor: "bg-yellow-400",
+    icon: "schedule",
   },
   promised: {
-    label: "Promised",
-    color: "text-blue-700",
-    bgColor: "bg-blue-100",
-    icon: <Calendar className="w-4 h-4" />,
+    label: "PROMISED",
+    color: "text-white",
+    bgColor: "bg-blue-500",
+    icon: "event",
   },
   completed: {
-    label: "Completed",
-    color: "text-green-700",
-    bgColor: "bg-green-100",
-    icon: <CheckCircle className="w-4 h-4" />,
+    label: "COMPLETED",
+    color: "text-[#0a0a0a]",
+    bgColor: "bg-[#13ec25]",
+    icon: "check_circle",
   },
   cancelled: {
-    label: "Cancelled",
-    color: "text-gray-700",
-    bgColor: "bg-gray-100",
-    icon: <XCircle className="w-4 h-4" />,
+    label: "CANCELLED",
+    color: "text-white",
+    bgColor: "bg-gray-500",
+    icon: "cancel",
   },
 };
 
@@ -59,14 +50,20 @@ export default function ProjectsPage() {
   const cancelledProjects = projects.filter((p) => p.status === "cancelled");
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#f0ece2]">
       {/* Header */}
-      <section className="bg-gradient-to-br from-gray-900 to-gray-800 text-white py-16">
+      <section className="bg-[#0a0a0a] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            Tracking Boston&apos;s <span className="text-red-400">Broken Promises</span>
+          <div className="inline-flex items-center px-4 py-2 bg-[#ff3b3b] text-white rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+            <span className="material-symbols-outlined text-sm mr-2">construction</span>
+            Project Tracker
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6">
+            Tracking Boston&apos;s
+            <br />
+            <span className="text-[#ff3b3b]">Broken Promises</span>
           </h1>
-          <p className="text-xl text-gray-300 max-w-3xl">
+          <p className="text-xl text-white/70 max-w-3xl">
             These are the street safety projects that were promised, started, and
             then stalled. We document the delays so the city can&apos;t pretend
             they&apos;re making progress.
@@ -75,32 +72,32 @@ export default function ProjectsPage() {
       </section>
 
       {/* Stats */}
-      <section className="bg-white border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+      <section className="bg-[#0a0a0a] border-t border-white/10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-red-600">
+              <div className="text-5xl md:text-6xl font-bold text-[#ff3b3b]">
                 {stalledProjects.length}
               </div>
-              <div className="text-sm text-gray-600 mt-1">Stalled Projects</div>
+              <div className="text-sm font-bold uppercase tracking-wider text-white/60 mt-2">Stalled Projects</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-amber-600">
+              <div className="text-5xl md:text-6xl font-bold text-yellow-400">
                 {inProgressProjects.length}
               </div>
-              <div className="text-sm text-gray-600 mt-1">In Progress</div>
+              <div className="text-sm font-bold uppercase tracking-wider text-white/60 mt-2">In Progress</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-gray-600">
+              <div className="text-5xl md:text-6xl font-bold text-white/50">
                 {cancelledProjects.length}
               </div>
-              <div className="text-sm text-gray-600 mt-1">Cancelled</div>
+              <div className="text-sm font-bold uppercase tracking-wider text-white/60 mt-2">Cancelled</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600">
+              <div className="text-5xl md:text-6xl font-bold text-[#13ec25]">
                 {Math.max(...projects.map((p) => new Date().getFullYear() - p.startYear))}+
               </div>
-              <div className="text-sm text-gray-600 mt-1">Years of Delays</div>
+              <div className="text-sm font-bold uppercase tracking-wider text-white/60 mt-2">Years of Delays</div>
             </div>
           </div>
         </div>
@@ -108,70 +105,71 @@ export default function ProjectsPage() {
 
       {/* Featured Project */}
       {projects.filter((p) => p.featured).length > 0 && (
-        <section className="py-12 bg-red-50 border-b border-red-100">
+        <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-sm font-semibold text-red-600 uppercase tracking-wide mb-4">
+            <div className="inline-flex items-center px-4 py-2 bg-[#ff3b3b] text-white rounded-full text-xs font-bold uppercase tracking-wider mb-8">
+              <span className="material-symbols-outlined text-sm mr-2">star</span>
               Featured Project
-            </h2>
+            </div>
             {projects
               .filter((p) => p.featured)
               .map((project) => (
                 <div
                   key={project.id}
-                  className="bg-white rounded-xl shadow-lg overflow-hidden"
+                  className="bg-[#0a0a0a] text-white p-8 md:p-12 shadow-[8px_8px_0px_0px_#13ec25]"
                 >
-                  <div className="p-6 md:p-8">
-                    <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                      <div>
-                        <h3 className="text-2xl md:text-3xl font-bold text-gray-900">
-                          {project.name}
-                        </h3>
-                        <div className="flex items-center gap-2 mt-2 text-gray-600">
-                          <MapPin className="w-4 h-4" />
-                          <span>{project.location}</span>
-                        </div>
-                      </div>
-                      <span
-                        className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium ${statusConfig[project.status].bgColor} ${statusConfig[project.status].color}`}
-                      >
-                        {statusConfig[project.status].icon}
-                        {statusConfig[project.status].label}
-                      </span>
-                    </div>
-
-                    <p className="text-gray-600 mb-6 text-lg">
-                      {project.shortDescription}
-                    </p>
-
-                    <div className="grid md:grid-cols-3 gap-4 mb-6">
-                      <div className="bg-gray-50 rounded-lg p-4">
-                        <div className="text-sm text-gray-500">Started</div>
-                        <div className="text-xl font-bold text-gray-900">
-                          {project.startYear}
-                        </div>
-                      </div>
-                      <div className="bg-gray-50 rounded-lg p-4">
-                        <div className="text-sm text-gray-500">Expected</div>
-                        <div className="text-xl font-bold text-gray-900">
-                          {project.expectedCompletion || "TBD"}
-                        </div>
-                      </div>
-                      <div className="bg-gray-50 rounded-lg p-4">
-                        <div className="text-sm text-gray-500">Delay</div>
-                        <div className="text-xl font-bold text-red-600">
-                          {new Date().getFullYear() - project.startYear}+ years
-                        </div>
+                  <div className="flex flex-wrap items-start justify-between gap-4 mb-6">
+                    <div>
+                      <h3 className="text-3xl md:text-4xl font-bold uppercase tracking-tight">
+                        {project.name}
+                      </h3>
+                      <div className="flex items-center gap-2 mt-3 text-white/60">
+                        <span className="material-symbols-outlined text-lg">location_on</span>
+                        <span>{project.location}</span>
                       </div>
                     </div>
-
-                    <Link
-                      href={`/projects/${project.slug}`}
-                      className="inline-flex items-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
+                    <span
+                      className={`inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider ${statusConfig[project.status].bgColor} ${statusConfig[project.status].color}`}
                     >
-                      Read Full Story
-                      <ArrowRight className="w-5 h-5 ml-2" />
-                    </Link>
+                      <span className="material-symbols-outlined text-sm">
+                        {statusConfig[project.status].icon}
+                      </span>
+                      {statusConfig[project.status].label}
+                    </span>
                   </div>
+
+                  <p className="text-white/70 mb-8 text-lg max-w-3xl">
+                    {project.shortDescription}
+                  </p>
+
+                  <div className="grid md:grid-cols-3 gap-6 mb-8">
+                    <div className="border border-white/10 p-6">
+                      <div className="text-sm font-bold uppercase tracking-wider text-white/50 mb-2">Started</div>
+                      <div className="text-3xl font-bold text-[#13ec25]">
+                        {project.startYear}
+                      </div>
+                    </div>
+                    <div className="border border-white/10 p-6">
+                      <div className="text-sm font-bold uppercase tracking-wider text-white/50 mb-2">Expected</div>
+                      <div className="text-3xl font-bold">
+                        {project.expectedCompletion || "TBD"}
+                      </div>
+                    </div>
+                    <div className="border border-white/10 p-6">
+                      <div className="text-sm font-bold uppercase tracking-wider text-white/50 mb-2">Delay</div>
+                      <div className="text-3xl font-bold text-[#ff3b3b]">
+                        {new Date().getFullYear() - project.startYear}+ years
+                      </div>
+                    </div>
+                  </div>
+
+                  <Link
+                    href={`/projects/${project.slug}`}
+                    className="inline-flex items-center px-8 py-4 bg-[#13ec25] text-[#0a0a0a] font-bold uppercase tracking-wider rounded-full transition-all shadow-[4px_4px_0px_0px_#fff] hover:shadow-[6px_6px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                  >
+                    <span className="material-symbols-outlined mr-2">arrow_forward</span>
+                    Read Full Story
+                  </Link>
                 </div>
               ))}
           </div>
@@ -179,45 +177,47 @@ export default function ProjectsPage() {
       )}
 
       {/* All Projects */}
-      <section className="py-12">
+      <section className="py-16 bg-[#f0ece2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-8">All Projects</h2>
+          <h2 className="text-3xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-8">All Projects</h2>
 
           <div className="grid md:grid-cols-2 gap-6">
             {projects.map((project) => (
               <Link
                 key={project.id}
                 href={`/projects/${project.slug}`}
-                className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow group"
+                className="bg-[#0a0a0a] text-white p-6 transition-all hover:shadow-[6px_6px_0px_0px_#13ec25] group"
               >
-                <div className="flex items-start justify-between gap-4 mb-3">
-                  <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                <div className="flex items-start justify-between gap-4 mb-4">
+                  <h3 className="text-xl font-bold uppercase tracking-tight group-hover:text-[#13ec25] transition-colors">
                     {project.name}
                   </h3>
                   <span
-                    className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium flex-shrink-0 ${statusConfig[project.status].bgColor} ${statusConfig[project.status].color}`}
+                    className={`inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider flex-shrink-0 ${statusConfig[project.status].bgColor} ${statusConfig[project.status].color}`}
                   >
-                    {statusConfig[project.status].icon}
+                    <span className="material-symbols-outlined text-xs">
+                      {statusConfig[project.status].icon}
+                    </span>
                     {statusConfig[project.status].label}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2 text-sm text-gray-500 mb-3">
-                  <MapPin className="w-4 h-4" />
+                <div className="flex items-center gap-2 text-sm text-white/50 mb-4">
+                  <span className="material-symbols-outlined text-sm">location_on</span>
                   <span>{project.neighborhood}</span>
                 </div>
 
-                <p className="text-gray-600 mb-4 line-clamp-2">
+                <p className="text-white/60 mb-6 line-clamp-2">
                   {project.shortDescription}
                 </p>
 
                 <div className="flex items-center justify-between text-sm">
-                  <div className="text-gray-500">
-                    Started: <span className="font-medium">{project.startYear}</span>
+                  <div className="text-white/50">
+                    Started: <span className="font-bold text-[#13ec25]">{project.startYear}</span>
                   </div>
-                  <div className="text-blue-600 font-medium group-hover:underline flex items-center">
+                  <div className="text-[#13ec25] font-bold uppercase tracking-wider flex items-center group-hover:translate-x-1 transition-transform">
                     View details
-                    <ArrowRight className="w-4 h-4 ml-1" />
+                    <span className="material-symbols-outlined text-sm ml-1">arrow_forward</span>
                   </div>
                 </div>
               </Link>
@@ -227,21 +227,21 @@ export default function ProjectsPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-gray-900 text-white">
+      <section className="py-20 bg-[#13ec25]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-6">
             Know of a Project We&apos;re Missing?
           </h2>
-          <p className="text-xl text-gray-300 mb-8">
+          <p className="text-xl text-[#0a0a0a]/70 mb-10">
             Help us document every stalled safety project in Boston. Your
             information helps build the case for accountability.
           </p>
           <Link
             href="/take-action"
-            className="inline-flex items-center px-8 py-4 bg-white text-gray-900 font-bold rounded-lg hover:bg-gray-100 transition-colors"
+            className="inline-flex items-center px-10 py-5 bg-[#0a0a0a] text-white font-bold uppercase tracking-wider rounded-full text-lg transition-all shadow-[6px_6px_0px_0px_#fff] hover:shadow-[8px_8px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
           >
+            <span className="material-symbols-outlined mr-2">add</span>
             Submit a Project
-            <ArrowRight className="w-5 h-5 ml-2" />
           </Link>
         </div>
       </section>

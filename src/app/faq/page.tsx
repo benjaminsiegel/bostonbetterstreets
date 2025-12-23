@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { ChevronDown, ArrowRight, HelpCircle } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "FAQ | Boston Better Streets Coalition",
@@ -114,17 +113,20 @@ const faqs = [
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#f0ece2]">
       {/* Header */}
-      <section className="bg-blue-900 text-white py-16">
+      <section className="bg-[#0a0a0a] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-4">
-            <HelpCircle className="w-10 h-10" />
-            <h1 className="text-4xl md:text-5xl font-bold">
-              Frequently Asked Questions
-            </h1>
+          <div className="inline-flex items-center px-4 py-2 bg-[#13ec25] text-[#0a0a0a] rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+            <span className="material-symbols-outlined text-sm mr-2">help</span>
+            FAQ
           </div>
-          <p className="text-xl text-blue-100 max-w-3xl">
+          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6">
+            Frequently Asked
+            <br />
+            <span className="text-[#13ec25]">Questions</span>
+          </h1>
+          <p className="text-xl text-white/70 max-w-3xl">
             Everything you need to know about the Boston Better Streets
             Coalition, our mission, and how you can help make our streets safer.
           </p>
@@ -132,27 +134,29 @@ export default function FAQPage() {
       </section>
 
       {/* FAQ Content */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           {faqs.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-12">
-              <h2 className="text-2xl font-bold text-gray-900 mb-6 pb-2 border-b border-gray-200">
+            <div key={categoryIndex} className="mb-16">
+              <h2 className="text-2xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-8 pb-4 border-b-4 border-[#13ec25]">
                 {category.category}
               </h2>
               <div className="space-y-4">
                 {category.questions.map((faq, faqIndex) => (
                   <details
                     key={faqIndex}
-                    className="group bg-white rounded-lg border border-gray-200 overflow-hidden"
+                    className="group bg-[#0a0a0a] text-white overflow-hidden transition-all hover:shadow-[4px_4px_0px_0px_#13ec25]"
                   >
-                    <summary className="flex items-center justify-between p-5 cursor-pointer hover:bg-gray-50 transition-colors">
-                      <span className="font-semibold text-gray-900 pr-4">
+                    <summary className="flex items-center justify-between p-6 cursor-pointer">
+                      <span className="font-bold uppercase tracking-wider pr-4">
                         {faq.q}
                       </span>
-                      <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0 group-open:rotate-180 transition-transform" />
+                      <span className="material-symbols-outlined text-[#13ec25] flex-shrink-0 group-open:rotate-180 transition-transform">
+                        expand_more
+                      </span>
                     </summary>
-                    <div className="px-5 pb-5 pt-0">
-                      <p className="text-gray-600 leading-relaxed">{faq.a}</p>
+                    <div className="px-6 pb-6 pt-0">
+                      <p className="text-white/70 leading-relaxed">{faq.a}</p>
                     </div>
                   </details>
                 ))}
@@ -163,28 +167,29 @@ export default function FAQPage() {
       </section>
 
       {/* Still Have Questions */}
-      <section className="py-16 bg-white border-t border-gray-200">
+      <section className="py-20 bg-[#13ec25]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-6">
             Still Have Questions?
           </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          <p className="text-xl text-[#0a0a0a]/70 mb-10">
             We&apos;re here to help. Reach out to us and we&apos;ll get back to you as
             soon as possible.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:info@bostonbetterstreets.org"
-              className="inline-flex items-center justify-center px-6 py-3 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-[#0a0a0a] text-white font-bold uppercase tracking-wider rounded-full transition-all shadow-[4px_4px_0px_0px_#fff] hover:shadow-[6px_6px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
             >
+              <span className="material-symbols-outlined mr-2">mail</span>
               Contact Us
             </a>
             <Link
               href="/take-action"
-              className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#0a0a0a] text-[#0a0a0a] font-bold uppercase tracking-wider rounded-full hover:bg-[#0a0a0a] hover:text-white transition-all"
             >
+              <span className="material-symbols-outlined mr-2">campaign</span>
               Get Involved
-              <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>
         </div>

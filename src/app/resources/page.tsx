@@ -1,13 +1,4 @@
 import { Metadata } from "next";
-import {
-  ExternalLink,
-  Users,
-  Newspaper,
-  Building,
-  BookOpen,
-  Scale,
-  MapPin,
-} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Resources | Boston Better Streets Coalition",
@@ -146,12 +137,20 @@ const educationalResources = [
 
 export default function ResourcesPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-[#f0ece2]">
       {/* Header */}
-      <section className="bg-green-800 text-white py-16">
+      <section className="bg-[#0a0a0a] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Resources</h1>
-          <p className="text-xl text-green-100 max-w-3xl">
+          <div className="inline-flex items-center px-4 py-2 bg-[#13ec25] text-[#0a0a0a] rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+            <span className="material-symbols-outlined text-sm mr-2">link</span>
+            Resources
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6">
+            Tools &
+            <br />
+            <span className="text-[#13ec25]">Resources</span>
+          </h1>
+          <p className="text-xl text-white/70 max-w-3xl">
             Partner organizations, government contacts, and educational materials
             to support your advocacy for safer streets.
           </p>
@@ -159,15 +158,15 @@ export default function ResourcesPage() {
       </section>
 
       {/* Partner Organizations */}
-      <section className="py-12">
+      <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <Users className="w-8 h-8 text-blue-600" />
-            <h2 className="text-2xl font-bold text-gray-900">
+            <span className="material-symbols-outlined text-3xl text-[#13ec25]">groups</span>
+            <h2 className="text-2xl font-bold uppercase tracking-tight text-[#0a0a0a]">
               Partner Organizations
             </h2>
           </div>
-          <p className="text-gray-600 mb-8 max-w-3xl">
+          <p className="text-[#0a0a0a]/70 mb-8 max-w-3xl">
             We work alongside these organizations who share our commitment to
             safer, more accessible streets in Boston and beyond.
           </p>
@@ -178,20 +177,22 @@ export default function ResourcesPage() {
                 href={org.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white rounded-lg border border-gray-200 p-6 hover:shadow-lg transition-shadow group"
+                className="bg-[#0a0a0a] text-white p-6 transition-all hover:shadow-[6px_6px_0px_0px_#13ec25] group"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="font-bold uppercase tracking-wider group-hover:text-[#13ec25] transition-colors">
                     {org.name}
                   </h3>
-                  <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-blue-600 transition-colors flex-shrink-0" />
+                  <span className="material-symbols-outlined text-white/50 group-hover:text-[#13ec25] transition-colors">
+                    open_in_new
+                  </span>
                 </div>
-                <p className="text-gray-600 text-sm mb-4">{org.description}</p>
+                <p className="text-white/60 text-sm mb-4">{org.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {org.focus.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="px-2 py-1 bg-blue-50 text-blue-700 text-xs rounded-full"
+                      className="px-3 py-1 bg-[#13ec25] text-[#0a0a0a] text-xs font-bold uppercase tracking-wider rounded-full"
                     >
                       {tag}
                     </span>
@@ -204,15 +205,15 @@ export default function ResourcesPage() {
       </section>
 
       {/* Government Resources */}
-      <section className="py-12 bg-white border-t border-gray-200">
+      <section className="py-16 bg-[#0a0a0a] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <Building className="w-8 h-8 text-amber-600" />
-            <h2 className="text-2xl font-bold text-gray-900">
+            <span className="material-symbols-outlined text-3xl text-[#13ec25]">account_balance</span>
+            <h2 className="text-2xl font-bold uppercase tracking-tight">
               Government Resources
             </h2>
           </div>
-          <p className="text-gray-600 mb-8 max-w-3xl">
+          <p className="text-white/70 mb-8 max-w-3xl">
             Official channels for reporting issues, attending hearings, and
             engaging with the city on transportation matters.
           </p>
@@ -223,14 +224,14 @@ export default function ResourcesPage() {
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors group"
+                className="flex items-start gap-4 p-6 border border-white/10 hover:border-[#13ec25] transition-colors group"
               >
-                <MapPin className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                <span className="material-symbols-outlined text-[#13ec25]">location_city</span>
                 <div>
-                  <h3 className="font-semibold text-gray-900 group-hover:text-amber-600 transition-colors">
+                  <h3 className="font-bold uppercase tracking-wider group-hover:text-[#13ec25] transition-colors">
                     {resource.name}
                   </h3>
-                  <p className="text-gray-600 text-sm mt-1">
+                  <p className="text-white/60 text-sm mt-2">
                     {resource.description}
                   </p>
                 </div>
@@ -241,13 +242,15 @@ export default function ResourcesPage() {
       </section>
 
       {/* Media */}
-      <section className="py-12 bg-gray-50 border-t border-gray-200">
+      <section className="py-16 bg-[#f0ece2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <Newspaper className="w-8 h-8 text-purple-600" />
-            <h2 className="text-2xl font-bold text-gray-900">Media & News</h2>
+            <span className="material-symbols-outlined text-3xl text-[#0a0a0a]">newspaper</span>
+            <h2 className="text-2xl font-bold uppercase tracking-tight text-[#0a0a0a]">
+              Media & News
+            </h2>
           </div>
-          <p className="text-gray-600 mb-8 max-w-3xl">
+          <p className="text-[#0a0a0a]/70 mb-8 max-w-3xl">
             Stay informed about transportation issues in Boston and Massachusetts
             through these news sources.
           </p>
@@ -258,14 +261,14 @@ export default function ResourcesPage() {
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-4 bg-white rounded-lg border border-gray-200 hover:shadow-md transition-shadow group"
+                className="flex items-start gap-4 p-6 bg-[#0a0a0a] text-white hover:shadow-[4px_4px_0px_0px_#13ec25] transition-all group"
               >
-                <Newspaper className="w-5 h-5 text-purple-600 flex-shrink-0 mt-0.5" />
+                <span className="material-symbols-outlined text-[#13ec25]">article</span>
                 <div>
-                  <h3 className="font-semibold text-gray-900 group-hover:text-purple-600 transition-colors">
+                  <h3 className="font-bold uppercase tracking-wider group-hover:text-[#13ec25] transition-colors">
                     {resource.name}
                   </h3>
-                  <p className="text-gray-600 text-sm mt-1">
+                  <p className="text-white/60 text-sm mt-2">
                     {resource.description}
                   </p>
                 </div>
@@ -276,15 +279,15 @@ export default function ResourcesPage() {
       </section>
 
       {/* Educational Resources */}
-      <section className="py-12 bg-white border-t border-gray-200">
+      <section className="py-16 bg-[#0a0a0a] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <BookOpen className="w-8 h-8 text-green-600" />
-            <h2 className="text-2xl font-bold text-gray-900">
+            <span className="material-symbols-outlined text-3xl text-[#13ec25]">school</span>
+            <h2 className="text-2xl font-bold uppercase tracking-tight">
               Educational Resources
             </h2>
           </div>
-          <p className="text-gray-600 mb-8 max-w-3xl">
+          <p className="text-white/70 mb-8 max-w-3xl">
             Learn more about street design, urban planning, and transportation
             policy from these trusted sources.
           </p>
@@ -295,14 +298,14 @@ export default function ResourcesPage() {
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-4 bg-green-50 rounded-lg hover:bg-green-100 transition-colors group"
+                className="flex items-start gap-4 p-6 border border-white/10 hover:border-[#13ec25] transition-colors group"
               >
-                <BookOpen className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <span className="material-symbols-outlined text-[#13ec25]">menu_book</span>
                 <div>
-                  <h3 className="font-semibold text-gray-900 group-hover:text-green-700 transition-colors">
+                  <h3 className="font-bold uppercase tracking-wider group-hover:text-[#13ec25] transition-colors">
                     {resource.name}
                   </h3>
-                  <p className="text-gray-600 text-sm mt-1">
+                  <p className="text-white/60 text-sm mt-2">
                     {resource.description}
                   </p>
                 </div>
@@ -312,14 +315,14 @@ export default function ResourcesPage() {
         </div>
       </section>
 
-      {/* Legal Notice */}
-      <section className="py-12 bg-gray-100 border-t border-gray-200">
+      {/* Disclaimer */}
+      <section className="py-12 bg-[#f0ece2]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4">
-            <Scale className="w-6 h-6 text-gray-500 flex-shrink-0 mt-1" />
+          <div className="flex items-start gap-4 p-6 border-2 border-[#0a0a0a]">
+            <span className="material-symbols-outlined text-[#0a0a0a]">gavel</span>
             <div>
-              <h3 className="font-semibold text-gray-900 mb-2">Disclaimer</h3>
-              <p className="text-sm text-gray-600">
+              <h3 className="font-bold uppercase tracking-wider text-[#0a0a0a] mb-2">Disclaimer</h3>
+              <p className="text-sm text-[#0a0a0a]/70">
                 The Boston Better Streets Coalition is an independent grassroots
                 organization. Links to external websites are provided for
                 informational purposes only and do not constitute endorsement.
