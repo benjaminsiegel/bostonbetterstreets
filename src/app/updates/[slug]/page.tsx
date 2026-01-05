@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { updates, getUpdateBySlug, UpdateType } from "@/data/updates";
 import { projects } from "@/data/projects";
@@ -16,6 +17,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { format } from "date-fns";
+import ReactMarkdown from "react-markdown";
 
 interface UpdatePageProps {
   params: Promise<{ slug: string }>;
@@ -151,13 +153,20 @@ export default async function UpdatePage({ params }: UpdatePageProps) {
           <div className="grid lg:grid-cols-3 gap-8">
             {/* Main Content */}
             <div className="lg:col-span-2">
+              {/* Hero Image */}
+              {update.image && (
+                <div className="relative w-full h-64 md:h-96 mb-6 rounded-lg overflow-hidden">
+                  <Image
+                    src={update.image}
+                    alt={update.imageAlt || update.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+              )}
               <div className="bg-white rounded-lg border border-gray-200 p-6 md:p-8">
-                <div className="prose max-w-none text-gray-700">
-                  {update.content.split("\n\n").map((paragraph, index) => (
-                    <p key={index} className="mb-4 leading-relaxed">
-                      {paragraph}
-                    </p>
-                  ))}
+                <div className="prose prose-lg max-w-none text-gray-700 prose-headings:text-gray-900 prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-8 prose-h2:mb-4 prose-a:text-blue-600 prose-a:underline prose-strong:text-gray-900">
+                  <ReactMarkdown>{update.content}</ReactMarkdown>
                 </div>
 
                 {/* Tags */}
