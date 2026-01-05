@@ -1,38 +1,37 @@
 import Link from "next/link";
+import Image from "next/image";
+import { getRecentUpdates, UpdateType } from "@/data/updates";
+import { format } from "date-fns";
+
+const typeConfig: Record<UpdateType, { label: string; color: string; bgColor: string }> = {
+  news: { label: "NEWS", color: "text-[#0a0a0a]", bgColor: "bg-[#13ec25]" },
+  "action-alert": { label: "ACTION", color: "text-white", bgColor: "bg-[#ff3b3b]" },
+  victory: { label: "VICTORY", color: "text-[#0a0a0a]", bgColor: "bg-[#13ec25]" },
+  setback: { label: "SETBACK", color: "text-[#0a0a0a]", bgColor: "bg-yellow-400" },
+  event: { label: "EVENT", color: "text-white", bgColor: "bg-blue-500" },
+};
 
 export default function Home() {
+  const recentUpdates = getRecentUpdates(3);
+
   return (
     <div className="flex flex-col">
       {/* Hero Section */}
       <section className="bg-[#0a0a0a] text-white min-h-[90vh] flex items-center relative overflow-hidden">
-        {/* Background pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `repeating-linear-gradient(
-              0deg,
-              transparent,
-              transparent 50px,
-              rgba(19, 236, 37, 0.1) 50px,
-              rgba(19, 236, 37, 0.1) 51px
-            ),
-            repeating-linear-gradient(
-              90deg,
-              transparent,
-              transparent 50px,
-              rgba(19, 236, 37, 0.1) 50px,
-              rgba(19, 236, 37, 0.1) 51px
-            )`,
-          }} />
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/hero-community.jpg"
+            alt="Boston Better Streets Coalition community members"
+            fill
+            className="object-cover opacity-40"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full">
-          <div className="max-w-5xl">
-            {/* Badge */}
-            <div className="inline-flex items-center px-4 py-2 bg-[#13ec25] text-[#0a0a0a] rounded-full text-sm font-bold uppercase tracking-wider mb-8 shadow-[4px_4px_0px_0px_#fff]">
-              <span className="material-symbols-outlined text-lg mr-2">group</span>
-              700+ Residents Demanding Action
-            </div>
-
+          <div className="max-w-4xl">
             {/* Main headline */}
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tight leading-[0.9] mb-8">
               Boston&apos;s Streets
@@ -42,10 +41,10 @@ export default function Home() {
               <span className="text-[#13ec25]">Promises</span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="text-xl md:text-2xl text-white/70 max-w-2xl mb-10 leading-relaxed">
-              The city promised safer streets. Instead, we got studies, delays,
-              and tragedy. We&apos;re tracking the broken promises and demanding action.
+            {/* Subheadline - NEW TAGLINE */}
+            <p className="text-xl md:text-2xl text-white/80 max-w-2xl mb-10 leading-relaxed">
+              Mayor Wu&apos;s administration promised safer streets. We got studies,
+              delays, and streets we&apos;re still afraid to let our kids cross.
             </p>
 
             {/* CTA Buttons */}
@@ -100,14 +99,78 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Mission Section */}
+      {/* Recent Updates Section - REPLACES HYDE PARK FEATURE */}
       <section className="bg-[#0a0a0a] text-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight">
+              Latest <span className="text-[#13ec25]">Updates</span>
+            </h2>
+            <Link
+              href="/updates"
+              className="hidden sm:inline-flex items-center text-[#13ec25] font-bold uppercase tracking-wider hover:underline"
+            >
+              View All
+              <span className="material-symbols-outlined ml-2">arrow_forward</span>
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {recentUpdates.map((update) => {
+              const config = typeConfig[update.type];
+              return (
+                <Link
+                  key={update.id}
+                  href={`/updates/${update.slug}`}
+                  className="bg-white/5 border border-white/10 p-6 hover:border-[#13ec25] transition-all group flex flex-col"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${config.bgColor} ${config.color}`}
+                    >
+                      {config.label}
+                    </span>
+                    <span className="text-sm text-white/50">
+                      {format(new Date(update.date), "MMM d, yyyy")}
+                    </span>
+                  </div>
+                  <h3 className="text-lg font-bold uppercase tracking-tight mb-3 group-hover:text-[#13ec25] transition-colors flex-grow">
+                    {update.title}
+                  </h3>
+                  <p className="text-white/60 text-sm mb-4 line-clamp-2">
+                    {update.excerpt}
+                  </p>
+                  <span className="inline-flex items-center text-[#13ec25] font-bold uppercase tracking-wider text-sm mt-auto">
+                    Read more
+                    <span className="material-symbols-outlined ml-1 text-sm group-hover:translate-x-1 transition-transform">
+                      arrow_forward
+                    </span>
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="mt-8 sm:hidden text-center">
+            <Link
+              href="/updates"
+              className="inline-flex items-center text-[#13ec25] font-bold uppercase tracking-wider"
+            >
+              View All Updates
+              <span className="material-symbols-outlined ml-2">arrow_forward</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Mission Section */}
+      <section className="bg-[#f0ece2] py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-6">
+            <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-6">
               Streets For <span className="text-[#13ec25]">Everyone</span>
             </h2>
-            <p className="text-xl text-white/70">
+            <p className="text-xl text-[#0a0a0a]/70">
               Boston must be a city where people of all ages and abilities can walk,
               bike, and take transit safely—without fear.
             </p>
@@ -120,7 +183,7 @@ export default function Home() {
               { icon: "pedal_bike", title: "For Cyclists", desc: "Protected bike lanes save lives. Paint is not protection." },
               { icon: "directions_bus", title: "For Transit Riders", desc: "Bus riders deserve safe access to stops without risking their lives." },
             ].map((item, index) => (
-              <div key={index} className="bg-white/5 border border-white/10 p-8 hover:border-[#13ec25] transition-colors group">
+              <div key={index} className="bg-[#0a0a0a] text-white p-8 hover:shadow-[6px_6px_0px_0px_#13ec25] transition-all group">
                 <div className="w-16 h-16 bg-[#13ec25] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                   <span className="material-symbols-outlined text-[#0a0a0a] text-3xl">
                     {item.icon}
@@ -130,86 +193,6 @@ export default function Home() {
                 <p className="text-white/60 text-sm">{item.desc}</p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Project: Hyde Park Avenue */}
-      <section className="bg-[#f0ece2] py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 items-start">
-            <div>
-              {/* Badge */}
-              <div className="inline-flex items-center px-4 py-2 bg-[#ff3b3b] text-white rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-                <span className="material-symbols-outlined text-sm mr-2">warning</span>
-                Featured Project
-              </div>
-
-              <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-6">
-                Hyde Park Avenue:
-                <br />
-                <span className="text-[#ff3b3b]">A Six-Year Battle</span>
-              </h2>
-
-              <p className="text-lg text-[#0a0a0a]/70 mb-6">
-                Planning for a &quot;complete streets&quot; redesign began in <strong>2019</strong>.
-                In October 2024, Forest Hills resident <strong>Glenn Inghram was killed</strong> by
-                an MBTA bus in a crosswalk. Over 700 residents signed a petition demanding action.
-              </p>
-
-              <p className="text-lg text-[#0a0a0a]/70 mb-8">
-                The city&apos;s response? More delays. In July 2025, the Wu administration announced
-                it would proceed with <strong>repaving only</strong>—implementing neither safety
-                alternative and delaying designs until at least 2026.
-              </p>
-
-              <blockquote className="border-l-4 border-[#13ec25] pl-6 my-8 text-xl italic text-[#0a0a0a]/80">
-                &quot;Hyde Park Avenue is not a road but a moat—a dangerous, high-speed barrier
-                residents must swim across daily just to reach transit.&quot;
-              </blockquote>
-
-              <Link
-                href="/projects/hyde-park-avenue"
-                className="inline-flex items-center text-[#0a0a0a] font-bold uppercase tracking-wider hover:text-[#13ec25] transition-colors group"
-              >
-                Read the Full Story
-                <span className="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform">
-                  arrow_forward
-                </span>
-              </Link>
-            </div>
-
-            {/* Timeline */}
-            <div className="bg-[#0a0a0a] text-white p-8 shadow-[8px_8px_0px_0px_#13ec25]">
-              <h3 className="text-xl font-bold uppercase tracking-wider mb-8 flex items-center">
-                <span className="material-symbols-outlined text-[#13ec25] mr-3">timeline</span>
-                Timeline of Inaction
-              </h3>
-              <div className="space-y-6">
-                {[
-                  { year: "2019", event: "Complete streets planning begins", status: "started" },
-                  { year: "2020", event: "Project shelved due to COVID", status: "paused" },
-                  { year: "2023", event: "Project formally restarts", status: "resumed" },
-                  { year: "Oct 2024", event: "Glenn Inghram killed in crosswalk", status: "tragedy" },
-                  { year: "May 2025", event: "City presents two alternatives", status: "progress" },
-                  { year: "Jul 2025", event: "City chooses neither—repaving only", status: "stalled" },
-                  { year: "2026+", event: "Safety designs delayed indefinitely", status: "unknown" },
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className={`w-4 h-4 rounded-full mt-1 mr-4 flex-shrink-0 ${
-                      item.status === "tragedy" ? "bg-[#ff3b3b]" :
-                      item.status === "stalled" ? "bg-yellow-400" :
-                      item.status === "unknown" ? "bg-white/30" :
-                      "bg-[#13ec25]"
-                    }`} />
-                    <div>
-                      <span className="font-bold text-[#13ec25]">{item.year}</span>
-                      <span className="text-white/70 ml-3">{item.event}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -266,7 +249,7 @@ export default function Home() {
             Enough Excuses.
           </h2>
           <p className="text-xl text-[#0a0a0a]/70 mb-10 max-w-2xl mx-auto">
-            Join 700+ Boston residents demanding the city deliver on its promises
+            Join Boston residents demanding the city deliver on its promises
             for safer streets. Your voice matters.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

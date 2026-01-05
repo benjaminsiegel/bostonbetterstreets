@@ -9,6 +9,8 @@ export interface Update {
   type: UpdateType;
   date: string;
   author: string;
+  image?: string;
+  imageAlt?: string;
   relatedProjectId?: string;
   featured?: boolean;
   tags: string[];
@@ -84,6 +86,8 @@ The safety walk was covered by local media and generated significant social medi
     type: "event",
     date: "2025-04-12",
     author: "BBSC Team",
+    image: "/images/hero-community.jpg",
+    imageAlt: "Community members gathered for safety walk on Hyde Park Avenue",
     relatedProjectId: "hyde-park-avenue",
     tags: ["Hyde Park Avenue", "Community Event", "Documentation"],
   },
@@ -178,4 +182,10 @@ export const getFeaturedUpdates = (): Update[] => {
 
 export const getUpdatesByType = (type: UpdateType): Update[] => {
   return updates.filter((u) => u.type === type);
+};
+
+export const getRecentUpdates = (count: number = 3): Update[] => {
+  return [...updates]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, count);
 };
