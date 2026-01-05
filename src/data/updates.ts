@@ -18,6 +18,61 @@ export interface Update {
 
 export const updates: Update[] = [
   {
+    id: "7",
+    slug: "50-miles-of-asphalt-zero-miles-of-safety",
+    title: "50 Miles of Asphalt, Zero Miles of Safety: BTD's Insulting Year-End Report",
+    excerpt:
+      "While NYC's new mayor announces bold street safety plans on day three, Boston's Transportation Department brags about pavement. The retreat is complete.",
+    content: `The Boston Transportation Department closed out 2025 with a triumphant announcement: 50 miles of street resurfacing, a new record for roadway "improvements."
+
+Not a single word about pedestrian safety. Not a mention of the bike lanes gathering dust in planning documents. Not a whisper about Hyde Park Avenue, Blue Hill Avenue, or any of the stalled projects that residents have been begging for.
+
+Just asphalt. Smooth roads for cars to speed on.
+
+## Meanwhile, in New York City
+
+Three days into his term, Mayor Zohran Mamdani stood on McGuinness Boulevard in Brooklyn and announced something Boston residents can only dream of: the completion of a stalled street safety project.
+
+The McGuinness road diet—killed by the corrupt Adams administration—is back. One travel lane in each direction. Protected bike lanes. Traffic calming. A project that community members fought for over a decade to achieve.
+
+"The parents and families of Greenpoint can breathe a sigh of relief," said Transportation Alternatives' Ben Furnas.
+
+Mamdani made street safety a campaign promise. And on day three, he started delivering.
+
+## Boston's Full Retreat
+
+Under new leadership, Boston's Transportation Department has completely abandoned any pretense of prioritizing safety. The vision that was promised—complete streets, Vision Zero, protected infrastructure—has been quietly shelved.
+
+What we get instead: press releases about paving.
+
+The message is clear. This administration believes that smooth asphalt for commuters matters more than safe crossings for your kids. They've decided that suburban drivers speeding through our neighborhoods are more important than the residents who live there.
+
+And they're hoping you won't notice.
+
+## The Question Mayor Wu Must Answer
+
+Zohran Mamdani just showed what courage looks like. He inherited a stalled project and revived it immediately. He didn't wait for more studies. He didn't worry about political backlash. He kept his promise.
+
+Mayor Wu: Where's our McGuinness moment?
+
+You promised safer streets. You promised to listen to communities. You promised bold climate and transportation leadership.
+
+Instead, we got 50 miles of asphalt and silence on safety.
+
+Are you going to find your courage? Or are you just another backtracking politician who thinks she's smarter than her constituents and doesn't need to listen?
+
+Boston deserves better. We're watching. And we're not going away.
+
+---
+
+**Take Action:** [Contact Mayor Wu](mailto:mayor@boston.gov) and demand to know: when will Boston get its McGuinness moment?`,
+    type: "setback",
+    date: "2026-01-05",
+    author: "BBSC Team",
+    featured: true,
+    tags: ["BTD", "Mayor Wu", "Vision Zero", "NYC Comparison"],
+  },
+  {
     id: "1",
     slug: "city-council-hearing-october-2025",
     title: "Massive City Council Hearing Puts Pressure on Administration",
