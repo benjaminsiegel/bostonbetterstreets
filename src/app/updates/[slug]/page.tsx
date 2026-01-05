@@ -39,9 +39,35 @@ export async function generateMetadata({ params }: UpdatePageProps): Promise<Met
     };
   }
 
+  const baseUrl = "https://bostonbetterstreets.vercel.app";
+  const imageUrl = update.image ? `${baseUrl}${update.image}` : `${baseUrl}/images/og-default.jpg`;
+
   return {
     title: `${update.title} | Boston Better Streets Coalition`,
     description: update.excerpt,
+    openGraph: {
+      title: update.title,
+      description: update.excerpt,
+      url: `${baseUrl}/updates/${update.slug}`,
+      siteName: "Boston Better Streets Coalition",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: update.imageAlt || update.title,
+        },
+      ],
+      type: "article",
+      publishedTime: update.date,
+      authors: [update.author],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: update.title,
+      description: update.excerpt,
+      images: [imageUrl],
+    },
   };
 }
 
