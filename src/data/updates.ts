@@ -41,7 +41,7 @@ Just asphalt. Smooth, beautiful asphalt for cars to speed on.
 
 This is what Boston's transportation policy has become under Wu: fresh pavement and radio silence. And if you're wondering what happened to the bold Vision Zero promises, the complete streets revolution, the climate emergency action? Ask Jascha Franklin-Hodge, Wu's former Chief of Streets.
 
-Actually, you can't. She canned him in 2024 after spending a year systematically blocking him from doing the job she hired him to do. Franklin-Hodge—a nationally respected transportation innovator—got to watch his boss abandon every safety project that might upset a suburban driver or displease a developer, then got shown the door for his trouble.
+Actually, you can't. She canned him in December 2025 after spending a year systematically blocking him from doing the job she hired him to do. Franklin-Hodge—a nationally respected transportation innovator—got to watch his boss abandon every safety project that might upset a suburban driver or displease a developer, then got shown the door for his trouble.
 
 The message was clear: This administration isn't interested in transformation anymore. It's interested in smooth roads and political positioning.
 
