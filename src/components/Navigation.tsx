@@ -25,9 +25,10 @@ export default function Navigation() {
                 directions_walk
               </span>
             </div>
-            <span className="font-bold text-lg uppercase tracking-wider">
-              BBSC
-            </span>
+            <div className="font-bold text-sm uppercase tracking-wider leading-tight">
+              <div>Boston Better</div>
+              <div>Streets Coalition</div>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}

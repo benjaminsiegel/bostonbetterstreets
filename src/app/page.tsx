@@ -24,10 +24,10 @@ export default function Home() {
             src="/images/hero-community.jpg"
             alt="Boston Better Streets Coalition community members"
             fill
-            className="object-cover opacity-40"
+            className="object-cover opacity-60"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a] via-[#0a0a0a]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0a0a0a]/90 via-[#0a0a0a]/60 to-transparent" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full">
@@ -75,40 +75,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats Section */}
+      {/* Recent Updates Section */}
       <section className="bg-[#f0ece2] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="text-6xl md:text-7xl font-bold text-[#0a0a0a]">6+</div>
-              <div className="text-sm font-bold uppercase tracking-wider text-[#0a0a0a]/60 mt-2">Years of Delays</div>
-            </div>
-            <div className="text-center">
-              <div className="text-6xl md:text-7xl font-bold text-[#13ec25]">700+</div>
-              <div className="text-sm font-bold uppercase tracking-wider text-[#0a0a0a]/60 mt-2">Petition Signatures</div>
-            </div>
-            <div className="text-center">
-              <div className="text-6xl md:text-7xl font-bold text-[#0a0a0a]">12+</div>
-              <div className="text-sm font-bold uppercase tracking-wider text-[#0a0a0a]/60 mt-2">Stalled Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-6xl md:text-7xl font-bold text-[#ff3b3b]">0</div>
-              <div className="text-sm font-bold uppercase tracking-wider text-[#0a0a0a]/60 mt-2">Promises Kept</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Recent Updates Section - REPLACES HYDE PARK FEATURE */}
-      <section className="bg-[#0a0a0a] text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#0a0a0a]">
               Latest <span className="text-[#13ec25]">Updates</span>
             </h2>
             <Link
               href="/updates"
-              className="hidden sm:inline-flex items-center text-[#13ec25] font-bold uppercase tracking-wider hover:underline"
+              className="hidden sm:inline-flex items-center text-[#0a0a0a] font-bold uppercase tracking-wider hover:text-[#13ec25] transition-colors"
             >
               View All
               <span className="material-symbols-outlined ml-2">arrow_forward</span>
@@ -122,7 +98,7 @@ export default function Home() {
                 <Link
                   key={update.id}
                   href={`/updates/${update.slug}`}
-                  className="bg-white/5 border border-white/10 p-6 hover:border-[#13ec25] transition-all group flex flex-col"
+                  className="bg-white border-2 border-[#0a0a0a] p-6 shadow-[4px_4px_0px_0px_#0a0a0a] hover:shadow-[6px_6px_0px_0px_#13ec25] hover:border-[#13ec25] transition-all group flex flex-col"
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <span
@@ -130,17 +106,17 @@ export default function Home() {
                     >
                       {config.label}
                     </span>
-                    <span className="text-sm text-white/50">
+                    <span className="text-sm text-[#0a0a0a]/50">
                       {format(new Date(update.date), "MMM d, yyyy")}
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold uppercase tracking-tight mb-3 group-hover:text-[#13ec25] transition-colors flex-grow">
+                  <h3 className="text-lg font-bold uppercase tracking-tight mb-3 text-[#0a0a0a] group-hover:text-[#13ec25] transition-colors flex-grow">
                     {update.title}
                   </h3>
-                  <p className="text-white/60 text-sm mb-4 line-clamp-2">
+                  <p className="text-[#0a0a0a]/60 text-sm mb-4 line-clamp-2">
                     {update.excerpt}
                   </p>
-                  <span className="inline-flex items-center text-[#13ec25] font-bold uppercase tracking-wider text-sm mt-auto">
+                  <span className="inline-flex items-center text-[#0a0a0a] font-bold uppercase tracking-wider text-sm mt-auto group-hover:text-[#13ec25]">
                     Read more
                     <span className="material-symbols-outlined ml-1 text-sm group-hover:translate-x-1 transition-transform">
                       arrow_forward
@@ -154,7 +130,7 @@ export default function Home() {
           <div className="mt-8 sm:hidden text-center">
             <Link
               href="/updates"
-              className="inline-flex items-center text-[#13ec25] font-bold uppercase tracking-wider"
+              className="inline-flex items-center text-[#0a0a0a] font-bold uppercase tracking-wider"
             >
               View All Updates
               <span className="material-symbols-outlined ml-2">arrow_forward</span>
