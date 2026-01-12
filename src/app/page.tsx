@@ -140,33 +140,37 @@ export default function Home() {
       </section>
 
       {/* Mission Section */}
-      <section className="bg-[#f0ece2] py-24">
+      <section className="bg-[#0a0a0a] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight text-white mb-4">
               Streets For <span className="text-[#13ec25]">Everyone</span>
             </h2>
-            <p className="text-xl text-[#0a0a0a]/70">
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">
               Boston must be a city where people of all ages and abilities can walk,
               bike, and take transit safely—without fear.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {[
-              { icon: "family_restroom", title: "For Families", desc: "Parents shouldn't fear walking their children to school." },
-              { icon: "accessible", title: "For All Abilities", desc: "Accessible infrastructure benefits everyone in our community." },
-              { icon: "pedal_bike", title: "For Cyclists", desc: "Protected bike lanes save lives. Paint is not protection." },
-              { icon: "directions_bus", title: "For Transit Riders", desc: "Bus riders deserve safe access to stops without risking their lives." },
+              { image: "/images/hero_square_families.jpg", title: "For Families", desc: "Parents shouldn't fear walking their children to school." },
+              { image: "/images/Hero_square_abilities.jpg", title: "For All Abilities", desc: "Accessible infrastructure benefits everyone in our community." },
+              { image: "/images/hero_square_cyclist.jpg", title: "For Cyclists", desc: "Protected bike lanes save lives. Paint is not protection." },
+              { image: "/images/hero_square_transit.jpg", title: "For Transit Riders", desc: "Bus riders deserve safe access to stops without risking their lives." },
             ].map((item, index) => (
-              <div key={index} className="bg-[#0a0a0a] text-white p-8 hover:shadow-[6px_6px_0px_0px_#13ec25] transition-all group">
-                <div className="w-16 h-16 bg-[#13ec25] rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <span className="material-symbols-outlined text-[#0a0a0a] text-3xl">
-                    {item.icon}
-                  </span>
+              <div key={index} className="relative group overflow-hidden aspect-square">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/40 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                  <h3 className="text-base md:text-lg font-bold uppercase tracking-wider text-white mb-1 md:mb-2">{item.title}</h3>
+                  <p className="text-white/70 text-xs md:text-sm hidden sm:block">{item.desc}</p>
                 </div>
-                <h3 className="text-lg font-bold uppercase tracking-wider mb-3">{item.title}</h3>
-                <p className="text-white/60 text-sm">{item.desc}</p>
               </div>
             ))}
           </div>

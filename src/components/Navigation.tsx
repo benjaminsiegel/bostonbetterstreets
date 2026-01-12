@@ -7,6 +7,7 @@ const navItems = [
   { name: "Our Mission", href: "/mission" },
   { name: "Updates", href: "/updates" },
   { name: "Stalled Projects", href: "/projects" },
+  { name: "Allies & Obstructionists", href: "/officials" },
   { name: "FAQ", href: "/faq" },
   { name: "Resources", href: "/resources" },
 ];

@@ -265,6 +265,100 @@ Despite overwhelming local support for Alternative 2 (a "road diet" reducing the
       "Cyclists still have no safe route"
     ],
     communityImpact: "Cancellation emboldened opposition to safety projects citywide."
+  },
+  {
+    id: "columbia-road",
+    name: "Columbia Road Complete Streets",
+    slug: "columbia-road",
+    location: "Columbia Road (Uphams Corner to Franklin Park)",
+    neighborhood: "Dorchester / Roxbury",
+    status: "stalled",
+    description: `Columbia Road is a wide, fast boulevard connecting Uphams Corner to Franklin Park through the heart of Dorchester. Despite being identified as a high-crash corridor years ago, meaningful safety improvements have been repeatedly delayed.
+
+The street's design prioritizes vehicle throughput over the safety of the predominantly Black and brown residents who live along it. Wide lanes encourage speeding, crosswalks are poorly marked, and pedestrians must navigate multiple lanes of fast-moving traffic to access transit, schools, and businesses.
+
+Community advocates have pushed for a complete redesign including protected bike lanes, improved crosswalks, and traffic calming measures. The city has conducted studies and held community meetings, but implementation remains perpetually "in planning."`,
+    shortDescription: "A dangerous corridor through Dorchester where safety improvements remain stuck in planning.",
+    startYear: 2020,
+    expectedCompletion: "TBD",
+    coordinates: [42.3156, -71.0674],
+    timeline: [
+      {
+        date: "2020",
+        title: "Safety Study Initiated",
+        description: "City begins studying safety improvements for Columbia Road corridor.",
+        type: "started"
+      },
+      {
+        date: "2022",
+        title: "Community Meetings",
+        description: "Multiple community meetings held to gather input on redesign options.",
+        type: "milestone"
+      },
+      {
+        date: "2024",
+        title: "Design Stalled",
+        description: "Despite community input, project remains in planning with no construction timeline.",
+        type: "stalled"
+      }
+    ],
+    keyIssues: [
+      "Wide lanes encourage dangerous speeding",
+      "Inadequate crosswalks on a busy pedestrian corridor",
+      "No protected bike infrastructure despite community demand",
+      "Disproportionate crash rates affecting communities of color"
+    ],
+    communityImpact: "Residents in surrounding neighborhoods face daily danger crossing to access transit, schools, and Franklin Park."
+  },
+  {
+    id: "street-calming-cameras",
+    name: "Street Calming & Camera Enforcement",
+    slug: "street-calming-cameras",
+    location: "Citywide",
+    neighborhood: "All Neighborhoods",
+    status: "stalled",
+    description: `Boston has long lagged peer cities in deploying proven traffic calming measures and automated enforcement technology. While cities like New York have installed hundreds of speed cameras and seen dramatic reductions in traffic deaths, Boston has moved at a glacial pace.
+
+Massachusetts law now permits automated speed enforcement in school zones and work zones, but implementation has been minimal. The city has also been slow to deploy physical traffic calming measures like speed tables, raised crosswalks, and curb extensions—interventions that cost little and save lives.
+
+The administration has cited various bureaucratic hurdles, but the real barrier appears to be political will. Every delay costs lives on Boston streets.`,
+    shortDescription: "Citywide traffic calming and camera enforcement programs stuck in bureaucratic limbo.",
+    startYear: 2022,
+    expectedCompletion: "TBD",
+    coordinates: [42.3601, -71.0589],
+    timeline: [
+      {
+        date: "2022",
+        title: "State Authorization",
+        description: "Massachusetts authorizes automated speed enforcement in school and work zones.",
+        type: "milestone"
+      },
+      {
+        date: "2023",
+        title: "Pilot Announced",
+        description: "City announces plans for speed camera pilot program.",
+        type: "started"
+      },
+      {
+        date: "2024",
+        title: "Minimal Deployment",
+        description: "Only a handful of cameras deployed while other cities move ahead.",
+        type: "setback"
+      },
+      {
+        date: "2025",
+        title: "Program Stalled",
+        description: "Expansion of camera program and traffic calming remains limited.",
+        type: "stalled"
+      }
+    ],
+    keyIssues: [
+      "Speed cameras proven to reduce crashes but barely deployed",
+      "Physical traffic calming measures underutilized",
+      "Bureaucratic delays while peer cities move forward",
+      "Lack of political will to implement proven safety measures"
+    ],
+    communityImpact: "Every month of delay means more preventable crashes and deaths on Boston streets."
   }
 ];
 
