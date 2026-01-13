@@ -177,46 +177,62 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Progress Has Stalled */}
-      <section className="bg-[#0a0a0a] text-white py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-12 text-center">
-              Why Progress Has <span className="text-[#ff3b3b]">Stalled</span>
-            </h2>
+      {/* From Bold to Backtracking */}
+      <section className="bg-[#0a0a0a] text-white py-16 md:py-20">
+        <div className="max-w-4xl mx-auto px-6 md:px-10">
+          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight mb-12 md:mb-16 text-center">
+            From Bold to <span className="text-[#ff3b3b]">Backtracking</span>
+          </h2>
 
-            <div className="space-y-6">
-              {[
-                {
-                  icon: "how_to_vote",
-                  title: "Election-Year Politics",
-                  desc: "Internal guidance suggested minimizing 'oxygen' for street design during the 2025 election cycle to avoid backlash.",
-                },
-                {
-                  icon: "traffic",
-                  title: "Regional vs. Local",
-                  desc: "The administration has prioritized regional traffic flow for suburban commuters over safety for local residents.",
-                },
-                {
-                  icon: "balance",
-                  title: "Equity Paradox",
-                  desc: "Residents in Black and brown communities are four times more likely to be struck by cars and most reliant on delayed bus routes.",
-                },
-              ].map((item, index) => (
-                <div key={index} className="flex items-start p-6 border border-white/10 hover:border-[#13ec25] transition-colors">
-                  <div className="w-12 h-12 bg-[#ff3b3b] rounded-full flex items-center justify-center flex-shrink-0 mr-6">
-                    <span className="material-symbols-outlined text-white text-xl">
-                      {item.icon}
-                    </span>
-                  </div>
-                  <div>
-                    <h3 className="text-lg font-bold uppercase tracking-wider mb-2">{item.title}</h3>
-                    <p className="text-white/60">{item.desc}</p>
-                  </div>
+          <div className="space-y-8 md:space-y-10">
+            {[
+              {
+                label: "Big Promises",
+                quote: "We're working to transform our streets, so all road users are protected.",
+                source: "City of Boston, September 2022",
+                link: "https://www.boston.gov/news/bostons-bike-network-and-safer-streets-expanding",
+              },
+              {
+                label: "Hedging",
+                quote: "I just don't want us to have it as an on or off switch of either we go to something that feels safe for pedestrians but then almost disastrous for many of the drivers who are coming in from further away.",
+                source: "Ask the Mayor, Boston Public Radio, November 18, 2025",
+                link: "https://www.youtube.com/watch?v=3vc0-ifqyOc&list=PLMQKK3_a14M1QU6e3Tp2q3HMBEJIr7Z0t&index=48",
+              },
+              {
+                label: "Just Too Complicated",
+                quote: "Everyone's interests have to be balanced...we have to find ways to balance everything and it's complicated.",
+                source: "Java with Jimmy, November 20, 2025",
+                link: "https://www.youtube.com/watch?v=N9QpakqFczo",
+              },
+            ].map((item, index) => (
+              <div key={index}>
+                <div className="text-sm md:text-base font-bold uppercase tracking-widest text-[#ff3b3b] mb-3 md:mb-4">
+                  {item.label}
                 </div>
-              ))}
-            </div>
+                <blockquote className="border-l-4 border-[#ff3b3b] pl-5 md:pl-6">
+                  <p className="text-lg md:text-xl text-white/80 italic leading-relaxed mb-3">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
+                  <a
+                    href={item.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-white/50 hover:text-[#13ec25] transition-colors"
+                  >
+                    — {item.source}
+                  </a>
+                </blockquote>
+              </div>
+            ))}
           </div>
+
+          <p className="mt-12 md:mt-16 text-base md:text-lg text-white leading-relaxed">
+            Mayor Wu took office promising the bold street safety reforms Boston desperately needed.
+            In 2025, those promises crumbled. Political fears replaced action. Regional traffic
+            priorities overrode local safety. The administration even weaponized equity language
+            to justify inaction—while communities of color continue facing the highest pedestrian
+            injury rates. What we got instead: another year of studies while our kids dodge traffic.
+          </p>
         </div>
       </section>
 
