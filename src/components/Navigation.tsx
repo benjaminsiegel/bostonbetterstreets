@@ -4,10 +4,10 @@ import Link from "next/link";
 import { useState } from "react";
 
 const navItems = [
-  { name: "Our Mission", href: "/mission" },
+  { name: "Mission", href: "/mission" },
   { name: "Updates", href: "/updates" },
   { name: "Stalled Projects", href: "/projects" },
-  { name: "Allies & Obstructionists", href: "/officials" },
+  { name: "Officials", href: "/officials" },
   { name: "FAQ", href: "/faq" },
   { name: "Resources", href: "/resources" },
 ];
@@ -33,12 +33,12 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden lg:flex items-center space-x-5 xl:space-x-7">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="text-sm font-bold uppercase tracking-wider text-white/80 hover:text-[#13ec25] transition-colors"
+                className="text-xs xl:text-sm font-bold uppercase tracking-wider text-white/80 hover:text-[#13ec25] transition-colors whitespace-nowrap"
               >
                 {item.name}
               </Link>
@@ -46,12 +46,12 @@ export default function Navigation() {
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:flex items-center">
+          <div className="hidden lg:flex items-center">
             <Link
               href="/take-action"
-              className="inline-flex items-center px-6 py-3 bg-[#13ec25] text-[#0a0a0a] text-sm font-bold uppercase tracking-wider rounded-full hover:bg-[#0fc91f] transition-all shadow-[4px_4px_0px_0px_#fff] hover:shadow-[6px_6px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+              className="inline-flex items-center px-4 py-2 xl:px-6 xl:py-3 bg-[#13ec25] text-[#0a0a0a] text-xs xl:text-sm font-bold uppercase tracking-wider rounded-full hover:bg-[#0fc91f] transition-all shadow-[4px_4px_0px_0px_#fff] hover:shadow-[6px_6px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
             >
-              <span className="material-symbols-outlined text-lg mr-2">
+              <span className="material-symbols-outlined text-base xl:text-lg mr-1 xl:mr-2">
                 campaign
               </span>
               Take Action
@@ -61,7 +61,7 @@ export default function Navigation() {
           {/* Mobile menu button */}
           <button
             type="button"
-            className="md:hidden p-2 text-white"
+            className="lg:hidden p-2 text-white"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className="material-symbols-outlined text-2xl">
@@ -72,7 +72,7 @@ export default function Navigation() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="md:hidden py-6 border-t border-white/10">
+          <div className="lg:hidden py-6 border-t border-white/10">
             <div className="flex flex-col space-y-4">
               {navItems.map((item) => (
                 <Link

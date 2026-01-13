@@ -189,19 +189,19 @@ export default function Home() {
               {
                 label: "Big Promises",
                 quote: "We're working to transform our streets, so all road users are protected.",
-                source: "City of Boston, September 2022",
+                source: "Mayor Michelle Wu, City of Boston, September 2022",
                 link: "https://www.boston.gov/news/bostons-bike-network-and-safer-streets-expanding",
               },
               {
                 label: "Hedging",
                 quote: "I just don't want us to have it as an on or off switch of either we go to something that feels safe for pedestrians but then almost disastrous for many of the drivers who are coming in from further away.",
-                source: "Ask the Mayor, Boston Public Radio, November 18, 2025",
+                source: "Mayor Michelle Wu, Ask the Mayor, Boston Public Radio, November 18, 2025",
                 link: "https://www.youtube.com/watch?v=3vc0-ifqyOc&list=PLMQKK3_a14M1QU6e3Tp2q3HMBEJIr7Z0t&index=48",
               },
               {
                 label: "Just Too Complicated",
                 quote: "Everyone's interests have to be balanced...we have to find ways to balance everything and it's complicated.",
-                source: "Java with Jimmy, November 20, 2025",
+                source: "Mayor Michelle Wu, Java with Jimmy, November 20, 2025",
                 link: "https://www.youtube.com/watch?v=N9QpakqFczo",
               },
             ].map((item, index) => (
