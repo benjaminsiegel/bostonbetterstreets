@@ -36,18 +36,18 @@ const partnerOrganizations = [
     focus: ["Car-Free", "Advocacy"],
   },
   {
-    name: "MASSPIRG",
-    description:
-      "Standing up to powerful interests on issues like transportation, environment, and consumer protection.",
-    url: "https://masspirg.org",
-    focus: ["Policy", "Consumer Advocacy"],
-  },
-  {
     name: "Vision Zero Coalition",
     description:
       "Coalition of organizations pushing Boston to deliver on its Vision Zero commitment to eliminate traffic deaths.",
     url: "https://visionzeroboston.org",
     focus: ["Vision Zero", "Safety"],
+  },
+  {
+    name: "StreetsBlog Mass",
+    description:
+      "Daily news source covering sustainable transportation and livable streets in Massachusetts.",
+    url: "https://mass.streetsblog.org",
+    focus: ["News", "Transportation"],
   },
 ];
 
@@ -84,57 +84,6 @@ const governmentResources = [
   },
 ];
 
-const mediaResources = [
-  {
-    name: "StreetsBlog Mass",
-    description:
-      "Daily news source covering sustainable transportation and livable streets in Massachusetts.",
-    url: "https://mass.streetsblog.org",
-  },
-  {
-    name: "CommonWealth Magazine",
-    description:
-      "In-depth coverage of Massachusetts policy including transportation and urban planning.",
-    url: "https://commonwealthmagazine.org",
-  },
-  {
-    name: "Boston Globe Metro",
-    description: "Local news coverage of Boston transportation and development.",
-    url: "https://www.bostonglobe.com/metro",
-  },
-  {
-    name: "WBUR",
-    description: "NPR news station with extensive coverage of Boston transportation issues.",
-    url: "https://www.wbur.org",
-  },
-];
-
-const educationalResources = [
-  {
-    name: "NACTO Urban Street Design Guide",
-    description:
-      "National standards for designing safe, accessible streets in urban areas.",
-    url: "https://nacto.org/publication/urban-street-design-guide/",
-  },
-  {
-    name: "Strong Towns",
-    description:
-      "Movement advocating for financially resilient and sustainable communities.",
-    url: "https://www.strongtowns.org",
-  },
-  {
-    name: "Parking Reform Network",
-    description:
-      "Resources on how parking policy shapes our cities and streets.",
-    url: "https://parkingreform.org",
-  },
-  {
-    name: "America Walks",
-    description: "National walking advocacy organization with resources and research.",
-    url: "https://americawalks.org",
-  },
-];
-
 export default function ResourcesPage() {
   return (
     <div className="min-h-screen bg-[#f0ece2]">
@@ -151,8 +100,8 @@ export default function ResourcesPage() {
             <span className="text-[#13ec25]">Resources</span>
           </h1>
           <p className="text-xl text-white/70 max-w-3xl">
-            Partner organizations, government contacts, and educational materials
-            to support your advocacy for safer streets.
+            Partner organizations and government contacts to support your
+            advocacy for safer streets.
           </p>
         </div>
       </section>
@@ -227,80 +176,6 @@ export default function ResourcesPage() {
                 className="flex items-start gap-4 p-6 border border-white/10 hover:border-[#13ec25] transition-colors group"
               >
                 <span className="material-symbols-outlined text-[#13ec25]">location_city</span>
-                <div>
-                  <h3 className="font-bold uppercase tracking-wider group-hover:text-[#13ec25] transition-colors">
-                    {resource.name}
-                  </h3>
-                  <p className="text-white/60 text-sm mt-2">
-                    {resource.description}
-                  </p>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Media */}
-      <section className="py-16 bg-[#f0ece2]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="material-symbols-outlined text-3xl text-[#0a0a0a]">newspaper</span>
-            <h2 className="text-2xl font-bold uppercase tracking-tight text-[#0a0a0a]">
-              Media & News
-            </h2>
-          </div>
-          <p className="text-[#0a0a0a]/70 mb-8 max-w-3xl">
-            Stay informed about transportation issues in Boston and Massachusetts
-            through these news sources.
-          </p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {mediaResources.map((resource, index) => (
-              <a
-                key={index}
-                href={resource.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-4 p-6 bg-[#0a0a0a] text-white hover:shadow-[4px_4px_0px_0px_#13ec25] transition-all group"
-              >
-                <span className="material-symbols-outlined text-[#13ec25]">article</span>
-                <div>
-                  <h3 className="font-bold uppercase tracking-wider group-hover:text-[#13ec25] transition-colors">
-                    {resource.name}
-                  </h3>
-                  <p className="text-white/60 text-sm mt-2">
-                    {resource.description}
-                  </p>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Educational Resources */}
-      <section className="py-16 bg-[#0a0a0a] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="material-symbols-outlined text-3xl text-[#13ec25]">school</span>
-            <h2 className="text-2xl font-bold uppercase tracking-tight">
-              Educational Resources
-            </h2>
-          </div>
-          <p className="text-white/70 mb-8 max-w-3xl">
-            Learn more about street design, urban planning, and transportation
-            policy from these trusted sources.
-          </p>
-          <div className="grid md:grid-cols-2 gap-6">
-            {educationalResources.map((resource, index) => (
-              <a
-                key={index}
-                href={resource.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-start gap-4 p-6 border border-white/10 hover:border-[#13ec25] transition-colors group"
-              >
-                <span className="material-symbols-outlined text-[#13ec25]">menu_book</span>
                 <div>
                   <h3 className="font-bold uppercase tracking-wider group-hover:text-[#13ec25] transition-colors">
                     {resource.name}
