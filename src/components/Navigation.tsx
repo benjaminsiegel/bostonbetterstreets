@@ -19,7 +19,6 @@ const projectsDropdown = {
 };
 
 const navItemsAfterProjects = [
-  { name: "Officials", href: "/officials" },
   { name: "FAQ", href: "/faq" },
   { name: "Resources", href: "/resources" },
 ];

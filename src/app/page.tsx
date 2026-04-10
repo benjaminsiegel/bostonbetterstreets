@@ -43,8 +43,7 @@ export default function Home() {
 
             {/* Subheadline - NEW TAGLINE */}
             <p className="text-xl md:text-2xl text-white/80 max-w-2xl mb-10 leading-relaxed">
-              Mayor Wu&apos;s administration promised safer streets. We got studies,
-              delays, and streets we&apos;re still afraid to let our kids cross.
+              Mayor Wu once campaigned on safer streets. Re-elected with a mandate to build them, she abandoned her promises, ignored experts and data, and let big business and outsiders make decisions about Boston&apos;s streets. Boston families deserve better.
             </p>
 
             {/* CTA Buttons */}

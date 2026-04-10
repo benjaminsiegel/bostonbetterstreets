@@ -18,6 +18,77 @@ export interface Update {
 
 export const updates: Update[] = [
   {
+    id: "9",
+    slug: "hyde-park-ave-safety-walk-april-2026",
+    title: "Join Us: Hyde Park Ave Safety Walk on April 25th",
+    excerpt:
+      "Rally with elected officials and advocacy groups to demand action from City Hall. We'll visit businesses along Hyde Park Avenue to build support for safer streets.",
+    content: `After countless public meetings and community advocacy, we have an opportunity to show the Mayor and the City that residents demand safer streets.
+
+**On Saturday, April 25th**, we will rally with elected officials and advocacy groups to demand action from our City!
+
+This time, we will be visiting businesses along Hyde Park Avenue to ask for their support in convincing the Mayor that the public wants safer streets.
+
+## Event Details
+
+- **When:** Saturday, April 25th at Noon
+- **Where:** Forest Hills Station
+- **What:** Community safety walk and business outreach
+
+We will provide you with letters addressed to each business, as well as a script to help you. The goal is to get letters of support signed by every business and deliver these letters to the Mayor.
+
+## Sign Up
+
+[**Fill out this form to confirm your attendance**](https://docs.google.com/forms/d/e/1FAIpQLSemMdPPy-7SJ0p5nr-EE9mgctE6f0fJATBc9CtYJ2BPdgX5Xw/viewform) and let us know what languages you speak.
+
+Thank you for all the work you have done to support safety improvements for Hyde Park Ave. Together, we can show the Mayor that Boston families deserve better.`,
+    type: "event",
+    date: "2026-04-10",
+    author: "BBSC Team",
+    image: "/images/safetywalk.jpg",
+    imageAlt: "Hyde Park Ave Safety Walk poster",
+    relatedProjectId: "hyde-park-avenue",
+    featured: true,
+    tags: ["Hyde Park Avenue", "Community Event", "Take Action"],
+  },
+  {
+    id: "8",
+    slug: "city-polling-shows-broad-support-for-bike-projects",
+    title: "Internal City Hall Polling Reveals Broad Support for Bike Projects, Blue Hill Ave Transit",
+    excerpt:
+      "Leaked internal polling shows Boston residents overwhelmingly support bike lanes and bus rapid transit—but the Wu administration buried the results and abandoned the projects anyway.",
+    content: `Internal City of Boston polling documents obtained by [Streetsblog Massachusetts](https://mass.streetsblog.org/2026/04/09/internal-city-hall-polling-reveals-broad-support-for-bike-projects-blue-hill-ave-bus-rapid-transit) show that a strong majority of city residents support the proposed Blue Hill Avenue bus transitway project, and that a plurality of residents support bike lane projects—even when it comes at the expense of car lanes and on-street parking.
+
+## The Polling the City Hid
+
+The city collected opinions from roughly 1,600 city residents who participated in a digital survey conducted in the first quarter of 2025, as Mayor Wu was beginning to gear up her re-election campaign and as her administration was launching its secretive "30-day review" of bike lane and bus lane projects.
+
+The survey was carefully designed to get a representative sample of Boston's population in terms of age groups, gender, race and ethnicity, and neighborhoods of residence.
+
+**The results never left City Hall—until now.**
+
+## What the Data Shows
+
+- **Blue Hill Avenue:** Far more respondents support the busway project than oppose it, across every age group—even among respondents aged 55 or older
+- **Neighborhood support:** While the project has considerably more supporters than opponents in every neighborhood across the city, even in neighborhoods near Blue Hill Avenue, supporters outnumber opponents 48% to 31%
+- **Bike lanes:** A plurality of residents support bike lane projects, even when it means removing parking or car lanes
+
+## The Betrayal
+
+This internal polling directly contradicts the narrative the Wu administration used to justify abandoning these projects. The mayor claimed the projects were too controversial, that the community was divided, that she needed to "balance" competing interests.
+
+The data shows otherwise. Boston residents want safer streets. They support bike lanes. They support bus rapid transit.
+
+The administration knew this—and chose to ignore it.
+
+Read the full report: [Streetsblog Massachusetts](https://mass.streetsblog.org/2026/04/09/internal-city-hall-polling-reveals-broad-support-for-bike-projects-blue-hill-ave-bus-rapid-transit)`,
+    type: "news",
+    date: "2026-04-09",
+    author: "BBSC Team",
+    featured: true,
+    tags: ["Blue Hill Avenue", "Polling", "Mayor Wu", "BTD"],
+  },
+  {
     id: "7",
     slug: "michelle-wu-doesnt-want-to-talk-about-transportation-anymore",
     title: "Michelle Wu Doesn't Want to Talk About Transportation Anymore",
