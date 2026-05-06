@@ -2,14 +2,25 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #f0ece2;
-  --background-dark: #0a0a0a;
-  --foreground: #0a0a0a;
-  --foreground-light: #f0ece2;
-  --primary: #13ec25;
-  --primary-dark: #0fc91f;
-  --accent: #ff3b3b;
+  --black: #0a0a0a;
+  --dark-surface: #191919;
+  --asphalt: #242424;
   --white: #ffffff;
+  --electric-green: #13ec25;
+  --pale-green: #dbf3d0;
+  --lavender: #abc1e8;
+  --yellow: #ffe9ad;
+  --red: #e24037;
+  --paper: #f0ece2;
+  --ink: #020202;
+
+  --background: var(--paper);
+  --background-dark: var(--black);
+  --foreground: var(--ink);
+  --foreground-light: var(--paper);
+  --primary: var(--electric-green);
+  --primary-dark: #0fc91f;
+  --accent: var(--red);
   --muted: #666666;
 }
 

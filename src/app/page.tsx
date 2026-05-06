@@ -5,10 +5,10 @@ import { format } from "date-fns";
 
 const typeConfig: Record<UpdateType, { label: string; color: string; bgColor: string }> = {
   news: { label: "NEWS", color: "text-[#0a0a0a]", bgColor: "bg-[#13ec25]" },
-  "action-alert": { label: "ACTION", color: "text-white", bgColor: "bg-[#ff3b3b]" },
-  victory: { label: "VICTORY", color: "text-[#0a0a0a]", bgColor: "bg-[#13ec25]" },
-  setback: { label: "SETBACK", color: "text-[#0a0a0a]", bgColor: "bg-yellow-400" },
-  event: { label: "EVENT", color: "text-white", bgColor: "bg-blue-500" },
+  "action-alert": { label: "ACTION", color: "text-[#0a0a0a]", bgColor: "bg-[#e24037]" },
+  victory: { label: "VICTORY", color: "text-[#0a0a0a]", bgColor: "bg-[#dbf3d0]" },
+  setback: { label: "SETBACK", color: "text-[#0a0a0a]", bgColor: "bg-[#ffe9ad]" },
+  event: { label: "EVENT", color: "text-[#0a0a0a]", bgColor: "bg-[#abc1e8]" },
 };
 
 export default function Home() {
@@ -33,12 +33,12 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10 w-full">
           <div className="max-w-4xl">
             {/* Main headline */}
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold uppercase tracking-tight leading-[0.9] mb-8">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight leading-[0.85] mb-8">
               Boston&apos;s Streets
               <br />
-              Are <span className="text-[#13ec25]">Broken</span>
+              Are <span className="text-[#dbf3d0]">Broken</span>
               <br />
-              <span className="text-[#13ec25]">Promises</span>
+              <span className="text-[#dbf3d0]">Promises</span>
             </h1>
 
             {/* Subheadline - NEW TAGLINE */}
@@ -50,16 +50,14 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
                 href="/join"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#13ec25] text-[#0a0a0a] font-bold uppercase tracking-wider rounded-full text-lg transition-all shadow-[6px_6px_0px_0px_#fff] hover:shadow-[8px_8px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#dbf3d0] text-[#0a0a0a] font-bold uppercase tracking-wider rounded-full text-lg transition-all shadow-[4px_4px_0px_0px_#fff] hover:shadow-[6px_6px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
               >
-                <span className="material-symbols-outlined text-xl mr-2">group_add</span>
                 Join Us
               </Link>
               <Link
                 href="/projects"
                 className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold uppercase tracking-wider rounded-full text-lg hover:bg-white hover:text-[#0a0a0a] transition-all"
               >
-                <span className="material-symbols-outlined text-xl mr-2">construction</span>
                 See Stalled Projects
               </Link>
             </div>
@@ -78,8 +76,8 @@ export default function Home() {
       <section className="bg-[#f0ece2] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight text-[#0a0a0a]">
-              Latest <span className="text-[#13ec25]">Updates</span>
+            <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-[#0a0a0a]">
+              Latest Updates
             </h2>
             <Link
               href="/updates"
@@ -101,7 +99,7 @@ export default function Home() {
                 >
                   <div className="flex items-center gap-3 mb-4">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider ${config.bgColor} ${config.color}`}
+                      className={`px-3 py-1 text-xs font-bold uppercase tracking-wider ${config.bgColor} ${config.color}`}
                     >
                       {config.label}
                     </span>

@@ -40,16 +40,16 @@ export default function Navigation() {
       <header className="bg-[#0a0a0a] text-white">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
-            {/* Logo */}
-            <Link href="/" className="flex items-center space-x-3 group">
-              <div className="w-10 h-10 bg-[#13ec25] rounded-full flex items-center justify-center transition-transform group-hover:scale-110">
-                <span className="material-symbols-outlined text-[#0a0a0a] text-xl">
-                  directions_walk
-                </span>
+            {/* Wordmark */}
+            <Link href="/" className="group">
+              <div className="font-bold text-sm lg:text-base uppercase tracking-wider text-white whitespace-nowrap">
+                Boston Better Streets Coalition
               </div>
-              <div className="font-bold text-sm uppercase tracking-wider leading-tight">
-                <div>Boston Better</div>
-                <div>Streets Coalition</div>
+              {/* Street stripe accent */}
+              <div className="flex gap-1 mt-1">
+                <div className="h-[3px] w-8 bg-[#13ec25]"></div>
+                <div className="h-[3px] w-4 bg-[#13ec25]"></div>
+                <div className="h-[3px] w-2 bg-[#13ec25]"></div>
               </div>
             </Link>
 
@@ -117,11 +117,8 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center">
               <Link
                 href="/join"
-                className="inline-flex items-center px-4 py-2 xl:px-6 xl:py-3 bg-[#13ec25] text-[#0a0a0a] text-xs xl:text-sm font-bold uppercase tracking-wider rounded-full hover:bg-[#0fc91f] transition-all shadow-[4px_4px_0px_0px_#fff] hover:shadow-[6px_6px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                className="inline-flex items-center px-6 py-2.5 bg-[#dbf3d0] text-[#0a0a0a] text-xs xl:text-sm font-bold uppercase tracking-wider rounded-full transition-all shadow-[3px_3px_0px_0px_#fff] hover:shadow-[5px_5px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
               >
-                <span className="material-symbols-outlined text-base xl:text-lg mr-1 xl:mr-2">
-                  group_add
-                </span>
                 Join Us
               </Link>
             </div>
@@ -200,12 +197,9 @@ export default function Navigation() {
 
                 <Link
                   href="/join"
-                  className="mt-4 inline-flex items-center justify-center px-6 py-3 bg-[#13ec25] text-[#0a0a0a] text-sm font-bold uppercase tracking-wider rounded-full"
+                  className="mt-4 inline-flex items-center justify-center px-6 py-3 bg-[#dbf3d0] text-[#0a0a0a] text-sm font-bold uppercase tracking-wider rounded-full shadow-[3px_3px_0px_0px_#fff]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <span className="material-symbols-outlined text-lg mr-2">
-                    group_add
-                  </span>
                   Join Us
                 </Link>
               </div>
