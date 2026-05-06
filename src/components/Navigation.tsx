@@ -38,7 +38,7 @@ export default function Navigation() {
     <div className="sticky top-0 z-50">
       {/* Game Banner */}
       <Link
-        href="/game/index.html"
+        href="/play"
         className="block bg-[#13ec25] text-[#0a0a0a] py-2 px-4 text-center text-sm font-medium hover:bg-[#0fc91f] transition-colors"
       >
         Play our new game, <strong className="font-bold">Boston: No Safe Crossing</strong>, now!
