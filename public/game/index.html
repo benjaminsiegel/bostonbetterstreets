@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hyde Park Avenue</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="game-frame" aria-label="Hyde Park Avenue game">
+        <canvas id="game" width="1064" height="944"></canvas>
+        <button class="pause-button" id="pauseButton" type="button" aria-pressed="false">Pause</button>
+        <button class="success-button hidden" id="successButton" type="button">Continue</button>
+        <button class="success-button hidden" id="failureButton" type="button">Continue</button>
+        <div class="overlay" id="overlay">
+          <div class="panel">
+            <h1>Hyde Park Avenue</h1>
+            <p id="overlayText">Get every pedestrian across the avenue.</p>
+            <button id="startButton" type="button">Start Game</button>
+          </div>
+        </div>
+      </section>
+
+      <nav class="controls hidden" id="touchControls" aria-label="Touch gameplay controls">
+        <button type="button" data-dir="up" aria-label="Move up">▲</button>
+        <div>
+          <button type="button" data-dir="left" aria-label="Move left">◀</button>
+          <button type="button" data-dir="down" aria-label="Move down">▼</button>
+          <button type="button" data-dir="right" aria-label="Move right">▶</button>
+        </div>
+      </nav>
+    </main>
+
+    <script src="game.js"></script>
+  </body>
+</html>
