@@ -25,11 +25,9 @@ export const updates: Update[] = [
       "More than 70 residents gathered with city officials, councillors, and Mayor Wu for a constructive conversation about making Hyde Park Avenue safer.",
     content: `Thank you to everyone who attended the Hyde Park Avenue "safety walk & talk" on Saturday April 25 at Forest Hills station!
 
-![Community members gathered at Forest Hills station](/images/safety-walk-recap-1.jpg)
-
 We gathered more than 70 residents of all ages, city officials, Councillors Weber and Pepen, and Mayor Wu for a lively yet civil and constructive conversation. Volunteers then reached out to businesses by Forest Hills for outreach and support for a safe HPA (and almost all of them signed support letters). Here is some [media coverage](https://www.universalhub.com/2026/mayor-outlines-ideas-making-hyde-park-avenue-safer-near-forest-hills-t) and a [video of the event](https://www.youtube.com/watch?v=cgWSh6rJ_NM).
 
-![Residents speaking at the safety walk event](/images/safety-walk-recap-2.jpg)
+![Community members gathered at Forest Hills station with Mayor Wu](/images/safety-walk-recap-1.jpg)
 
 Residents pressed the administration for a safer Hyde Park Avenue that prioritizes pedestrians, bus commuters, accessibility, and children, and people on bikes and wheels. They spoke, again, of near-misses, of not being able to take their kids to school safely, of witnessing car drivers going 50mph routinely, blowing past red lights and pedestrian crossings. The city's response was, broadly, that they are pretty much unwilling to reduce car traffic volume or speed on HPA.
 
@@ -83,8 +81,8 @@ and the more than 700 residents of streets surrounding Hyde Park Avenue who have
     type: "news",
     date: "2026-04-28",
     author: "BBSC Team",
-    image: "/images/safety-walk-recap-1.jpg",
-    imageAlt: "Community members gathered at Forest Hills station for the Hyde Park Avenue safety walk",
+    image: "/images/safety-walk-recap-2.jpg",
+    imageAlt: "Resident speaking at the Hyde Park Avenue safety walk at Forest Hills station",
     relatedProjectId: "hyde-park-avenue",
     featured: true,
     tags: ["Hyde Park Avenue", "Safety Walk", "Mayor Wu", "Community Action"],

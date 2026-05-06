@@ -95,30 +95,42 @@ export default function Home() {
                 <Link
                   key={update.id}
                   href={`/updates/${update.slug}`}
-                  className="bg-white border-2 border-[#0a0a0a] p-6 shadow-[4px_4px_0px_0px_#0a0a0a] hover:shadow-[6px_6px_0px_0px_#13ec25] hover:border-[#13ec25] transition-all group flex flex-col"
+                  className="bg-white border-2 border-[#0a0a0a] shadow-[4px_4px_0px_0px_#0a0a0a] hover:shadow-[6px_6px_0px_0px_#13ec25] hover:border-[#13ec25] transition-all group flex flex-col overflow-hidden"
                 >
-                  <div className="flex items-center gap-3 mb-4">
-                    <span
-                      className={`px-3 py-1 text-xs font-bold uppercase tracking-wider ${config.bgColor} ${config.color}`}
-                    >
-                      {config.label}
-                    </span>
-                    <span className="text-sm text-[#0a0a0a]/50">
-                      {format(new Date(update.date), "MMM d, yyyy")}
+                  {update.image && (
+                    <div className="relative h-40 w-full">
+                      <Image
+                        src={update.image}
+                        alt={update.imageAlt || update.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  )}
+                  <div className="p-6 flex flex-col flex-grow">
+                    <div className="flex items-center gap-3 mb-4">
+                      <span
+                        className={`px-3 py-1 text-xs font-bold uppercase tracking-wider ${config.bgColor} ${config.color}`}
+                      >
+                        {config.label}
+                      </span>
+                      <span className="text-sm text-[#0a0a0a]/50">
+                        {format(new Date(update.date), "MMM d, yyyy")}
+                      </span>
+                    </div>
+                    <h3 className="text-lg font-bold uppercase tracking-tight mb-3 text-[#0a0a0a] group-hover:text-[#13ec25] transition-colors flex-grow">
+                      {update.title}
+                    </h3>
+                    <p className="text-[#0a0a0a]/60 text-sm mb-4 line-clamp-2">
+                      {update.excerpt}
+                    </p>
+                    <span className="inline-flex items-center text-[#0a0a0a] font-bold uppercase tracking-wider text-sm mt-auto group-hover:text-[#13ec25]">
+                      Read more
+                      <span className="material-symbols-outlined ml-1 text-sm group-hover:translate-x-1 transition-transform">
+                        arrow_forward
+                      </span>
                     </span>
                   </div>
-                  <h3 className="text-lg font-bold uppercase tracking-tight mb-3 text-[#0a0a0a] group-hover:text-[#13ec25] transition-colors flex-grow">
-                    {update.title}
-                  </h3>
-                  <p className="text-[#0a0a0a]/60 text-sm mb-4 line-clamp-2">
-                    {update.excerpt}
-                  </p>
-                  <span className="inline-flex items-center text-[#0a0a0a] font-bold uppercase tracking-wider text-sm mt-auto group-hover:text-[#13ec25]">
-                    Read more
-                    <span className="material-symbols-outlined ml-1 text-sm group-hover:translate-x-1 transition-transform">
-                      arrow_forward
-                    </span>
-                  </span>
                 </Link>
               );
             })}
