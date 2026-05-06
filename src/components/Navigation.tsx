@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const navItems = [
@@ -23,9 +24,15 @@ const navItemsAfterProjects = [
 ];
 
 export default function Navigation() {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [projectsOpen, setProjectsOpen] = useState(false);
   const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
 
   return (
     <div className="sticky top-0 z-50">
@@ -59,9 +66,16 @@ export default function Navigation() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-xs xl:text-sm font-bold uppercase tracking-wider text-white/80 hover:text-[#13ec25] transition-colors whitespace-nowrap"
+                  className={`relative text-xs xl:text-sm font-bold uppercase tracking-wider transition-colors whitespace-nowrap pb-1 ${
+                    isActive(item.href)
+                      ? "text-white"
+                      : "text-white/80 hover:text-[#13ec25]"
+                  }`}
                 >
                   {item.name}
+                  {isActive(item.href) && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#13ec25]" />
+                  )}
                 </Link>
               ))}
 
@@ -73,12 +87,19 @@ export default function Navigation() {
               >
                 <Link
                   href={projectsDropdown.href}
-                  className="text-xs xl:text-sm font-bold uppercase tracking-wider text-white/80 hover:text-[#13ec25] transition-colors whitespace-nowrap inline-flex items-center"
+                  className={`relative text-xs xl:text-sm font-bold uppercase tracking-wider transition-colors whitespace-nowrap inline-flex items-center pb-1 ${
+                    isActive(projectsDropdown.href)
+                      ? "text-white"
+                      : "text-white/80 hover:text-[#13ec25]"
+                  }`}
                 >
                   {projectsDropdown.name}
                   <span className="material-symbols-outlined text-sm ml-1">
                     expand_more
                   </span>
+                  {isActive(projectsDropdown.href) && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#13ec25]" />
+                  )}
                 </Link>
 
                 {projectsOpen && (
@@ -106,9 +127,16 @@ export default function Navigation() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-xs xl:text-sm font-bold uppercase tracking-wider text-white/80 hover:text-[#13ec25] transition-colors whitespace-nowrap"
+                  className={`relative text-xs xl:text-sm font-bold uppercase tracking-wider transition-colors whitespace-nowrap pb-1 ${
+                    isActive(item.href)
+                      ? "text-white"
+                      : "text-white/80 hover:text-[#13ec25]"
+                  }`}
                 >
                   {item.name}
+                  {isActive(item.href) && (
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#13ec25]" />
+                  )}
                 </Link>
               ))}
             </div>
@@ -143,7 +171,11 @@ export default function Navigation() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-base font-bold uppercase tracking-wider text-white/80 hover:text-[#13ec25] transition-colors py-2"
+                    className={`text-base font-bold uppercase tracking-wider transition-colors py-2 ${
+                      isActive(item.href)
+                        ? "text-[#13ec25]"
+                        : "text-white/80 hover:text-[#13ec25]"
+                    }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
@@ -154,7 +186,11 @@ export default function Navigation() {
                 <div>
                   <button
                     onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
-                    className="w-full flex items-center justify-between text-base font-bold uppercase tracking-wider text-white/80 hover:text-[#13ec25] transition-colors py-2"
+                    className={`w-full flex items-center justify-between text-base font-bold uppercase tracking-wider transition-colors py-2 ${
+                      isActive(projectsDropdown.href)
+                        ? "text-[#13ec25]"
+                        : "text-white/80 hover:text-[#13ec25]"
+                    }`}
                   >
                     {projectsDropdown.name}
                     <span className="material-symbols-outlined">
@@ -188,7 +224,11 @@ export default function Navigation() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="text-base font-bold uppercase tracking-wider text-white/80 hover:text-[#13ec25] transition-colors py-2"
+                    className={`text-base font-bold uppercase tracking-wider transition-colors py-2 ${
+                      isActive(item.href)
+                        ? "text-[#13ec25]"
+                        : "text-white/80 hover:text-[#13ec25]"
+                    }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.name}
