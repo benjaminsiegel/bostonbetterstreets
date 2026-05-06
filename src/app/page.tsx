@@ -16,6 +16,14 @@ export default function Home() {
 
   return (
     <div className="flex flex-col">
+      {/* Game Banner */}
+      <Link
+        href="/game/index.html"
+        className="bg-[#13ec25] text-[#0a0a0a] py-3 px-4 text-center font-medium hover:bg-[#0fc91f] transition-colors"
+      >
+        Play our new game, <strong className="font-bold">Boston: No Safe Crossing</strong>, now!
+      </Link>
+
       {/* Hero Section */}
       <section className="bg-[#0a0a0a] text-white min-h-[90vh] flex items-center relative overflow-hidden">
         {/* Background Image */}
