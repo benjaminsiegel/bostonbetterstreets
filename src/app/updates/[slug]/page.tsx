@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
-import { updates, getUpdateBySlug, UpdateType } from "@/data/updates";
+import { updates, getUpdateBySlug, UpdateType } from "@/lib/updates";
 import { projects } from "@/data/projects";
 import {
   ArrowLeft,

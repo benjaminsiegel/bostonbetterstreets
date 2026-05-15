@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getRecentUpdates, UpdateType } from "@/data/updates";
+import { getRecentUpdates, UpdateType } from "@/lib/updates";
 import { format } from "date-fns";
 
 const typeConfig: Record<UpdateType, { label: string; color: string; bgColor: string }> = {

@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import Link from "next/link";
-import { updates, UpdateType } from "@/data/updates";
+import { updates, UpdateType } from "@/lib/updates";
 import { format } from "date-fns";
 
 export const metadata: Metadata = {
