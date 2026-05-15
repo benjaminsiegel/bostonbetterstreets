@@ -1,5 +1,11 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {};
+const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      { source: "/admin/config.yml", destination: "/cms-config.yml" },
+    ];
+  },
+};
 
 export default nextConfig;
