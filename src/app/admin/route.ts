@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 const cmsConfig = {
+  load_config_file: false,
   backend: {
     name: "github",
     repo: "benjaminsiegel/bostonbetterstreets",
