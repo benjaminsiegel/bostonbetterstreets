@@ -6,11 +6,12 @@
   --dark-surface: #191919;
   --asphalt: #242424;
   --white: #ffffff;
-  --electric-green: #13ec25;
-  --pale-green: #dbf3d0;
-  --lavender: #abc1e8;
-  --yellow: #ffe9ad;
-  --red: #e24037;
+  --civic-green: #2f6f4e;
+  --civic-green-dark: #285f43;
+  --sage: #d8e2d3;
+  --steel-blue: #b8c7d8;
+  --amber: #e7d5a0;
+  --red: #b7342c;
   --paper: #f0ece2;
   --ink: #020202;
 
@@ -18,8 +19,8 @@
   --background-dark: var(--black);
   --foreground: var(--ink);
   --foreground-light: var(--paper);
-  --primary: var(--electric-green);
-  --primary-dark: #0fc91f;
+  --primary: var(--civic-green);
+  --primary-dark: var(--civic-green-dark);
   --accent: var(--red);
   --muted: #666666;
 }

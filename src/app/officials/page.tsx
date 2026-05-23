@@ -13,15 +13,15 @@ export default function OfficialsPage() {
       {/* Header */}
       <section className="bg-[#0a0a0a] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center px-4 py-2 bg-[#13ec25] text-[#0a0a0a] rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+          <div className="inline-flex items-center px-4 py-2 bg-[#2f6f4e] text-white rounded-full text-xs font-bold mb-6">
             <span className="material-symbols-outlined text-sm mr-2">
               how_to_vote
             </span>
             Accountability
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Allies &<br />
-            <span className="text-[#ff3b3b]">Obstructionists</span>
+            <span className="text-[#b7342c]">Obstructionists</span>
           </h1>
           <p className="text-xl text-white/70 max-w-3xl">
             Tracking which elected officials and city leaders are fighting for
@@ -37,7 +37,7 @@ export default function OfficialsPage() {
             <span className="material-symbols-outlined text-6xl text-[#0a0a0a]/30 mb-6">
               construction
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-4">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0a0a0a] mb-4">
               Coming Soon
             </h2>
             <p className="text-lg text-[#0a0a0a]/70 mb-8 max-w-2xl mx-auto">
@@ -48,14 +48,14 @@ export default function OfficialsPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
                 href="/take-action"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#13ec25] text-[#0a0a0a] font-bold uppercase tracking-wider rounded-full transition-all shadow-[4px_4px_0px_0px_#0a0a0a] hover:shadow-[6px_6px_0px_0px_#0a0a0a] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                className="inline-flex items-center justify-center px-8 py-4 bg-[#2f6f4e] text-white font-bold rounded-full transition-all shadow-[4px_4px_0px_0px_#0a0a0a] hover:shadow-[6px_6px_0px_0px_#0a0a0a] hover:translate-x-[-2px] hover:translate-y-[-2px]"
               >
                 <span className="material-symbols-outlined mr-2">campaign</span>
                 Take Action Now
               </Link>
               <Link
                 href="/updates"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#0a0a0a] text-[#0a0a0a] font-bold uppercase tracking-wider rounded-full hover:bg-[#0a0a0a] hover:text-white transition-all"
+                className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#0a0a0a] text-[#0a0a0a] font-bold rounded-full hover:bg-[#0a0a0a] hover:text-white transition-all"
               >
                 <span className="material-symbols-outlined mr-2">newspaper</span>
                 Read Updates
@@ -68,17 +68,17 @@ export default function OfficialsPage() {
       {/* What to Expect */}
       <section className="py-16 bg-[#0a0a0a]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold uppercase tracking-tight text-white mb-12 text-center">
-            What We&apos;ll <span className="text-[#13ec25]">Track</span>
+          <h2 className="text-2xl md:text-3xl font-bold text-white mb-12 text-center">
+            What We&apos;ll <span className="text-[#2f6f4e]">Track</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="border border-white/10 p-6">
-              <div className="w-12 h-12 bg-[#13ec25] rounded-full flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-[#2f6f4e] rounded-full flex items-center justify-center mb-4">
                 <span className="material-symbols-outlined text-[#0a0a0a]">
                   thumb_up
                 </span>
               </div>
-              <h3 className="text-lg font-bold uppercase tracking-wider text-white mb-2">
+              <h3 className="text-lg font-bold text-white mb-2">
                 Votes & Statements
               </h3>
               <p className="text-white/60 text-sm">
@@ -87,12 +87,12 @@ export default function OfficialsPage() {
               </p>
             </div>
             <div className="border border-white/10 p-6">
-              <div className="w-12 h-12 bg-[#ff3b3b] rounded-full flex items-center justify-center mb-4">
+              <div className="w-12 h-12 bg-[#b7342c] rounded-full flex items-center justify-center mb-4">
                 <span className="material-symbols-outlined text-white">
                   block
                 </span>
               </div>
-              <h3 className="text-lg font-bold uppercase tracking-wider text-white mb-2">
+              <h3 className="text-lg font-bold text-white mb-2">
                 Opposition Tactics
               </h3>
               <p className="text-white/60 text-sm">
@@ -106,7 +106,7 @@ export default function OfficialsPage() {
                   attach_money
                 </span>
               </div>
-              <h3 className="text-lg font-bold uppercase tracking-wider text-white mb-2">
+              <h3 className="text-lg font-bold text-white mb-2">
                 Campaign Donors
               </h3>
               <p className="text-white/60 text-sm">

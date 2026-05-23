@@ -15,7 +15,7 @@ tags:
   - Budget
   - BTD
   - Vision Zero
-featured: true
+featured: false
 ---
 
 Mayor Wu has zeroed out the funding for the plan to make Centre and South Streets safer, and every Boston resident — in Jamaica Plain and across the city — deserves to know it.

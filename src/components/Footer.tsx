@@ -6,7 +6,7 @@ export default function Footer() {
           <p>&copy; {new Date().getFullYear()} Boston Better Streets Coalition</p>
           <a
             href="mailto:bostonbetterstreets@gmail.com"
-            className="hover:text-[#dbf3d0] transition-colors"
+            className="hover:text-[#d8e2d3] transition-colors"
           >
             bostonbetterstreets@gmail.com
           </a>

@@ -90,14 +90,14 @@ export default function ResourcesPage() {
       {/* Header */}
       <section className="bg-[#0a0a0a] text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center px-4 py-2 bg-[#13ec25] text-[#0a0a0a] rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+          <div className="inline-flex items-center px-4 py-2 bg-[#2f6f4e] text-white rounded-full text-xs font-bold mb-6">
             <span className="material-symbols-outlined text-sm mr-2">link</span>
             Resources
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6">
+          <h1 className="text-4xl md:text-6xl font-bold mb-6">
             Tools &
             <br />
-            <span className="text-[#13ec25]">Resources</span>
+            <span className="text-[#2f6f4e]">Resources</span>
           </h1>
           <p className="text-xl text-white/70 max-w-3xl">
             Partner organizations and government contacts to support your
@@ -110,8 +110,8 @@ export default function ResourcesPage() {
       <section className="py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <span className="material-symbols-outlined text-3xl text-[#13ec25]">groups</span>
-            <h2 className="text-2xl font-bold uppercase tracking-tight text-[#0a0a0a]">
+            <span className="material-symbols-outlined text-3xl text-[#2f6f4e]">groups</span>
+            <h2 className="text-2xl font-bold text-[#0a0a0a]">
               Partner Organizations
             </h2>
           </div>
@@ -126,13 +126,13 @@ export default function ResourcesPage() {
                 href={org.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#0a0a0a] text-white p-6 transition-all hover:shadow-[6px_6px_0px_0px_#13ec25] group"
+                className="bg-[#0a0a0a] text-white p-6 transition-all hover:shadow-[6px_6px_0px_0px_#2f6f4e] group"
               >
                 <div className="flex items-start justify-between mb-4">
-                  <h3 className="font-bold uppercase tracking-wider group-hover:text-[#13ec25] transition-colors">
+                  <h3 className="font-bold group-hover:text-[#2f6f4e] transition-colors">
                     {org.name}
                   </h3>
-                  <span className="material-symbols-outlined text-white/50 group-hover:text-[#13ec25] transition-colors">
+                  <span className="material-symbols-outlined text-white/50 group-hover:text-[#2f6f4e] transition-colors">
                     open_in_new
                   </span>
                 </div>
@@ -141,7 +141,7 @@ export default function ResourcesPage() {
                   {org.focus.map((tag, tagIndex) => (
                     <span
                       key={tagIndex}
-                      className="px-3 py-1 bg-[#13ec25] text-[#0a0a0a] text-xs font-bold uppercase tracking-wider rounded-full"
+                      className="px-3 py-1 bg-[#2f6f4e] text-white text-xs font-bold rounded-full"
                     >
                       {tag}
                     </span>
@@ -157,8 +157,8 @@ export default function ResourcesPage() {
       <section className="py-16 bg-[#0a0a0a] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-8">
-            <span className="material-symbols-outlined text-3xl text-[#13ec25]">account_balance</span>
-            <h2 className="text-2xl font-bold uppercase tracking-tight">
+            <span className="material-symbols-outlined text-3xl text-[#2f6f4e]">account_balance</span>
+            <h2 className="text-2xl font-bold">
               Government Resources
             </h2>
           </div>
@@ -173,11 +173,11 @@ export default function ResourcesPage() {
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-6 border border-white/10 hover:border-[#13ec25] transition-colors group"
+                className="flex items-start gap-4 p-6 border border-white/10 hover:border-[#2f6f4e] transition-colors group"
               >
-                <span className="material-symbols-outlined text-[#13ec25]">location_city</span>
+                <span className="material-symbols-outlined text-[#2f6f4e]">location_city</span>
                 <div>
-                  <h3 className="font-bold uppercase tracking-wider group-hover:text-[#13ec25] transition-colors">
+                  <h3 className="font-bold group-hover:text-[#2f6f4e] transition-colors">
                     {resource.name}
                   </h3>
                   <p className="text-white/60 text-sm mt-2">
@@ -196,7 +196,7 @@ export default function ResourcesPage() {
           <div className="flex items-start gap-4 p-6 border-2 border-[#0a0a0a]">
             <span className="material-symbols-outlined text-[#0a0a0a]">gavel</span>
             <div>
-              <h3 className="font-bold uppercase tracking-wider text-[#0a0a0a] mb-2">Disclaimer</h3>
+              <h3 className="font-bold text-[#0a0a0a] mb-2">Disclaimer</h3>
               <p className="text-sm text-[#0a0a0a]/70">
                 The Boston Better Streets Coalition is an independent grassroots
                 organization. Links to external websites are provided for

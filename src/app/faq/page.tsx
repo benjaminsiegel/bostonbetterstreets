@@ -21,7 +21,7 @@ const faqs = [
       },
       {
         q: "How many members do you have?",
-        a: "Our petition for Hyde Park Avenue improvements has over 700 signatures, and our community continues to grow. We welcome all Boston residents who share our vision for safer streets.",
+        a: "Our petition for Hyde Park Avenue improvements has over 800 signatures, and our community continues to grow. We welcome all Boston residents who share our vision for safer streets.",
       },
       {
         q: "Are you affiliated with any political party?",
@@ -113,20 +113,18 @@ const faqs = [
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen bg-[#f0ece2]">
+    <div className="min-h-screen bg-[#f0ece2] text-[#0a0a0a]">
       {/* Header */}
-      <section className="bg-[#0a0a0a] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center px-4 py-2 bg-[#13ec25] text-[#0a0a0a] rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-            <span className="material-symbols-outlined text-sm mr-2">help</span>
+      <section className="py-14 md:py-20 border-b-2 border-[#0a0a0a]">
+        <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+          <p className="text-sm font-bold text-[#b7342c] mb-3">
             FAQ
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold uppercase tracking-tight mb-6">
-            Frequently Asked
-            <br />
-            <span className="text-[#13ec25]">Questions</span>
+          </p>
+          <h1 className="text-4xl md:text-6xl font-black leading-none mb-6">
+            Questions,
+            <br className="hidden sm:block" /> Answered Plainly
           </h1>
-          <p className="text-xl text-white/70 max-w-3xl">
+          <p className="text-lg md:text-xl leading-relaxed text-[#0a0a0a]/70 max-w-3xl">
             Everything you need to know about the Boston Better Streets
             Coalition, our mission, and how you can help make our streets safer.
           </p>
@@ -134,59 +132,91 @@ export default function FAQPage() {
       </section>
 
       {/* FAQ Content */}
-      <section className="py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          {faqs.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="mb-16">
-              <h2 className="text-2xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-8 pb-4 border-b-4 border-[#13ec25]">
-                {category.category}
-              </h2>
-              <div className="space-y-4">
-                {category.questions.map((faq, faqIndex) => (
-                  <details
-                    key={faqIndex}
-                    className="group bg-[#0a0a0a] text-white overflow-hidden transition-all hover:shadow-[4px_4px_0px_0px_#13ec25]"
-                  >
-                    <summary className="flex items-center justify-between p-6 cursor-pointer">
-                      <span className="font-bold uppercase tracking-wider pr-4">
-                        {faq.q}
-                      </span>
-                      <span className="material-symbols-outlined text-[#13ec25] flex-shrink-0 group-open:rotate-180 transition-transform">
-                        expand_more
-                      </span>
-                    </summary>
-                    <div className="px-6 pb-6 pt-0">
-                      <p className="text-white/70 leading-relaxed">{faq.a}</p>
-                    </div>
-                  </details>
-                ))}
+      <section className="py-12 md:py-16">
+        <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
+            <aside className="hidden lg:block lg:sticky lg:top-36 lg:self-start">
+              <div className="bg-[#0a0a0a] text-white border-2 border-[#0a0a0a] shadow-[5px_5px_0px_0px_#2f6f4e] p-5">
+                <h2 className="text-sm font-bold text-white/50 mb-4">
+                  Browse
+                </h2>
+                <nav className="space-y-2">
+                  {faqs.map((category) => (
+                    <a
+                      key={category.category}
+                      href={`#${category.category.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`}
+                      className="block text-sm font-bold text-white hover:text-[#2f6f4e] transition-colors"
+                    >
+                      {category.category}
+                    </a>
+                  ))}
+                </nav>
               </div>
+            </aside>
+
+            <div className="space-y-12">
+              {faqs.map((category) => (
+                <section
+                  key={category.category}
+                  id={category.category.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}
+                  className="scroll-mt-36"
+                >
+                  <div className="flex items-center gap-4 mb-5">
+                    <h2 className="text-2xl md:text-3xl font-black leading-none">
+                      {category.category}
+                    </h2>
+                    <div className="h-1 flex-1 bg-[#2f6f4e]" />
+                  </div>
+                  <div className="bg-white border-2 border-[#0a0a0a] shadow-[5px_5px_0px_0px_#0a0a0a]">
+                    {category.questions.map((faq, faqIndex) => (
+                      <details
+                        key={faq.q}
+                        className={`group overflow-hidden transition-colors open:bg-[#fbfaf6] hover:bg-[#fbfaf6] ${
+                          faqIndex !== category.questions.length - 1 ? "border-b-2 border-[#0a0a0a]" : ""
+                        }`}
+                      >
+                        <summary className="flex items-center justify-between gap-5 p-5 md:p-6 cursor-pointer">
+                          <span className="text-base md:text-lg font-black leading-snug pr-4">
+                            {faq.q}
+                          </span>
+                          <span className="material-symbols-outlined text-[#2f6f4e] flex-shrink-0 group-open:rotate-180 transition-transform">
+                            expand_more
+                          </span>
+                        </summary>
+                        <div className="px-5 md:px-6 pb-6 pt-0">
+                          <p className="text-[#0a0a0a]/68 leading-relaxed max-w-3xl">{faq.a}</p>
+                        </div>
+                      </details>
+                    ))}
+                  </div>
+                </section>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
       {/* Still Have Questions */}
-      <section className="py-20 bg-[#13ec25]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-6">
+      <section className="py-16 md:py-20 bg-[#0a0a0a] text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="text-3xl md:text-5xl font-black leading-none mb-6">
             Still Have Questions?
           </h2>
-          <p className="text-xl text-[#0a0a0a]/70 mb-10">
+          <p className="text-lg md:text-xl text-white/70 mb-10">
             We&apos;re here to help. Reach out to us and we&apos;ll get back to you as
             soon as possible.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:info@bostonbetterstreets.org"
-              className="inline-flex items-center justify-center px-8 py-4 bg-[#0a0a0a] text-white font-bold uppercase tracking-wider rounded-full transition-all shadow-[4px_4px_0px_0px_#fff] hover:shadow-[6px_6px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+              className="inline-flex items-center justify-center px-8 py-4 bg-[#2f6f4e] text-white font-bold rounded-full transition-all shadow-[4px_4px_0px_0px_#fff] hover:shadow-[6px_6px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
             >
               <span className="material-symbols-outlined mr-2">mail</span>
               Contact Us
             </a>
             <Link
               href="/take-action"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#0a0a0a] text-[#0a0a0a] font-bold uppercase tracking-wider rounded-full hover:bg-[#0a0a0a] hover:text-white transition-all"
+              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-[#0a0a0a] transition-all"
             >
               <span className="material-symbols-outlined mr-2">campaign</span>
               Get Involved

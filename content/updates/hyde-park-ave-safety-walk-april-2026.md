@@ -12,7 +12,7 @@ tags:
   - Community Event
   - Take Action
 relatedProjectId: hyde-park-avenue
-featured: true
+featured: false
 ---
 
 After countless public meetings and community advocacy, we have an opportunity to show the Mayor and the City that residents demand safer streets.

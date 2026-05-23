@@ -13,7 +13,7 @@ tags:
   - Mayor Wu
   - Community Action
 relatedProjectId: hyde-park-avenue
-featured: true
+featured: false
 ---
 
 Thank you to everyone who attended the Hyde Park Avenue "safety walk & talk" on Saturday April 25 at Forest Hills station!

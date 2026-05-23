@@ -13,7 +13,7 @@ tags:
   - Vision Zero
   - NYC Comparison
   - BTD
-featured: true
+featured: false
 ---
 
 *The mayor who promised bold climate leadership just spent her second inauguration speech talking about literally everything except the streets killing Boston residents.*

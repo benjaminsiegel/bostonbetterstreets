@@ -27,14 +27,14 @@ export default function TakeActionPage() {
       <section className="bg-[#0a0a0a] text-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl">
-            <div className="inline-flex items-center px-4 py-2 bg-[#ff3b3b] text-white rounded-full text-xs font-bold uppercase tracking-wider mb-6">
+            <div className="inline-flex items-center px-4 py-2 bg-[#b7342c] text-white rounded-full text-xs font-bold mb-6">
               <span className="material-symbols-outlined text-sm mr-2">campaign</span>
               Take Action
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tight mb-6">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6">
               Take Action
               <br />
-              <span className="text-[#13ec25]">Now</span>
+              <span className="text-[#2f6f4e]">Now</span>
             </h1>
             <p className="text-xl text-white/70 max-w-2xl">
               The city will only act when they hear from you. Every email, every
@@ -48,15 +48,15 @@ export default function TakeActionPage() {
       {/* Quick Actions */}
       <section className="py-16 bg-[#f0ece2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-8">
+          <h2 className="text-2xl font-bold text-[#0a0a0a] mb-8">
             Quick Actions <span className="text-[#0a0a0a]/50">(5 minutes or less)</span>
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-[#0a0a0a] text-white p-8 shadow-[6px_6px_0px_0px_#13ec25]">
-              <div className="w-14 h-14 bg-[#ff3b3b] rounded-full flex items-center justify-center mb-6">
+            <div className="bg-[#0a0a0a] text-white p-8 shadow-[6px_6px_0px_0px_#2f6f4e]">
+              <div className="w-14 h-14 bg-[#b7342c] rounded-full flex items-center justify-center mb-6">
                 <span className="material-symbols-outlined text-white text-2xl">mail</span>
               </div>
-              <h3 className="text-lg font-bold uppercase tracking-wider mb-3">
+              <h3 className="text-lg font-bold mb-3">
                 Email the Mayor
               </h3>
               <p className="text-white/60 text-sm mb-6">
@@ -64,18 +64,18 @@ export default function TakeActionPage() {
               </p>
               <a
                 href="mailto:mayor@boston.gov?subject=Demand Action on Street Safety&body=Dear Mayor Wu,%0D%0A%0D%0AI am a Boston resident writing to urge immediate action on street safety. The delays on projects like Hyde Park Avenue are unacceptable. Someone was killed there, and the city's response has been more studies and more delays.%0D%0A%0D%0AI demand that the city:%0D%0A- Implement safety improvements immediately, not in 2026%0D%0A- Prioritize pedestrian and cyclist safety over traffic flow%0D%0A- Follow through on Vision Zero commitments%0D%0A%0D%0ASincerely,%0D%0A[Your Name]%0D%0A[Your Neighborhood]"
-                className="inline-flex items-center text-[#13ec25] font-bold uppercase tracking-wider hover:underline"
+                className="inline-flex items-center text-[#2f6f4e] font-bold hover:underline"
               >
                 Send Email
                 <span className="material-symbols-outlined ml-2">arrow_forward</span>
               </a>
             </div>
 
-            <div className="bg-[#0a0a0a] text-white p-8 shadow-[6px_6px_0px_0px_#13ec25]">
-              <div className="w-14 h-14 bg-[#13ec25] rounded-full flex items-center justify-center mb-6">
+            <div className="bg-[#0a0a0a] text-white p-8 shadow-[6px_6px_0px_0px_#2f6f4e]">
+              <div className="w-14 h-14 bg-[#2f6f4e] rounded-full flex items-center justify-center mb-6">
                 <span className="material-symbols-outlined text-[#0a0a0a] text-2xl">share</span>
               </div>
-              <h3 className="text-lg font-bold uppercase tracking-wider mb-3">
+              <h3 className="text-lg font-bold mb-3">
                 Share on Social Media
               </h3>
               <p className="text-white/60 text-sm mb-6">
@@ -85,17 +85,17 @@ export default function TakeActionPage() {
                 href="https://twitter.com/intent/tweet?text=Boston%20must%20deliver%20on%20its%20promises%20for%20safer%20streets.%20Join%20the%20%40BostonBetterSt%20coalition%20and%20demand%20action.%20%23SaferBostonStreets&url=https://bostonbetterstreets.org"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-white text-[#0a0a0a] font-bold uppercase tracking-wider rounded-full text-sm hover:bg-[#13ec25] transition-colors"
+                className="inline-flex items-center px-6 py-3 bg-white text-[#0a0a0a] font-bold rounded-full text-sm hover:bg-[#2f6f4e] hover:text-white transition-colors"
               >
                 Share on X
               </a>
             </div>
 
-            <div className="bg-[#0a0a0a] text-white p-8 shadow-[6px_6px_0px_0px_#13ec25]">
-              <div className="w-14 h-14 bg-[#13ec25] rounded-full flex items-center justify-center mb-6">
+            <div className="bg-[#0a0a0a] text-white p-8 shadow-[6px_6px_0px_0px_#2f6f4e]">
+              <div className="w-14 h-14 bg-[#2f6f4e] rounded-full flex items-center justify-center mb-6">
                 <span className="material-symbols-outlined text-[#0a0a0a] text-2xl">call</span>
               </div>
-              <h3 className="text-lg font-bold uppercase tracking-wider mb-3">
+              <h3 className="text-lg font-bold mb-3">
                 Call 311
               </h3>
               <p className="text-white/60 text-sm mb-6">
@@ -103,7 +103,7 @@ export default function TakeActionPage() {
               </p>
               <a
                 href="tel:311"
-                className="inline-flex items-center text-[#13ec25] font-bold uppercase tracking-wider hover:underline"
+                className="inline-flex items-center text-[#2f6f4e] font-bold hover:underline"
               >
                 Call Now
                 <span className="material-symbols-outlined ml-2">arrow_forward</span>
@@ -117,8 +117,8 @@ export default function TakeActionPage() {
       <section className="py-16 bg-[#0a0a0a] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-6">
-            <span className="material-symbols-outlined text-3xl text-[#13ec25]">account_balance</span>
-            <h2 className="text-2xl font-bold uppercase tracking-tight">
+            <span className="material-symbols-outlined text-3xl text-[#2f6f4e]">account_balance</span>
+            <h2 className="text-2xl font-bold">
               Contact Your City Councilor
             </h2>
           </div>
@@ -130,7 +130,7 @@ export default function TakeActionPage() {
               href="https://www.boston.gov/city-council"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[#13ec25] underline"
+              className="text-[#2f6f4e] underline"
             >
               boston.gov/city-council
             </a>
@@ -141,12 +141,12 @@ export default function TakeActionPage() {
             {councilors.map((councilor, index) => (
               <div
                 key={index}
-                className="flex items-center justify-between border border-white/10 p-4 hover:border-[#13ec25] transition-colors"
+                className="flex items-center justify-between border border-white/10 p-4 hover:border-[#2f6f4e] transition-colors"
               >
                 <span className="font-medium">{councilor.name}</span>
                 <a
                   href={`mailto:${councilor.contact}?subject=Support Street Safety Improvements&body=Dear Councilor,%0D%0A%0D%0AI am a constituent writing to urge your support for street safety improvements in our district and across Boston.%0D%0A%0D%0AThe delays on projects like Hyde Park Avenue are unacceptable. I urge you to:%0D%0A- Press the administration for immediate action%0D%0A- Support funding for safety infrastructure%0D%0A- Attend community meetings on transportation%0D%0A%0D%0AThank you for your service.%0D%0A%0D%0ASincerely,%0D%0A[Your Name]`}
-                  className="text-[#13ec25] font-bold uppercase tracking-wider text-sm hover:underline"
+                  className="text-[#2f6f4e] font-bold text-sm hover:underline"
                 >
                   Send Email
                 </a>
@@ -161,7 +161,7 @@ export default function TakeActionPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center gap-3 mb-6">
             <span className="material-symbols-outlined text-3xl text-[#0a0a0a]">edit_note</span>
-            <h2 className="text-2xl font-bold uppercase tracking-tight text-[#0a0a0a]">
+            <h2 className="text-2xl font-bold text-[#0a0a0a]">
               Sample Messages
             </h2>
           </div>
@@ -172,8 +172,8 @@ export default function TakeActionPage() {
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-[#0a0a0a] text-white p-8">
-              <h3 className="font-bold uppercase tracking-wider mb-6 flex items-center">
-                <span className="material-symbols-outlined text-[#13ec25] mr-3">person</span>
+              <h3 className="font-bold mb-6 flex items-center">
+                <span className="material-symbols-outlined text-[#2f6f4e] mr-3">person</span>
                 To Mayor Wu&apos;s Office
               </h3>
               <div className="bg-white/5 border border-white/10 p-6 text-sm text-white/70 italic leading-relaxed">
@@ -203,8 +203,8 @@ export default function TakeActionPage() {
             </div>
 
             <div className="bg-[#0a0a0a] text-white p-8">
-              <h3 className="font-bold uppercase tracking-wider mb-6 flex items-center">
-                <span className="material-symbols-outlined text-[#13ec25] mr-3">groups</span>
+              <h3 className="font-bold mb-6 flex items-center">
+                <span className="material-symbols-outlined text-[#2f6f4e] mr-3">groups</span>
                 To Your City Councilor
               </h3>
               <div className="bg-white/5 border border-white/10 p-6 text-sm text-white/70 italic leading-relaxed">
@@ -240,7 +240,7 @@ export default function TakeActionPage() {
       {/* Other Ways to Help */}
       <section className="py-16 bg-[#0a0a0a] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl font-bold uppercase tracking-tight mb-8">
+          <h2 className="text-2xl font-bold mb-8">
             Other Ways to Help
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -250,9 +250,9 @@ export default function TakeActionPage() {
               { icon: "photo_camera", title: "Document Issues", desc: "Take photos and videos of dangerous conditions. Evidence is powerful." },
               { icon: "volunteer_activism", title: "Volunteer", desc: "Join our team and help with outreach, research, and organizing." },
             ].map((item, index) => (
-              <div key={index} className="border border-white/10 p-6 hover:border-[#13ec25] transition-colors">
-                <span className="material-symbols-outlined text-[#13ec25] text-3xl mb-4 block">{item.icon}</span>
-                <h3 className="font-bold uppercase tracking-wider mb-2">{item.title}</h3>
+              <div key={index} className="border border-white/10 p-6 hover:border-[#2f6f4e] transition-colors">
+                <span className="material-symbols-outlined text-[#2f6f4e] text-3xl mb-4 block">{item.icon}</span>
+                <h3 className="font-bold mb-2">{item.title}</h3>
                 <p className="text-white/60 text-sm">{item.desc}</p>
               </div>
             ))}
@@ -264,10 +264,10 @@ export default function TakeActionPage() {
       <section className="py-16 bg-[#f0ece2]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between mb-8">
-            <h2 className="text-2xl font-bold uppercase tracking-tight text-[#0a0a0a]">Upcoming Events</h2>
+            <h2 className="text-2xl font-bold text-[#0a0a0a]">Upcoming Events</h2>
             <Link
               href="/updates"
-              className="text-[#0a0a0a] font-bold uppercase tracking-wider hover:text-[#13ec25] transition-colors flex items-center"
+              className="text-[#0a0a0a] font-bold hover:text-[#2f6f4e] transition-colors flex items-center"
             >
               View all updates
               <span className="material-symbols-outlined ml-2">arrow_forward</span>
@@ -275,7 +275,7 @@ export default function TakeActionPage() {
           </div>
           <div className="bg-[#0a0a0a] text-white p-12 text-center">
             <span className="material-symbols-outlined text-5xl text-white/30 mb-4 block">event</span>
-            <h3 className="text-lg font-bold uppercase tracking-wider mb-3">
+            <h3 className="text-lg font-bold mb-3">
               No Upcoming Events Scheduled
             </h3>
             <p className="text-white/60 mb-6">
@@ -289,9 +289,9 @@ export default function TakeActionPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-24 bg-[#13ec25]">
+      <section className="py-24 bg-[#2f6f4e]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tight text-[#0a0a0a] mb-6">
+          <h2 className="text-4xl md:text-6xl font-bold text-[#0a0a0a] mb-6">
             Every Voice
             <br />
             Matters
@@ -304,7 +304,7 @@ export default function TakeActionPage() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:mayor@boston.gov?subject=Demand Action on Street Safety"
-              className="inline-flex items-center justify-center px-10 py-5 bg-[#0a0a0a] text-white font-bold uppercase tracking-wider rounded-full text-lg transition-all shadow-[6px_6px_0px_0px_#fff] hover:shadow-[8px_8px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+              className="inline-flex items-center justify-center px-10 py-5 bg-[#0a0a0a] text-white font-bold rounded-full text-lg transition-all shadow-[6px_6px_0px_0px_#fff] hover:shadow-[8px_8px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
             >
               <span className="material-symbols-outlined mr-2">mail</span>
               Email the Mayor Now

@@ -10,7 +10,7 @@ tags:
   - Polling
   - Mayor Wu
   - BTD
-featured: true
+featured: false
 ---
 
 Internal City of Boston polling documents obtained by [Streetsblog Massachusetts](https://mass.streetsblog.org/2026/04/09/internal-city-hall-polling-reveals-broad-support-for-bike-projects-blue-hill-ave-bus-rapid-transit) show that a strong majority of city residents support the proposed Blue Hill Avenue bus transitway project, and that a plurality of residents support bike lane projects—even when it comes at the expense of car lanes and on-street parking.

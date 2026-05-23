@@ -39,9 +39,9 @@ export default function Navigation() {
       {/* Game Banner */}
       <Link
         href="/play"
-        className="block bg-[#13ec25] text-[#0a0a0a] py-2 px-4 text-center text-sm font-medium hover:bg-[#0fc91f] transition-colors"
+        className="block bg-[#d8e2d3] text-[#0a0a0a] py-1.5 px-4 text-center text-xs font-bold hover:bg-[#c8d5c1] transition-colors"
       >
-        Play our new game, <strong className="font-bold">Boston: No Safe Crossing</strong>, now!
+        Play <span className="font-black">Boston: No Safe Crossing</span>
       </Link>
 
       <header className="bg-[#0a0a0a] text-white">
@@ -49,14 +49,14 @@ export default function Navigation() {
           <div className="flex justify-between items-center h-20">
             {/* Wordmark */}
             <Link href="/" className="group">
-              <div className="font-bold text-sm lg:text-base uppercase tracking-wider text-white whitespace-nowrap">
+              <div className="font-bold text-sm lg:text-base text-white whitespace-nowrap">
                 Boston Better Streets Coalition
               </div>
               {/* Street stripe accent */}
               <div className="flex gap-1 mt-1">
-                <div className="h-[3px] w-8 bg-[#13ec25]"></div>
-                <div className="h-[3px] w-4 bg-[#13ec25]"></div>
-                <div className="h-[3px] w-2 bg-[#13ec25]"></div>
+                <div className="h-[3px] w-8 bg-[#2f6f4e]"></div>
+                <div className="h-[3px] w-4 bg-[#2f6f4e]"></div>
+                <div className="h-[3px] w-2 bg-[#2f6f4e]"></div>
               </div>
             </Link>
 
@@ -66,15 +66,15 @@ export default function Navigation() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`relative text-xs xl:text-sm font-bold uppercase tracking-wider transition-colors whitespace-nowrap pb-1 ${
+                  className={`relative text-xs xl:text-sm font-bold transition-colors whitespace-nowrap pb-1 ${
                     isActive(item.href)
                       ? "text-white"
-                      : "text-white/80 hover:text-[#13ec25]"
+                      : "text-white/80 hover:text-[#2f6f4e]"
                   }`}
                 >
                   {item.name}
                   {isActive(item.href) && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#13ec25]" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#2f6f4e]" />
                   )}
                 </Link>
               ))}
@@ -87,10 +87,10 @@ export default function Navigation() {
               >
                 <Link
                   href={projectsDropdown.href}
-                  className={`relative text-xs xl:text-sm font-bold uppercase tracking-wider transition-colors whitespace-nowrap inline-flex items-center pb-1 ${
+                  className={`relative text-xs xl:text-sm font-bold transition-colors whitespace-nowrap inline-flex items-center pb-1 ${
                     isActive(projectsDropdown.href)
                       ? "text-white"
-                      : "text-white/80 hover:text-[#13ec25]"
+                      : "text-white/80 hover:text-[#2f6f4e]"
                   }`}
                 >
                   {projectsDropdown.name}
@@ -98,7 +98,7 @@ export default function Navigation() {
                     expand_more
                   </span>
                   {isActive(projectsDropdown.href) && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#13ec25]" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#2f6f4e]" />
                   )}
                 </Link>
 
@@ -106,7 +106,7 @@ export default function Navigation() {
                   <div className="absolute top-full left-0 mt-2 bg-[#0a0a0a] border border-white/10 min-w-[200px] shadow-lg">
                     <Link
                       href={projectsDropdown.href}
-                      className="block px-4 py-3 text-xs font-bold uppercase tracking-wider text-[#13ec25] hover:bg-white/5 border-b border-white/10"
+                      className="block px-4 py-3 text-xs font-bold text-[#2f6f4e] hover:bg-white/5 border-b border-white/10"
                     >
                       View All Projects
                     </Link>
@@ -114,7 +114,7 @@ export default function Navigation() {
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="block px-4 py-3 text-xs font-bold uppercase tracking-wider text-white/80 hover:text-[#13ec25] hover:bg-white/5 transition-colors"
+                        className="block px-4 py-3 text-xs font-bold text-white/80 hover:text-[#2f6f4e] hover:bg-white/5 transition-colors"
                       >
                         {item.name}
                       </Link>
@@ -127,15 +127,15 @@ export default function Navigation() {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className={`relative text-xs xl:text-sm font-bold uppercase tracking-wider transition-colors whitespace-nowrap pb-1 ${
+                  className={`relative text-xs xl:text-sm font-bold transition-colors whitespace-nowrap pb-1 ${
                     isActive(item.href)
                       ? "text-white"
-                      : "text-white/80 hover:text-[#13ec25]"
+                      : "text-white/80 hover:text-[#2f6f4e]"
                   }`}
                 >
                   {item.name}
                   {isActive(item.href) && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#13ec25]" />
+                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#2f6f4e]" />
                   )}
                 </Link>
               ))}
@@ -145,7 +145,7 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center">
               <Link
                 href="/join"
-                className="inline-flex items-center px-6 py-2.5 bg-[#dbf3d0] text-[#0a0a0a] text-xs xl:text-sm font-bold uppercase tracking-wider rounded-full transition-all shadow-[3px_3px_0px_0px_#fff] hover:shadow-[5px_5px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                className="inline-flex items-center px-6 py-2.5 bg-[#d8e2d3] text-[#0a0a0a] text-xs xl:text-sm font-bold rounded-full transition-all shadow-[3px_3px_0px_0px_#fff] hover:shadow-[5px_5px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
               >
                 Join Us
               </Link>
@@ -171,10 +171,10 @@ export default function Navigation() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`text-base font-bold uppercase tracking-wider transition-colors py-2 ${
+                    className={`text-base font-bold transition-colors py-2 ${
                       isActive(item.href)
-                        ? "text-[#13ec25]"
-                        : "text-white/80 hover:text-[#13ec25]"
+                        ? "text-[#2f6f4e]"
+                        : "text-white/80 hover:text-[#2f6f4e]"
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -186,10 +186,10 @@ export default function Navigation() {
                 <div>
                   <button
                     onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
-                    className={`w-full flex items-center justify-between text-base font-bold uppercase tracking-wider transition-colors py-2 ${
+                    className={`w-full flex items-center justify-between text-base font-bold transition-colors py-2 ${
                       isActive(projectsDropdown.href)
-                        ? "text-[#13ec25]"
-                        : "text-white/80 hover:text-[#13ec25]"
+                        ? "text-[#2f6f4e]"
+                        : "text-white/80 hover:text-[#2f6f4e]"
                     }`}
                   >
                     {projectsDropdown.name}
@@ -198,10 +198,10 @@ export default function Navigation() {
                     </span>
                   </button>
                   {mobileProjectsOpen && (
-                    <div className="pl-4 border-l-2 border-[#13ec25] ml-2 mt-2 space-y-2">
+                    <div className="pl-4 border-l-2 border-[#2f6f4e] ml-2 mt-2 space-y-2">
                       <Link
                         href={projectsDropdown.href}
-                        className="block text-sm font-bold uppercase tracking-wider text-[#13ec25] py-2"
+                        className="block text-sm font-bold text-[#2f6f4e] py-2"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         View All Projects
@@ -210,7 +210,7 @@ export default function Navigation() {
                         <Link
                           key={item.name}
                           href={item.href}
-                          className="block text-sm font-bold uppercase tracking-wider text-white/60 hover:text-[#13ec25] transition-colors py-2"
+                          className="block text-sm font-bold text-white/60 hover:text-[#2f6f4e] transition-colors py-2"
                           onClick={() => setMobileMenuOpen(false)}
                         >
                           {item.name}
@@ -224,10 +224,10 @@ export default function Navigation() {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className={`text-base font-bold uppercase tracking-wider transition-colors py-2 ${
+                    className={`text-base font-bold transition-colors py-2 ${
                       isActive(item.href)
-                        ? "text-[#13ec25]"
-                        : "text-white/80 hover:text-[#13ec25]"
+                        ? "text-[#2f6f4e]"
+                        : "text-white/80 hover:text-[#2f6f4e]"
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -237,7 +237,7 @@ export default function Navigation() {
 
                 <Link
                   href="/join"
-                  className="mt-4 inline-flex items-center justify-center px-6 py-3 bg-[#dbf3d0] text-[#0a0a0a] text-sm font-bold uppercase tracking-wider rounded-full shadow-[3px_3px_0px_0px_#fff]"
+                  className="mt-4 inline-flex items-center justify-center px-6 py-3 bg-[#d8e2d3] text-[#0a0a0a] text-sm font-bold rounded-full shadow-[3px_3px_0px_0px_#fff]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Join Us

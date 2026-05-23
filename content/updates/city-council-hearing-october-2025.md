@@ -10,7 +10,7 @@ tags:
   - City Council
   - Community Testimony
 relatedProjectId: hyde-park-avenue
-featured: true
+featured: false
 ---
 
 Over 50 residents packed yesterday's city council hearing on Hyde Park Avenue safety, sharing emotional testimony about the dangers they face daily on this critical corridor.

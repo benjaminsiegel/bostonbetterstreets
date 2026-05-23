@@ -15,15 +15,15 @@ export default function PlayPage() {
         <div className="mb-6">
           <Link
             href="/"
-            className="inline-flex items-center text-white/60 hover:text-[#13ec25] transition-colors text-sm font-bold uppercase tracking-wider mb-4"
+            className="inline-flex items-center text-white/60 hover:text-[#2f6f4e] transition-colors text-sm font-bold mb-4"
           >
             <span className="material-symbols-outlined mr-2 text-lg">
               arrow_back
             </span>
             Back to site
           </Link>
-          <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight mb-3">
-            Boston: <span className="text-[#dbf3d0]">No Safe Crossing</span>
+          <h1 className="text-3xl md:text-5xl font-black mb-3">
+            Boston: <span className="text-[#d8e2d3]">No Safe Crossing</span>
           </h1>
           <p className="text-white/60 max-w-2xl">
             Experience what it&apos;s like to cross Hyde Park Avenue. Get every
@@ -32,7 +32,7 @@ export default function PlayPage() {
         </div>
 
         {/* Game Frame */}
-        <div className="border-4 border-white shadow-[8px_8px_0px_0px_#13ec25] bg-[#191919]">
+        <div className="border-4 border-white shadow-[8px_8px_0px_0px_#2f6f4e] bg-[#191919]">
           <iframe
             src="/game/index.html"
             title="Boston: No Safe Crossing game"
@@ -44,27 +44,27 @@ export default function PlayPage() {
         {/* Instructions */}
         <div className="mt-8 grid md:grid-cols-2 gap-6">
           <div className="bg-[#191919] border-2 border-white/20 p-6">
-            <h2 className="text-lg font-bold uppercase tracking-wider mb-3 text-[#dbf3d0]">
+            <h2 className="text-lg font-bold mb-3 text-[#d8e2d3]">
               How to Play
             </h2>
             <ul className="space-y-2 text-white/70 text-sm">
               <li className="flex items-start gap-2">
-                <span className="text-[#13ec25]">→</span>
+                <span className="text-[#2f6f4e]">→</span>
                 Use arrow keys or on-screen controls to move
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#13ec25]">→</span>
+                <span className="text-[#2f6f4e]">→</span>
                 Guide pedestrians safely across the avenue
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-[#13ec25]">→</span>
+                <span className="text-[#2f6f4e]">→</span>
                 Avoid speeding cars and trucks
               </li>
             </ul>
           </div>
 
           <div className="bg-[#191919] border-2 border-white/20 p-6">
-            <h2 className="text-lg font-bold uppercase tracking-wider mb-3 text-[#ffe9ad]">
+            <h2 className="text-lg font-bold mb-3 text-[#e7d5a0]">
               Why This Matters
             </h2>
             <p className="text-white/70 text-sm mb-4">
@@ -74,7 +74,7 @@ export default function PlayPage() {
             </p>
             <Link
               href="/projects/hyde-park-avenue"
-              className="inline-flex items-center text-[#13ec25] font-bold uppercase tracking-wider text-sm hover:underline"
+              className="inline-flex items-center text-[#2f6f4e] font-bold text-sm hover:underline"
             >
               Learn more about Hyde Park Avenue
               <span className="material-symbols-outlined ml-1 text-sm">

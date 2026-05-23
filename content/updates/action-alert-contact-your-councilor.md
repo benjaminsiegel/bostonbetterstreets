@@ -10,7 +10,7 @@ tags:
   - Hyde Park Avenue
   - Contact Officials
 relatedProjectId: hyde-park-avenue
-featured: true
+featured: false
 ---
 
 URGENT: The city is finalizing plans for Hyde Park Avenue repaving, and we need your help to ensure safety improvements are included.
