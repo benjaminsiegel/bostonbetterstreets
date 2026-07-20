@@ -12,6 +12,8 @@ const navItems = [
 const stalledProjectsUrl =
   "https://app.notion.com/p/pressplayontransportation/Press-Play-on-Transportation-3374eb75300c807494e2f6446632e826?source=copy_link";
 
+const enoughIsEnoughUrl = "https://benjaminsiegel.github.io/enough-is-enough/";
+
 const navItemsAfterProjects = [
   { name: "FAQ", href: "/faq" },
 ];
@@ -27,27 +29,25 @@ export default function Navigation() {
 
   return (
     <div className="sticky top-0 z-50">
-      {/* Game Banner */}
-      <Link
-        href="/play"
-        className="block bg-[#d8e2d3] text-[#0a0a0a] py-1.5 px-4 text-center text-xs font-bold hover:bg-[#c8d5c1] transition-colors"
+      {/* Current campaign notice */}
+      <a
+        href={enoughIsEnoughUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex items-center justify-center gap-2 border-b border-[#0a0a0a]/10 bg-[#e4eadf] px-4 py-2 text-center text-[0.7rem] font-semibold text-[#0a0a0a]/75 transition-colors hover:bg-[#d8e2d3] sm:text-xs"
       >
-        Play <span className="font-black">Boston: No Safe Crossing</span>
-      </Link>
+        <span className="text-[#9b3731]">Enough Is Enough</span>
+        <span className="hidden sm:inline">Read the open letter from Boston neighbors</span>
+        <span className="material-symbols-outlined text-[0.8rem] transition-transform group-hover:translate-x-0.5" aria-hidden="true">north_east</span>
+      </a>
 
-      <header className="bg-[#0a0a0a] text-white">
+      <header className="border-b border-white/10 bg-[#0a0a0a] text-white">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex h-[4.25rem] items-center justify-between">
             {/* Wordmark */}
             <Link href="/" className="group">
-              <div className="font-bold text-sm lg:text-base text-white whitespace-nowrap">
+              <div className="whitespace-nowrap text-sm font-bold tracking-[-0.01em] text-white lg:text-base">
                 Boston Better Streets Coalition
-              </div>
-              {/* Street stripe accent */}
-              <div className="flex gap-1 mt-1">
-                <div className="h-[3px] w-8 bg-[#2f6f4e]"></div>
-                <div className="h-[3px] w-4 bg-[#2f6f4e]"></div>
-                <div className="h-[3px] w-2 bg-[#2f6f4e]"></div>
               </div>
             </Link>
 
@@ -60,7 +60,7 @@ export default function Navigation() {
                   className={`relative text-xs xl:text-sm font-bold transition-colors whitespace-nowrap pb-1 ${
                     isActive(item.href)
                       ? "text-white"
-                      : "text-white/80 hover:text-[#2f6f4e]"
+                      : "text-white/75 hover:text-[#d8e2d3]"
                   }`}
                 >
                   {item.name}
@@ -74,7 +74,7 @@ export default function Navigation() {
                 href={stalledProjectsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center whitespace-nowrap pb-1 text-xs font-bold text-white/80 transition-colors hover:text-[#2f6f4e] xl:text-sm"
+                className="inline-flex items-center whitespace-nowrap pb-1 text-xs font-bold text-white/75 transition-colors hover:text-[#d8e2d3] xl:text-sm"
               >
                 Stalled Projects
                 <span className="material-symbols-outlined ml-1 text-sm" aria-hidden="true">
@@ -89,7 +89,7 @@ export default function Navigation() {
                   className={`relative text-xs xl:text-sm font-bold transition-colors whitespace-nowrap pb-1 ${
                     isActive(item.href)
                       ? "text-white"
-                      : "text-white/80 hover:text-[#2f6f4e]"
+                      : "text-white/75 hover:text-[#d8e2d3]"
                   }`}
                 >
                   {item.name}
@@ -104,7 +104,7 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center">
               <Link
                 href="/join"
-                className="inline-flex items-center px-6 py-2.5 bg-[#d8e2d3] text-[#0a0a0a] text-xs xl:text-sm font-bold rounded-full transition-all shadow-[3px_3px_0px_0px_#fff] hover:shadow-[5px_5px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                className="inline-flex items-center rounded-lg bg-[#d8e2d3] px-5 py-2.5 text-xs font-bold text-[#0a0a0a] transition-colors hover:bg-white xl:text-sm"
               >
                 Join Us
               </Link>
@@ -113,8 +113,10 @@ export default function Navigation() {
             {/* Mobile menu button */}
             <button
               type="button"
-              className="lg:hidden p-2 text-white"
+              className="rounded-md p-2 text-white transition-colors hover:bg-white/10 lg:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
             >
               <span className="material-symbols-outlined text-2xl">
                 {mobileMenuOpen ? "close" : "menu"}
@@ -133,7 +135,7 @@ export default function Navigation() {
                     className={`text-base font-bold transition-colors py-2 ${
                       isActive(item.href)
                         ? "text-[#2f6f4e]"
-                        : "text-white/80 hover:text-[#2f6f4e]"
+                        : "text-white/75 hover:text-[#d8e2d3]"
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -145,7 +147,7 @@ export default function Navigation() {
                   href={stalledProjectsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between py-2 text-base font-bold text-white/80 transition-colors hover:text-[#2f6f4e]"
+                  className="flex items-center justify-between py-2 text-base font-bold text-white/75 transition-colors hover:text-[#d8e2d3]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Stalled Projects
@@ -161,7 +163,7 @@ export default function Navigation() {
                     className={`text-base font-bold transition-colors py-2 ${
                       isActive(item.href)
                         ? "text-[#2f6f4e]"
-                        : "text-white/80 hover:text-[#2f6f4e]"
+                        : "text-white/75 hover:text-[#d8e2d3]"
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -171,7 +173,7 @@ export default function Navigation() {
 
                 <Link
                   href="/join"
-                  className="mt-4 inline-flex items-center justify-center px-6 py-3 bg-[#d8e2d3] text-[#0a0a0a] text-sm font-bold rounded-full shadow-[3px_3px_0px_0px_#fff]"
+                  className="mt-4 inline-flex items-center justify-center rounded-lg bg-[#d8e2d3] px-6 py-3 text-sm font-bold text-[#0a0a0a]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Join Us
