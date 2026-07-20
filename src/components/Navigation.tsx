@@ -9,15 +9,8 @@ const navItems = [
   { name: "Updates", href: "/updates" },
 ];
 
-const projectsDropdown = {
-  name: "Stalled Projects",
-  href: "/projects",
-  items: [
-    { name: "Hyde Park Avenue", href: "/projects/hyde-park-avenue" },
-    { name: "Blue Hill Avenue", href: "/projects/blue-hill-avenue" },
-    { name: "Columbia Road", href: "/projects/columbia-road" },
-  ],
-};
+const stalledProjectsUrl =
+  "https://app.notion.com/p/pressplayontransportation/Press-Play-on-Transportation-3374eb75300c807494e2f6446632e826?source=copy_link";
 
 const navItemsAfterProjects = [
   { name: "FAQ", href: "/faq" },
@@ -26,8 +19,6 @@ const navItemsAfterProjects = [
 export default function Navigation() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [projectsOpen, setProjectsOpen] = useState(false);
-  const [mobileProjectsOpen, setMobileProjectsOpen] = useState(false);
 
   const isActive = (href: string) => {
     if (href === "/") return pathname === "/";
@@ -79,49 +70,17 @@ export default function Navigation() {
                 </Link>
               ))}
 
-              {/* Stalled Projects Dropdown */}
-              <div
-                className="relative"
-                onMouseEnter={() => setProjectsOpen(true)}
-                onMouseLeave={() => setProjectsOpen(false)}
+              <a
+                href={stalledProjectsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center whitespace-nowrap pb-1 text-xs font-bold text-white/80 transition-colors hover:text-[#2f6f4e] xl:text-sm"
               >
-                <Link
-                  href={projectsDropdown.href}
-                  className={`relative text-xs xl:text-sm font-bold transition-colors whitespace-nowrap inline-flex items-center pb-1 ${
-                    isActive(projectsDropdown.href)
-                      ? "text-white"
-                      : "text-white/80 hover:text-[#2f6f4e]"
-                  }`}
-                >
-                  {projectsDropdown.name}
-                  <span className="material-symbols-outlined text-sm ml-1">
-                    expand_more
-                  </span>
-                  {isActive(projectsDropdown.href) && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#2f6f4e]" />
-                  )}
-                </Link>
-
-                {projectsOpen && (
-                  <div className="absolute top-full left-0 mt-2 bg-[#0a0a0a] border border-white/10 min-w-[200px] shadow-lg">
-                    <Link
-                      href={projectsDropdown.href}
-                      className="block px-4 py-3 text-xs font-bold text-[#2f6f4e] hover:bg-white/5 border-b border-white/10"
-                    >
-                      View All Projects
-                    </Link>
-                    {projectsDropdown.items.map((item) => (
-                      <Link
-                        key={item.name}
-                        href={item.href}
-                        className="block px-4 py-3 text-xs font-bold text-white/80 hover:text-[#2f6f4e] hover:bg-white/5 transition-colors"
-                      >
-                        {item.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+                Stalled Projects
+                <span className="material-symbols-outlined ml-1 text-sm" aria-hidden="true">
+                  open_in_new
+                </span>
+              </a>
 
               {navItemsAfterProjects.map((item) => (
                 <Link
@@ -182,43 +141,18 @@ export default function Navigation() {
                   </Link>
                 ))}
 
-                {/* Mobile Stalled Projects */}
-                <div>
-                  <button
-                    onClick={() => setMobileProjectsOpen(!mobileProjectsOpen)}
-                    className={`w-full flex items-center justify-between text-base font-bold transition-colors py-2 ${
-                      isActive(projectsDropdown.href)
-                        ? "text-[#2f6f4e]"
-                        : "text-white/80 hover:text-[#2f6f4e]"
-                    }`}
-                  >
-                    {projectsDropdown.name}
-                    <span className="material-symbols-outlined">
-                      {mobileProjectsOpen ? "expand_less" : "expand_more"}
-                    </span>
-                  </button>
-                  {mobileProjectsOpen && (
-                    <div className="pl-4 border-l-2 border-[#2f6f4e] ml-2 mt-2 space-y-2">
-                      <Link
-                        href={projectsDropdown.href}
-                        className="block text-sm font-bold text-[#2f6f4e] py-2"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        View All Projects
-                      </Link>
-                      {projectsDropdown.items.map((item) => (
-                        <Link
-                          key={item.name}
-                          href={item.href}
-                          className="block text-sm font-bold text-white/60 hover:text-[#2f6f4e] transition-colors py-2"
-                          onClick={() => setMobileMenuOpen(false)}
-                        >
-                          {item.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <a
+                  href={stalledProjectsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between py-2 text-base font-bold text-white/80 transition-colors hover:text-[#2f6f4e]"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Stalled Projects
+                  <span className="material-symbols-outlined text-lg" aria-hidden="true">
+                    open_in_new
+                  </span>
+                </a>
 
                 {navItemsAfterProjects.map((item) => (
                   <Link
