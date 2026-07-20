@@ -30,17 +30,18 @@ export default function Navigation() {
       {/* Game Banner */}
       <Link
         href="/play"
-        className="block bg-[#d8e2d3] text-[#0a0a0a] py-1.5 px-4 text-center text-xs font-bold hover:bg-[#c8d5c1] transition-colors"
+        className="group flex items-center justify-center gap-2 bg-[#d8e2d3] px-4 py-2 text-center text-[0.68rem] font-black uppercase tracking-[0.08em] text-[#0a0a0a] transition-colors hover:bg-[#c8d5c1] sm:text-xs"
       >
-        Play <span className="font-black">Boston: No Safe Crossing</span>
+        Play <span>Boston: No Safe Crossing</span>
+        <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5" aria-hidden="true">arrow_forward</span>
       </Link>
 
-      <header className="bg-[#0a0a0a] text-white">
+      <header className="border-b border-white/10 bg-[#0a0a0a] text-white">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-20">
             {/* Wordmark */}
             <Link href="/" className="group">
-              <div className="font-bold text-sm lg:text-base text-white whitespace-nowrap">
+              <div className="whitespace-nowrap text-sm font-black tracking-[-0.015em] text-white lg:text-base">
                 Boston Better Streets Coalition
               </div>
               {/* Street stripe accent */}
@@ -60,7 +61,7 @@ export default function Navigation() {
                   className={`relative text-xs xl:text-sm font-bold transition-colors whitespace-nowrap pb-1 ${
                     isActive(item.href)
                       ? "text-white"
-                      : "text-white/80 hover:text-[#2f6f4e]"
+                      : "text-white/75 hover:text-[#d8e2d3]"
                   }`}
                 >
                   {item.name}
@@ -74,7 +75,7 @@ export default function Navigation() {
                 href={stalledProjectsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center whitespace-nowrap pb-1 text-xs font-bold text-white/80 transition-colors hover:text-[#2f6f4e] xl:text-sm"
+                className="inline-flex items-center whitespace-nowrap pb-1 text-xs font-bold text-white/75 transition-colors hover:text-[#d8e2d3] xl:text-sm"
               >
                 Stalled Projects
                 <span className="material-symbols-outlined ml-1 text-sm" aria-hidden="true">
@@ -89,7 +90,7 @@ export default function Navigation() {
                   className={`relative text-xs xl:text-sm font-bold transition-colors whitespace-nowrap pb-1 ${
                     isActive(item.href)
                       ? "text-white"
-                      : "text-white/80 hover:text-[#2f6f4e]"
+                      : "text-white/75 hover:text-[#d8e2d3]"
                   }`}
                 >
                   {item.name}
@@ -104,7 +105,7 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center">
               <Link
                 href="/join"
-                className="inline-flex items-center px-6 py-2.5 bg-[#d8e2d3] text-[#0a0a0a] text-xs xl:text-sm font-bold rounded-full transition-all shadow-[3px_3px_0px_0px_#fff] hover:shadow-[5px_5px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                className="inline-flex items-center rounded-full bg-[#d8e2d3] px-6 py-2.5 text-xs font-black text-[#0a0a0a] shadow-[2px_2px_0_#fff] transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-[3px_4px_0_#2f6f4e] xl:text-sm"
               >
                 Join Us
               </Link>
@@ -115,6 +116,8 @@ export default function Navigation() {
               type="button"
               className="lg:hidden p-2 text-white"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={mobileMenuOpen}
             >
               <span className="material-symbols-outlined text-2xl">
                 {mobileMenuOpen ? "close" : "menu"}
@@ -133,7 +136,7 @@ export default function Navigation() {
                     className={`text-base font-bold transition-colors py-2 ${
                       isActive(item.href)
                         ? "text-[#2f6f4e]"
-                        : "text-white/80 hover:text-[#2f6f4e]"
+                        : "text-white/75 hover:text-[#d8e2d3]"
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
@@ -145,7 +148,7 @@ export default function Navigation() {
                   href={stalledProjectsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-between py-2 text-base font-bold text-white/80 transition-colors hover:text-[#2f6f4e]"
+                  className="flex items-center justify-between py-2 text-base font-bold text-white/75 transition-colors hover:text-[#d8e2d3]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Stalled Projects
@@ -161,7 +164,7 @@ export default function Navigation() {
                     className={`text-base font-bold transition-colors py-2 ${
                       isActive(item.href)
                         ? "text-[#2f6f4e]"
-                        : "text-white/80 hover:text-[#2f6f4e]"
+                        : "text-white/75 hover:text-[#d8e2d3]"
                     }`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
