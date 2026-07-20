@@ -12,6 +12,8 @@ const navItems = [
 const stalledProjectsUrl =
   "https://app.notion.com/p/pressplayontransportation/Press-Play-on-Transportation-3374eb75300c807494e2f6446632e826?source=copy_link";
 
+const enoughIsEnoughUrl = "https://benjaminsiegel.github.io/enough-is-enough/";
+
 const navItemsAfterProjects = [
   { name: "FAQ", href: "/faq" },
 ];
@@ -27,28 +29,25 @@ export default function Navigation() {
 
   return (
     <div className="sticky top-0 z-50">
-      {/* Game Banner */}
-      <Link
-        href="/play"
-        className="group flex items-center justify-center gap-2 bg-[#d8e2d3] px-4 py-2 text-center text-[0.68rem] font-black uppercase tracking-[0.08em] text-[#0a0a0a] transition-colors hover:bg-[#c8d5c1] sm:text-xs"
+      {/* Current campaign notice */}
+      <a
+        href={enoughIsEnoughUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group flex items-center justify-center gap-2 border-b border-[#0a0a0a]/10 bg-[#e4eadf] px-4 py-2 text-center text-[0.7rem] font-semibold text-[#0a0a0a]/75 transition-colors hover:bg-[#d8e2d3] sm:text-xs"
       >
-        Play <span>Boston: No Safe Crossing</span>
-        <span className="material-symbols-outlined text-sm transition-transform group-hover:translate-x-0.5" aria-hidden="true">arrow_forward</span>
-      </Link>
+        <span className="text-[#9b3731]">Enough Is Enough</span>
+        <span className="hidden sm:inline">Read the open letter from Boston neighbors</span>
+        <span className="material-symbols-outlined text-[0.8rem] transition-transform group-hover:translate-x-0.5" aria-hidden="true">north_east</span>
+      </a>
 
       <header className="border-b border-white/10 bg-[#0a0a0a] text-white">
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-20">
+          <div className="flex h-[4.25rem] items-center justify-between">
             {/* Wordmark */}
             <Link href="/" className="group">
-              <div className="whitespace-nowrap text-sm font-black tracking-[-0.015em] text-white lg:text-base">
+              <div className="whitespace-nowrap text-sm font-bold tracking-[-0.01em] text-white lg:text-base">
                 Boston Better Streets Coalition
-              </div>
-              {/* Street stripe accent */}
-              <div className="flex gap-1 mt-1">
-                <div className="h-[3px] w-8 bg-[#2f6f4e]"></div>
-                <div className="h-[3px] w-4 bg-[#2f6f4e]"></div>
-                <div className="h-[3px] w-2 bg-[#2f6f4e]"></div>
               </div>
             </Link>
 
@@ -105,7 +104,7 @@ export default function Navigation() {
             <div className="hidden lg:flex items-center">
               <Link
                 href="/join"
-                className="inline-flex items-center rounded-full bg-[#d8e2d3] px-6 py-2.5 text-xs font-black text-[#0a0a0a] shadow-[2px_2px_0_#fff] transition-all hover:-translate-y-0.5 hover:bg-white hover:shadow-[3px_4px_0_#2f6f4e] xl:text-sm"
+                className="inline-flex items-center rounded-lg bg-[#d8e2d3] px-5 py-2.5 text-xs font-bold text-[#0a0a0a] transition-colors hover:bg-white xl:text-sm"
               >
                 Join Us
               </Link>
@@ -114,7 +113,7 @@ export default function Navigation() {
             {/* Mobile menu button */}
             <button
               type="button"
-              className="lg:hidden p-2 text-white"
+              className="rounded-md p-2 text-white transition-colors hover:bg-white/10 lg:hidden"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               aria-label={mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
               aria-expanded={mobileMenuOpen}
@@ -174,7 +173,7 @@ export default function Navigation() {
 
                 <Link
                   href="/join"
-                  className="mt-4 inline-flex items-center justify-center px-6 py-3 bg-[#d8e2d3] text-[#0a0a0a] text-sm font-bold rounded-full shadow-[3px_3px_0px_0px_#fff]"
+                  className="mt-4 inline-flex items-center justify-center rounded-lg bg-[#d8e2d3] px-6 py-3 text-sm font-bold text-[#0a0a0a]"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Join Us
