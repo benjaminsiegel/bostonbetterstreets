@@ -20,121 +20,128 @@ const typeConfig: Record<UpdateType, { label: string; color: string; bgColor: st
 
 export default function UpdatesPage() {
   const sortedUpdates = getUpdates().sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
   const featuredUpdate = sortedUpdates.find((update) => update.featured) ?? sortedUpdates[0];
   const remainingUpdates = sortedUpdates.filter((update) => update.id !== featuredUpdate.id);
   const featuredConfig = typeConfig[featuredUpdate.type];
 
   return (
-    <div className="min-h-screen bg-[#f0ece2] text-[#020202]">
-      <section className="max-w-[1120px] mx-auto px-4 sm:px-6 py-12 md:py-16 pb-24">
-        <div className="mb-12 md:mb-16 max-w-3xl">
-          <p className="text-sm font-bold text-[#b7342c] mb-3">
-            Updates
+    <main className="min-h-screen bg-[#f0ece2] text-[#0a0a0a]">
+      <section className="mx-auto max-w-7xl px-4 pb-20 pt-14 sm:px-6 md:pb-24 md:pt-20 lg:px-8">
+        <header className="mb-12 max-w-3xl md:mb-16">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.13em] text-[#a63d36]">
+            From the coalition
           </p>
-          <h1 className="text-4xl md:text-6xl font-black leading-none text-[#0a0a0a] mb-6">
-            Dispatches
+          <h1 className="mb-6 text-4xl font-extrabold leading-[0.98] tracking-[-0.035em] sm:text-5xl md:text-[4.25rem]">
+            Updates
           </h1>
-          <p className="text-lg md:text-xl leading-relaxed text-[#0a0a0a]/70 max-w-2xl">
+          <p className="max-w-2xl text-lg leading-relaxed text-[#0a0a0a]/65 md:text-xl">
             Reporting, action alerts, and campaign notes from Boston residents pushing the city to deliver safer streets.
           </p>
-        </div>
+        </header>
 
-        <div className="mb-14">
-          <p className="text-sm font-bold text-[#b7342c] mb-3">
-            Featured
+        <section className="mb-16 border-b border-[#0a0a0a]/12 pb-16 md:mb-20 md:pb-20">
+          <p className="mb-6 text-xs font-bold uppercase tracking-[0.13em] text-[#0a0a0a]/48">
+            Featured dispatch
           </p>
           <Link
             href={`/updates/${featuredUpdate.slug}`}
-            className="group grid lg:grid-cols-[0.9fr_1fr] gap-0 bg-white border border-[#0a0a0a]/20 overflow-hidden hover:border-[#0a0a0a]/50 transition-colors"
+            className="group grid items-center gap-8 lg:grid-cols-[1.15fr_0.85fr] lg:gap-12"
           >
-            <div className="relative aspect-square lg:aspect-auto lg:min-h-[430px] bg-[#e8e2d6] border-b lg:border-b-0 lg:border-r border-[#0a0a0a]/15 overflow-hidden">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-lg bg-[#e7e2d7]">
               {featuredUpdate.image ? (
                 <Image
                   src={featuredUpdate.image}
                   alt={featuredUpdate.imageAlt || featuredUpdate.title}
                   fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                  className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   priority
                 />
               ) : (
-                <div className="absolute inset-0 bg-[#e8e2d6]" />
+                <div className="absolute inset-0 bg-[#e7e2d7]" />
               )}
             </div>
-            <div className="p-6 md:p-9 lg:p-10 flex flex-col justify-between">
-              <div>
-                <div className="flex flex-wrap items-center gap-3 mb-8">
-                  <span
-                    className={`px-3 py-1 text-xs font-bold rounded-full ${featuredConfig.bgColor} ${featuredConfig.color}`}
-                  >
-                    {featuredConfig.label}
-                  </span>
-                  <time
-                    dateTime={featuredUpdate.date}
-                    className="text-sm font-semibold text-[#0a0a0a]/50"
-                  >
-                    {format(parseISO(featuredUpdate.date), "MMM d, yyyy")}
-                  </time>
-                </div>
-                <h2 className="text-3xl md:text-5xl font-black leading-[1.02] mb-6 group-hover:text-[#2f6f4e] transition-colors">
-                  {featuredUpdate.title}
-                </h2>
-                <p className="text-base md:text-lg leading-relaxed text-[#0a0a0a]/68">
-                  {featuredUpdate.excerpt}
-                </p>
+
+            <div>
+              <div className="mb-5 flex flex-wrap items-center gap-3">
+                <span
+                  className={`rounded px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.08em] ${featuredConfig.bgColor} ${featuredConfig.color}`}
+                >
+                  {featuredConfig.label}
+                </span>
+                <time dateTime={featuredUpdate.date} className="text-sm font-medium text-[#0a0a0a]/45">
+                  {format(parseISO(featuredUpdate.date), "MMM d, yyyy")}
+                </time>
               </div>
-              <span className="inline-flex items-center mt-10 text-sm font-bold text-[#2f6f4e]">
-                Read dispatch
-                <span className="material-symbols-outlined ml-2 text-base group-hover:translate-x-1 transition-transform">
+              <h2 className="mb-5 text-3xl font-extrabold leading-[1.05] tracking-[-0.025em] transition-colors group-hover:text-[#2f6f4e] sm:text-4xl">
+                {featuredUpdate.title}
+              </h2>
+              <p className="mb-7 text-base leading-relaxed text-[#0a0a0a]/62 md:text-lg">
+                {featuredUpdate.excerpt}
+              </p>
+              <span className="inline-flex w-fit items-center border-b border-[#0a0a0a]/25 pb-0.5 text-sm font-semibold text-[#0a0a0a]/72 transition-colors group-hover:border-[#2f6f4e] group-hover:text-[#2f6f4e]">
+                Read update
+                <span className="material-symbols-outlined ml-1 text-sm transition-transform group-hover:translate-x-1" aria-hidden="true">
                   arrow_forward
                 </span>
               </span>
             </div>
           </Link>
-        </div>
+        </section>
 
-        <div className="border-t border-[#0a0a0a]/25">
-          {remainingUpdates.map((update, index) => {
-            const config = typeConfig[update.type];
-            const isLast = index === remainingUpdates.length - 1;
+        <section>
+          <div className="mb-9 flex items-end justify-between gap-6">
+            <h2 className="text-2xl font-extrabold tracking-[-0.02em] sm:text-3xl">All updates</h2>
+            <p className="hidden text-sm text-[#0a0a0a]/45 sm:block">Newest first</p>
+          </div>
 
-            return (
-              <Link
-                key={update.id}
-                href={`/updates/${update.slug}`}
-                className={`grid grid-cols-1 md:grid-cols-[140px_1fr_120px] gap-3 md:gap-8 py-7 md:py-8 hover:bg-white/45 transition-colors group ${
-                  !isLast ? "border-b border-[#0a0a0a]/18" : ""
-                }`}
-              >
-                <time
-                  dateTime={update.date}
-                  className="text-sm font-semibold text-[#0a0a0a]/48 md:pt-1"
-                >
-                  {format(parseISO(update.date), "MMM d, yyyy")}
-                </time>
+          <div className="grid gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-3 lg:gap-x-8">
+            {remainingUpdates.map((update) => {
+              const config = typeConfig[update.type];
 
-                <div>
-                  <h2 className="text-xl md:text-2xl font-black leading-tight mb-3 group-hover:text-[#2f6f4e] transition-colors">
-                    {update.title}
-                  </h2>
-                  <p className="text-sm md:text-base text-[#0a0a0a]/62 leading-relaxed max-w-2xl">
-                    {update.excerpt}
-                  </p>
-                </div>
-
-                <div className="flex md:justify-end md:pt-1">
-                  <span
-                    className={`inline-block h-fit px-3 py-1 text-xs font-bold rounded-full ${config.bgColor} ${config.color}`}
-                  >
-                    {config.label}
-                  </span>
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+              return (
+                <Link key={update.id} href={`/updates/${update.slug}`} className="group flex flex-col">
+                  {update.image && (
+                    <div className="relative aspect-[16/9] overflow-hidden rounded-md bg-[#e7e2d7]">
+                      <Image
+                        src={update.image}
+                        alt={update.imageAlt || update.title}
+                        fill
+                        className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                      />
+                    </div>
+                  )}
+                  <div className="flex flex-grow flex-col px-1 pt-5 sm:min-h-[235px]">
+                    <div className="mb-4 flex items-center gap-3">
+                      <span
+                        className={`rounded px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.08em] ${config.bgColor} ${config.color}`}
+                      >
+                        {config.label}
+                      </span>
+                      <time dateTime={update.date} className="text-xs font-medium text-[#0a0a0a]/45">
+                        {format(parseISO(update.date), "MMM d, yyyy")}
+                      </time>
+                    </div>
+                    <h3 className="mb-3 text-xl font-extrabold leading-[1.15] tracking-[-0.015em] transition-colors group-hover:text-[#2f6f4e]">
+                      {update.title}
+                    </h3>
+                    <p className="mb-5 line-clamp-3 text-sm leading-[1.6] text-[#0a0a0a]/60">
+                      {update.excerpt}
+                    </p>
+                    <span className="mt-auto inline-flex w-fit items-center border-b border-[#0a0a0a]/25 pb-0.5 text-sm font-semibold text-[#0a0a0a]/72 transition-colors group-hover:border-[#2f6f4e] group-hover:text-[#2f6f4e]">
+                      Read update
+                      <span className="material-symbols-outlined ml-1 text-sm transition-transform group-hover:translate-x-1" aria-hidden="true">
+                        arrow_forward
+                      </span>
+                    </span>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </section>
       </section>
-    </div>
+    </main>
   );
 }

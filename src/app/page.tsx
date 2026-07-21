@@ -60,7 +60,7 @@ export default function Home() {
                 href="/join"
                 className="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#397956] px-7 py-3 text-sm font-bold text-white transition-colors hover:bg-[#448b64] sm:text-base"
               >
-                Join the coalition
+                Join Us
               </Link>
               <a
                 href={stalledProjectsUrl}

@@ -20,8 +20,8 @@ const faqs = [
         a: "The Boston Better Streets Coalition was founded in 2024 in response to growing frustration with the city's failure to deliver on promised street safety improvements, particularly after the tragic death of Glenn Inghram at Forest Hills in October 2024.",
       },
       {
-        q: "How many members do you have?",
-        a: "Our petition for Hyde Park Avenue improvements has over 800 signatures, and our community continues to grow. We welcome all Boston residents who share our vision for safer streets.",
+        q: "Who can join?",
+        a: "Anyone who lives, works, studies, or travels in Boston and wants safer, more reliable streets is welcome. You do not need transportation expertise—your experience moving around the city matters.",
       },
       {
         q: "Are you affiliated with any political party?",
@@ -113,117 +113,104 @@ const faqs = [
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen bg-[#f0ece2] text-[#0a0a0a]">
-      {/* Header */}
-      <section className="py-14 md:py-20 border-b-2 border-[#0a0a0a]">
-        <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
-          <p className="text-sm font-bold text-[#b7342c] mb-3">
-            FAQ
+    <main className="min-h-screen bg-[#f0ece2] text-[#0a0a0a]">
+      <section className="mx-auto max-w-7xl px-4 pb-12 pt-14 sm:px-6 md:pb-16 md:pt-20 lg:px-8">
+        <header className="max-w-3xl">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.13em] text-[#a63d36]">
+            Frequently asked questions
           </p>
-          <h1 className="text-4xl md:text-6xl font-black leading-none mb-6">
-            Questions,
-            <br className="hidden sm:block" /> Answered Plainly
+          <h1 className="mb-6 text-4xl font-extrabold leading-[0.98] tracking-[-0.035em] sm:text-5xl md:text-[4.25rem]">
+            Questions, answered plainly.
           </h1>
-          <p className="text-lg md:text-xl leading-relaxed text-[#0a0a0a]/70 max-w-3xl">
-            Everything you need to know about the Boston Better Streets
-            Coalition, our mission, and how you can help make our streets safer.
+          <p className="max-w-2xl text-lg leading-relaxed text-[#0a0a0a]/65 md:text-xl">
+            What the Boston Better Streets Coalition does, what we believe, and how you can help make Boston&apos;s streets safer.
           </p>
-        </div>
+        </header>
       </section>
 
-      {/* FAQ Content */}
-      <section className="py-12 md:py-16">
-        <div className="max-w-[1180px] mx-auto px-4 sm:px-6">
-          <div className="grid lg:grid-cols-[260px_1fr] gap-10 lg:gap-14">
-            <aside className="hidden lg:block lg:sticky lg:top-36 lg:self-start">
-              <div className="bg-[#0a0a0a] text-white border-2 border-[#0a0a0a] shadow-[5px_5px_0px_0px_#2f6f4e] p-5">
-                <h2 className="text-sm font-bold text-white/50 mb-4">
-                  Browse
-                </h2>
-                <nav className="space-y-2">
-                  {faqs.map((category) => (
-                    <a
-                      key={category.category}
-                      href={`#${category.category.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`}
-                      className="block text-sm font-bold text-white hover:text-[#2f6f4e] transition-colors"
-                    >
-                      {category.category}
-                    </a>
-                  ))}
-                </nav>
-              </div>
-            </aside>
-
-            <div className="space-y-12">
+      <section className="mx-auto max-w-7xl px-4 pb-20 sm:px-6 md:pb-24 lg:px-8">
+        <div className="grid gap-12 lg:grid-cols-[220px_1fr] lg:gap-16">
+          <aside className="hidden lg:block lg:sticky lg:top-32 lg:self-start">
+            <p className="mb-5 text-xs font-bold uppercase tracking-[0.12em] text-[#0a0a0a]/42">Browse</p>
+            <nav className="space-y-3 border-l border-[#0a0a0a]/15 pl-4" aria-label="FAQ categories">
               {faqs.map((category) => (
-                <section
+                <a
                   key={category.category}
-                  id={category.category.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}
-                  className="scroll-mt-36"
+                  href={`#${category.category.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}`}
+                  className="block text-sm font-semibold text-[#0a0a0a]/58 transition-colors hover:text-[#2f6f4e]"
                 >
-                  <div className="flex items-center gap-4 mb-5">
-                    <h2 className="text-2xl md:text-3xl font-black leading-none">
-                      {category.category}
-                    </h2>
-                    <div className="h-1 flex-1 bg-[#2f6f4e]" />
-                  </div>
-                  <div className="bg-white border-2 border-[#0a0a0a] shadow-[5px_5px_0px_0px_#0a0a0a]">
-                    {category.questions.map((faq, faqIndex) => (
-                      <details
-                        key={faq.q}
-                        className={`group overflow-hidden transition-colors open:bg-[#fbfaf6] hover:bg-[#fbfaf6] ${
-                          faqIndex !== category.questions.length - 1 ? "border-b-2 border-[#0a0a0a]" : ""
-                        }`}
-                      >
-                        <summary className="flex items-center justify-between gap-5 p-5 md:p-6 cursor-pointer">
-                          <span className="text-base md:text-lg font-black leading-snug pr-4">
-                            {faq.q}
-                          </span>
-                          <span className="material-symbols-outlined text-[#2f6f4e] flex-shrink-0 group-open:rotate-180 transition-transform">
-                            expand_more
-                          </span>
-                        </summary>
-                        <div className="px-5 md:px-6 pb-6 pt-0">
-                          <p className="text-[#0a0a0a]/68 leading-relaxed max-w-3xl">{faq.a}</p>
-                        </div>
-                      </details>
-                    ))}
-                  </div>
-                </section>
+                  {category.category}
+                </a>
               ))}
-            </div>
+            </nav>
+          </aside>
+
+          <div className="space-y-14 md:space-y-16">
+            {faqs.map((category) => (
+              <section
+                key={category.category}
+                id={category.category.toLowerCase().replaceAll(" ", "-").replaceAll("&", "and")}
+                className="scroll-mt-32"
+              >
+                <div className="mb-4 flex items-center gap-5">
+                  <h2 className="text-2xl font-extrabold tracking-[-0.02em] md:text-3xl">
+                    {category.category}
+                  </h2>
+                  <div className="h-px flex-1 bg-[#0a0a0a]/14" aria-hidden="true" />
+                </div>
+
+                <div className="border-t border-[#0a0a0a]/16">
+                  {category.questions.map((faq) => (
+                    <details
+                      key={faq.q}
+                      className="group border-b border-[#0a0a0a]/16 transition-colors open:bg-white/35"
+                    >
+                      <summary className="flex cursor-pointer list-none items-center justify-between gap-5 px-1 py-5 marker:content-none [&::-webkit-details-marker]:hidden md:py-6">
+                        <span className="pr-4 text-base font-semibold leading-snug md:text-lg">
+                          {faq.q}
+                        </span>
+                        <span className="material-symbols-outlined flex-shrink-0 text-xl text-[#2f6f4e] transition-transform group-open:rotate-45" aria-hidden="true">
+                          add
+                        </span>
+                      </summary>
+                      <div className="max-w-3xl px-1 pb-6 pr-12">
+                        <p className="leading-relaxed text-[#0a0a0a]/64">{faq.a}</p>
+                      </div>
+                    </details>
+                  ))}
+                </div>
+              </section>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Still Have Questions */}
-      <section className="py-16 md:py-20 bg-[#0a0a0a] text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <h2 className="text-3xl md:text-5xl font-black leading-none mb-6">
-            Still Have Questions?
+      <section className="bg-[#0a0a0a] py-16 text-white md:py-20">
+        <div className="mx-auto max-w-4xl px-4 text-center sm:px-6">
+          <p className="mb-4 text-xs font-bold uppercase tracking-[0.13em] text-[#d8e2d3]/75">Still wondering?</p>
+          <h2 className="mb-5 text-3xl font-extrabold tracking-[-0.025em] md:text-5xl">
+            Ask us directly.
           </h2>
-          <p className="text-lg md:text-xl text-white/70 mb-10">
-            We&apos;re here to help. Reach out to us and we&apos;ll get back to you as
-            soon as possible.
+          <p className="mx-auto mb-9 max-w-2xl text-lg leading-relaxed text-white/65">
+            Reach out with a question, or join neighbors taking action for safer streets.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <a
-              href="mailto:info@bostonbetterstreets.org"
-              className="inline-flex items-center justify-center px-8 py-4 bg-[#2f6f4e] text-white font-bold rounded-full transition-all shadow-[4px_4px_0px_0px_#fff] hover:shadow-[6px_6px_0px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+              href="mailto:bostonbetterstreets@gmail.com"
+              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-lg bg-[#397956] px-7 py-3 text-sm font-bold text-white transition-colors hover:bg-[#448b64] sm:text-base"
             >
-              <span className="material-symbols-outlined mr-2">mail</span>
+              <span className="material-symbols-outlined text-lg" aria-hidden="true">mail</span>
               Contact Us
             </a>
             <Link
-              href="/take-action"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-white text-white font-bold rounded-full hover:bg-white hover:text-[#0a0a0a] transition-all"
+              href="/join"
+              className="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/35 px-7 py-3 text-sm font-bold text-white transition-colors hover:border-white/70 hover:bg-white/8 sm:text-base"
             >
-              <span className="material-symbols-outlined mr-2">campaign</span>
-              Get Involved
+              Join Us
             </Link>
           </div>
         </div>
       </section>
-    </div>
+    </main>
   );
 }
