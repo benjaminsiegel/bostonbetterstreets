@@ -20,8 +20,8 @@ const TileLayer = dynamic(
   () => import("react-leaflet").then((module) => module.TileLayer),
   { ssr: false },
 );
-const CircleMarker = dynamic(
-  () => import("react-leaflet").then((module) => module.CircleMarker),
+const Polyline = dynamic(
+  () => import("react-leaflet").then((module) => module.Polyline),
   { ssr: false },
 );
 const Tooltip = dynamic(
@@ -33,6 +33,11 @@ const ZoomControl = dynamic(
   { ssr: false },
 );
 
+const bostonProjectBounds: [[number, number], [number, number]] = [
+  [42.234, -71.151],
+  [42.374, -71.032],
+];
+
 const projectStatuses: ProjectStatus[] = [
   "Paused",
   "Limited Progress",
@@ -40,26 +45,26 @@ const projectStatuses: ProjectStatus[] = [
   "Cancelled",
 ];
 
-const actionTone: Record<ActionStatus, string> = {
-  Promised: "bg-[#e7d5a0] text-[#4b3510]",
-  "Needs proof": "bg-[#ead4d1] text-[#7f2a24]",
-  Authorized: "bg-[#d8e2d3] text-[#285f43]",
-  "State action": "bg-[#d8e0ea] text-[#29445e]",
-  "Existing — verify": "bg-[#dfdcd3] text-[#47453f]",
+const actionStatusColors: Record<ActionStatus, string> = {
+  Promised: "#c58a25",
+  "Needs proof": "#b7342c",
+  Authorized: "#2f6f4e",
+  "State action": "#567898",
+  "Existing — verify": "#62605a",
 };
 
 function ProjectCard({ project, onClose }: { project: StalledProject; onClose: () => void }) {
   return (
-    <article className="absolute inset-x-3 bottom-3 z-[500] max-w-[440px] rounded-lg border border-[#0a0a0a]/12 bg-[#f7f3ea]/96 p-5 shadow-[0_18px_45px_rgba(10,10,10,.18)] backdrop-blur md:inset-x-auto md:bottom-5 md:left-5 md:w-[390px]">
+    <article className="absolute inset-x-3 bottom-3 z-[500] max-w-[440px] rounded-md border border-[#0a0a0a]/14 bg-[#f7f3ea]/97 p-5 shadow-[0_18px_45px_rgba(10,10,10,.18)] backdrop-blur md:inset-x-auto md:bottom-5 md:left-5 md:w-[390px]">
       <div className="mb-3 flex items-start justify-between gap-5">
         <div>
-          <div className="mb-2 flex items-center gap-2 text-[0.62rem] font-bold uppercase tracking-[0.12em] text-[#0a0a0a]/55">
+          <div className="mb-2 flex items-center gap-2 text-[0.62rem] font-bold uppercase tracking-[0.12em] text-[#0a0a0a]/52">
             <span
               className="h-2.5 w-2.5 rounded-full"
               style={{ backgroundColor: statusColors[project.status] }}
               aria-hidden="true"
             />
-            {project.status}
+            {project.status} · {project.location}
           </div>
           <h3 className="text-xl font-extrabold leading-[1.08] tracking-[-0.02em] text-[#0a0a0a]">
             {project.name}
@@ -69,19 +74,18 @@ function ProjectCard({ project, onClose }: { project: StalledProject; onClose: (
           type="button"
           onClick={onClose}
           aria-label="Close project details"
-          className="-mr-1 -mt-1 flex h-9 w-9 flex-none items-center justify-center rounded-full text-[#0a0a0a]/55 transition-colors hover:bg-[#0a0a0a]/7 hover:text-[#0a0a0a]"
+          className="-mr-1 -mt-1 flex h-9 w-9 flex-none items-center justify-center rounded-full text-[#0a0a0a]/50 transition-colors hover:bg-[#0a0a0a]/7 hover:text-[#0a0a0a]"
         >
           <span className="material-symbols-outlined text-xl" aria-hidden="true">close</span>
         </button>
       </div>
-      <p className="mb-3 text-xs font-semibold text-[#0a0a0a]/52">{project.location}</p>
-      <p className="text-sm leading-[1.6] text-[#0a0a0a]/68">{project.description}</p>
+      <p className="text-sm leading-[1.6] text-[#0a0a0a]/66">{project.description}</p>
       {project.website && (
         <a
           href={project.website}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-4 inline-flex items-center gap-1.5 border-b border-[#0a0a0a]/25 pb-0.5 text-xs font-bold text-[#0a0a0a]/72 transition-colors hover:border-[#2f6f4e] hover:text-[#2f6f4e]"
+          className="mt-4 inline-flex items-center gap-1.5 border-b border-[#0a0a0a]/25 pb-0.5 text-xs font-bold text-[#0a0a0a]/68 transition-colors hover:border-[#2f6f4e] hover:text-[#2f6f4e]"
         >
           City project page
           <span className="material-symbols-outlined text-sm" aria-hidden="true">north_east</span>
@@ -90,17 +94,9 @@ function ProjectCard({ project, onClose }: { project: StalledProject; onClose: (
     </article>
   );
 }
+
 export default function ProjectAccountabilityMap() {
   const [selectedProject, setSelectedProject] = useState<StalledProject | null>(null);
-  const [statusFilter, setStatusFilter] = useState<ProjectStatus | "All">("All");
-
-  const visibleProjects = useMemo(
-    () =>
-      statusFilter === "All"
-        ? stalledProjects
-        : stalledProjects.filter((project) => project.status === statusFilter),
-    [statusFilter],
-  );
 
   const counts = useMemo(
     () =>
@@ -114,59 +110,76 @@ export default function ProjectAccountabilityMap() {
     [],
   );
 
+  const roadProjects = stalledProjects.filter((project) => project.corridors?.length);
+  const betterBuffers = stalledProjects.find((project) => project.id === "better-buffers");
+
   return (
-    <div className="grid border-y border-[#0a0a0a]/10 bg-[#e8e3d8] xl:grid-cols-[minmax(0,1fr)_420px]">
-      <section className="min-w-0 border-[#0a0a0a]/10 xl:border-r" aria-labelledby="map-title">
-        <div className="flex flex-col gap-4 border-b border-[#0a0a0a]/10 bg-[#f0ece2] px-4 py-4 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
-          <div>
-            <h2 id="map-title" className="text-base font-extrabold tracking-[-0.01em] text-[#0a0a0a]">
-              Seventeen promises, across Boston
-            </h2>
-            <p className="mt-1 text-xs leading-5 text-[#0a0a0a]/52">
-              Select a status or tap any circle for the project record.
-            </p>
+    <div className="border-y border-[#0a0a0a]/10 bg-[#f0ece2]">
+      <section aria-labelledby="map-title">
+        <div className="border-b border-[#0a0a0a]/10 px-4 py-5 sm:px-6 lg:px-8">
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+            <div>
+              <p className="mb-2 text-[0.62rem] font-bold uppercase tracking-[0.13em] text-[#a63d36]">
+                The project map
+              </p>
+              <h2 id="map-title" className="text-xl font-extrabold tracking-[-0.02em] text-[#0a0a0a] md:text-2xl">
+                Sixteen corridors—and one citywide program
+              </h2>
+              <p className="mt-2 text-xs leading-5 text-[#0a0a0a]/50">
+                Select a road to open its project record. The map begins with every corridor in view.
+              </p>
+            </div>
+
+            <label className="flex max-w-sm flex-col gap-1.5 text-[0.6rem] font-bold uppercase tracking-[0.1em] text-[#0a0a0a]/45">
+              Find a project
+              <select
+                value={selectedProject?.id ?? ""}
+                onChange={(event) => {
+                  const project = stalledProjects.find((item) => item.id === event.target.value);
+                  setSelectedProject(project ?? null);
+                }}
+                className="min-h-10 rounded-md border border-[#0a0a0a]/14 bg-[#f7f3ea] px-3 text-xs font-semibold normal-case tracking-normal text-[#0a0a0a]/72 outline-none focus:border-[#2f6f4e]"
+              >
+                <option value="">Choose from all 17 projects</option>
+                {stalledProjects.map((project) => (
+                  <option key={project.id} value={project.id}>
+                    {project.shortName} — {project.status}
+                  </option>
+                ))}
+              </select>
+            </label>
           </div>
 
-          <div className="flex flex-wrap gap-2" aria-label="Filter projects by status">
-            <button
-              type="button"
-              onClick={() => setStatusFilter("All")}
-              className={`rounded-full px-3 py-1.5 text-[0.66rem] font-bold transition-colors ${
-                statusFilter === "All"
-                  ? "bg-[#0a0a0a] text-white"
-                  : "bg-[#0a0a0a]/6 text-[#0a0a0a]/62 hover:bg-[#0a0a0a]/10"
-              }`}
-            >
-              All 17
-            </button>
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-[#0a0a0a]/8 pt-4 text-[0.65rem] font-semibold text-[#0a0a0a]/52">
             {projectStatuses.map((status) => (
-              <button
-                type="button"
-                key={status}
-                onClick={() => setStatusFilter(status)}
-                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.66rem] font-bold transition-colors ${
-                  statusFilter === status
-                    ? "bg-[#0a0a0a] text-white"
-                    : "bg-[#0a0a0a]/6 text-[#0a0a0a]/62 hover:bg-[#0a0a0a]/10"
-                }`}
-              >
+              <span key={status} className="inline-flex items-center gap-1.5">
                 <span
                   className="h-2 w-2 rounded-full"
                   style={{ backgroundColor: statusColors[status] }}
                   aria-hidden="true"
                 />
                 {status} {counts[status]}
-              </button>
+              </span>
             ))}
+            <a
+              href={pressPlayUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-auto inline-flex items-center gap-1 font-bold text-[#0a0a0a]/62 transition-colors hover:text-[#2f6f4e]"
+            >
+              Press Play source
+              <span className="material-symbols-outlined text-xs" aria-hidden="true">north_east</span>
+            </a>
           </div>
         </div>
 
-        <div className="relative h-[590px] overflow-hidden bg-[#ddd8cd] md:h-[680px] xl:h-[760px]">
+        <div className="relative h-[570px] overflow-hidden bg-[#ddd8cd] md:h-[690px] xl:h-[730px]">
           <MapContainer
-            center={[42.325, -71.081]}
-            zoom={12}
+            bounds={bostonProjectBounds}
+            boundsOptions={{ padding: [14, 14] }}
             minZoom={10}
             maxZoom={17}
+            zoomSnap={0.25}
             zoomControl={false}
             scrollWheelZoom
             style={{ height: "100%", width: "100%", background: "#ddd8cd" }}
@@ -177,116 +190,140 @@ export default function ProjectAccountabilityMap() {
             />
             <ZoomControl position="bottomright" />
 
-            {visibleProjects.map((project) => {
-              const color = statusColors[project.status];
-              const isSelected = selectedProject?.id === project.id;
+            {roadProjects.flatMap((project) =>
+              project.corridors!.flatMap((corridor, corridorIndex) => {
+                const color = statusColors[project.status];
+                const isSelected = selectedProject?.id === project.id;
+                const key = `${project.id}-${corridorIndex}`;
 
-              return (
-                <CircleMarker
-                  key={project.id}
-                  center={project.coordinates}
-                  radius={isSelected ? 16 : 11}
-                  pathOptions={{
-                    color: "#f7f3ea",
-                    weight: isSelected ? 4 : 3,
-                    opacity: 1,
-                    fillColor: color,
-                    fillOpacity: 0.94,
-                  }}
-                  eventHandlers={{
-                    click: () => setSelectedProject(project),
-                  }}
-                >
-                  <Tooltip direction="top" offset={[0, -10]} opacity={1}>
-                    <div className="max-w-[210px] py-0.5">
-                      <strong>{project.shortName}</strong>
-                      <br />
-                      <span>{project.status}</span>
-                    </div>
-                  </Tooltip>
-                </CircleMarker>
-              );
-            })}
+                return [
+                  <Polyline
+                    key={`${key}-casing`}
+                    positions={corridor}
+                    pathOptions={{
+                      color: isSelected ? "#0a0a0a" : "#f7f3ea",
+                      weight: isSelected ? 13 : 10,
+                      opacity: 0.9,
+                      lineCap: "round",
+                      lineJoin: "round",
+                      interactive: false,
+                    }}
+                  />,
+                  <Polyline
+                    key={`${key}-line`}
+                    positions={corridor}
+                    pathOptions={{
+                      color,
+                      weight: isSelected ? 7 : 5,
+                      opacity: 0.94,
+                      lineCap: "round",
+                      lineJoin: "round",
+                      dashArray: project.status === "Cancelled" ? "8 7" : undefined,
+                    }}
+                    eventHandlers={{ click: () => setSelectedProject(project) }}
+                  >
+                    <Tooltip sticky direction="top" offset={[0, -7]} opacity={1}>
+                      <div className="max-w-[210px] py-0.5">
+                        <strong>{project.shortName}</strong>
+                        <br />
+                        <span>{project.status}</span>
+                      </div>
+                    </Tooltip>
+                  </Polyline>,
+                ];
+              }),
+            )}
           </MapContainer>
 
-          <div className="pointer-events-none absolute left-4 top-4 z-[400] rounded-md border border-[#0a0a0a]/10 bg-[#f7f3ea]/92 px-3 py-2 text-[0.62rem] font-bold uppercase tracking-[0.1em] text-[#0a0a0a]/56 shadow-sm backdrop-blur sm:left-6 sm:top-6">
+          <div className="pointer-events-none absolute left-4 top-4 z-[400] rounded-md border border-[#0a0a0a]/10 bg-[#f7f3ea]/94 px-3 py-2 text-[0.6rem] font-bold uppercase tracking-[0.1em] text-[#0a0a0a]/54 shadow-sm backdrop-blur sm:left-6 sm:top-6">
             Status snapshot · July 21, 2026
           </div>
+
+          {betterBuffers && (
+            <button
+              type="button"
+              onClick={() => setSelectedProject(betterBuffers)}
+              className="absolute right-4 top-4 z-[400] max-w-[190px] rounded-md border border-[#0a0a0a]/12 bg-[#f7f3ea]/95 px-3 py-2.5 text-left shadow-sm backdrop-blur transition-colors hover:bg-white sm:right-6 sm:top-6"
+            >
+              <span className="mb-1 flex items-center gap-1.5 text-[0.55rem] font-bold uppercase tracking-[0.1em] text-[#0a0a0a]/44">
+                <span className="h-2 w-2 rounded-full bg-[#c58a25]" aria-hidden="true" />
+                Citywide program
+              </span>
+              <span className="block text-xs font-extrabold text-[#0a0a0a]">Better Buffers</span>
+            </button>
+          )}
 
           {selectedProject && (
             <ProjectCard project={selectedProject} onClose={() => setSelectedProject(null)} />
           )}
         </div>
 
-        <div className="flex flex-col gap-3 border-t border-[#0a0a0a]/10 bg-[#f0ece2] px-4 py-4 text-xs leading-5 text-[#0a0a0a]/52 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>Representative points show each corridor or project area; Better Buffers is citywide.</p>
-          <a
-            href={pressPlayUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex flex-none items-center gap-1.5 font-bold text-[#0a0a0a]/68 transition-colors hover:text-[#2f6f4e]"
-          >
-            Open Press Play source
-            <span className="material-symbols-outlined text-sm" aria-hidden="true">north_east</span>
-          </a>
+        <div className="flex flex-col gap-2 border-t border-[#0a0a0a]/10 px-4 py-3.5 text-[0.66rem] leading-5 text-[#0a0a0a]/44 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
+          <p>Corridor lines are an editorial guide; City project plans define exact limits.</p>
+          <p>16 place-based projects · 1 citywide program</p>
         </div>
       </section>
 
-      <aside id="citywide-actions" className="bg-[#f0ece2] xl:max-h-[856px] xl:overflow-y-auto" aria-labelledby="citywide-heading">
-        <div className="border-b border-[#0a0a0a]/10 bg-[#0a0a0a] px-5 py-7 text-white sm:px-7">
-          <p className="mb-3 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[#d8e2d3]/72">
-            Beyond the map
-          </p>
-          <h2 id="citywide-heading" className="text-2xl font-extrabold leading-[1.05] tracking-[-0.025em]">
-            Citywide actions that cannot wait
-          </h2>
-          <p className="mt-4 text-sm leading-[1.65] text-white/62">
-            Project delivery matters. So do the rules, enforcement, funding, and public accountability that shape every street.
+      <aside id="citywide-actions" className="border-t border-[#0a0a0a]/10" aria-labelledby="citywide-heading">
+        <div className="flex flex-col gap-3 border-b border-[#0a0a0a]/10 px-5 py-7 sm:px-7 lg:flex-row lg:items-end lg:justify-between lg:px-8">
+          <div>
+            <p className="mb-3 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-[#a63d36]">
+              Citywide ledger
+            </p>
+            <h2 id="citywide-heading" className="text-2xl font-extrabold leading-[1.04] tracking-[-0.025em] text-[#0a0a0a] md:text-3xl">
+              Commitments that reach every street
+            </h2>
+          </div>
+          <p className="max-w-[430px] text-sm leading-[1.65] text-[#0a0a0a]/52 lg:text-right">
+            Ten promises and policies to track alongside the construction map.
           </p>
         </div>
 
-        <div className="divide-y divide-[#0a0a0a]/10">
+        <div className="grid md:grid-cols-2">
           {citywideActions.map((action, index) => (
-            <details key={action.id} className="group px-5 sm:px-7" open={index < 2}>
-              <summary className="flex cursor-pointer list-none items-start justify-between gap-5 py-5 marker:content-none">
-                <div>
-                  <div className="mb-2 flex flex-wrap items-center gap-2">
-                    <span className={`rounded px-2 py-1 text-[0.58rem] font-bold uppercase tracking-[0.08em] ${actionTone[action.status]}`}>
-                      {action.status}
-                    </span>
-                    <span className="text-[0.6rem] font-bold uppercase tracking-[0.1em] text-[#0a0a0a]/38">
-                      {action.scope}
-                    </span>
-                  </div>
-                  <h3 className="text-sm font-extrabold leading-[1.3] tracking-[-0.01em] text-[#0a0a0a]">
-                    {action.title}
-                  </h3>
+            <article
+              key={action.id}
+              className={`grid grid-cols-[28px_minmax(0,1fr)] gap-3 border-b border-[#0a0a0a]/10 px-5 py-5 sm:px-7 lg:px-8 ${
+                index % 2 === 0 ? "md:border-r" : ""
+              }`}
+            >
+              <span className="pt-0.5 text-[0.62rem] font-bold tabular-nums text-[#0a0a0a]/28">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <div className="mb-2 flex flex-wrap items-center gap-2 text-[0.58rem] font-bold uppercase tracking-[0.09em]">
+                  <span className="inline-flex items-center gap-1.5" style={{ color: actionStatusColors[action.status] }}>
+                    <span
+                      className="h-2 w-2 rounded-full"
+                      style={{ backgroundColor: actionStatusColors[action.status] }}
+                      aria-hidden="true"
+                    />
+                    {action.status}
+                  </span>
+                  <span className="text-[#0a0a0a]/34">{action.scope}</span>
                 </div>
-                <span className="material-symbols-outlined mt-1 flex-none text-lg text-[#0a0a0a]/42 transition-transform group-open:rotate-45" aria-hidden="true">
-                  add
-                </span>
-              </summary>
-              <div className="-mt-1 pb-6">
-                <p className="text-sm leading-[1.65] text-[#0a0a0a]/62">{action.description}</p>
-                <div className="mt-4 border-l-2 border-[#2f6f4e]/45 pl-3">
-                  <p className="mb-1 text-[0.6rem] font-bold uppercase tracking-[0.1em] text-[#2f6f4e]">
-                    What proof looks like
+                <h3 className="text-sm font-extrabold leading-[1.3] tracking-[-0.01em] text-[#0a0a0a]">
+                  {action.title}
+                </h3>
+                <p className="mt-2 text-xs leading-[1.55] text-[#0a0a0a]/55">{action.description}</p>
+                <div className="mt-3 flex items-start justify-between gap-3 border-t border-[#0a0a0a]/8 pt-3">
+                  <p className="text-[0.64rem] leading-[1.5] text-[#0a0a0a]/42">
+                    <span className="font-bold text-[#0a0a0a]/55">Track:</span> {action.measure}
                   </p>
-                  <p className="text-xs leading-[1.6] text-[#0a0a0a]/58">{action.measure}</p>
+                  {action.source && (
+                    <a
+                      href={action.source}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Source for ${action.title}`}
+                      className="flex-none text-[#0a0a0a]/36 transition-colors hover:text-[#2f6f4e]"
+                    >
+                      <span className="material-symbols-outlined text-sm" aria-hidden="true">north_east</span>
+                    </a>
+                  )}
                 </div>
-                {action.source && (
-                  <a
-                    href={action.source}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-4 inline-flex items-center gap-1 border-b border-[#0a0a0a]/20 pb-0.5 text-[0.68rem] font-bold text-[#0a0a0a]/58 transition-colors hover:border-[#2f6f4e] hover:text-[#2f6f4e]"
-                  >
-                    Source
-                    <span className="material-symbols-outlined text-xs" aria-hidden="true">north_east</span>
-                  </a>
-                )}
               </div>
-            </details>
+            </article>
           ))}
         </div>
       </aside>
