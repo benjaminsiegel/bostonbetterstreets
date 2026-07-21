@@ -1,140 +1,71 @@
-import { Metadata } from "next";
-import Link from "next/link";
-import { painPoints } from "@/data/painPoints";
-import { projects } from "@/data/projects";
-import { MapPin, Plus, AlertTriangle, Info } from "lucide-react";
-import MapWrapper from "@/components/Map/MapWrapper";
+import type { Metadata } from "next";
+import ProjectAccountabilityMap from "@/components/Map/ProjectAccountabilityMap";
 
 export const metadata: Metadata = {
-  title: "Pain Point Map | Boston Better Streets Coalition",
+  title: "Street Safety Accountability Map | Boston Better Streets Coalition",
   description:
-    "Explore our community-sourced map of dangerous intersections, stalled projects, and infrastructure issues across Boston.",
+    "A working map of Boston's stalled street-safety projects and the citywide actions needed to prevent serious crashes.",
+  robots: {
+    index: false,
+    follow: false,
+    nocache: true,
+  },
 };
 
-export default function MapPage() {
+export default function AccountabilityMapPage() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Header */}
-      <section className="bg-blue-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-4">
-            <MapPin className="w-8 h-8" />
-            <h1 className="text-3xl md:text-4xl font-bold">
-              Boston Street Safety Map
-            </h1>
-          </div>
-          <p className="text-xl text-blue-100 max-w-3xl">
-            A community-sourced map documenting dangerous crossings, stalled
-            projects, and infrastructure failures across the city. Your
-            neighbors have reported {painPoints.length} pain points and we&apos;re
-            tracking {projects.length} projects.
-          </p>
-        </div>
-      </section>
-
-      {/* Info Banner */}
-      <section className="bg-amber-50 border-b border-amber-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-start gap-3">
-            <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <div className="text-sm text-amber-800">
-              <strong>How to use this map:</strong> Click on any marker to see
-              details about that location. Red circles indicate reported pain
-              points (larger circles = more reports). Blue squares show tracked
-              projects. Use the filters to narrow your view.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <section className="py-8">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Map */}
-          <MapWrapper
-            painPoints={painPoints}
-            projects={projects}
-            height="600px"
-            showFilters={true}
-          />
-
-          {/* Report CTA */}
-          <div className="mt-8 bg-white rounded-lg border border-gray-200 p-6">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <h2 className="text-xl font-bold text-gray-900 mb-2">
-                  See Something Missing?
-                </h2>
-                <p className="text-gray-600">
-                  Help us document dangerous conditions in your neighborhood.
-                  Your report helps build the case for safer streets.
-                </p>
+    <div className="bg-[#f0ece2]">
+      <section className="border-b border-white/10 bg-[#0a0a0a] text-white">
+        <div className="mx-auto max-w-7xl px-4 py-11 sm:px-6 md:py-14 lg:px-8">
+          <div className="grid gap-9 lg:grid-cols-[minmax(0,1fr)_350px] lg:items-end lg:gap-16">
+            <div>
+              <div className="mb-5 flex items-center gap-3 text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[#d8e2d3]/78">
+                <span className="h-px w-8 bg-[#8cb29a]" aria-hidden="true" />
+                Private working draft · not linked or indexed
               </div>
-              <Link
-                href="/map/report"
-                className="inline-flex items-center justify-center px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors flex-shrink-0"
+              <h1 className="max-w-[850px] text-[2.8rem] font-extrabold leading-[0.96] tracking-[-0.04em] sm:text-[3.7rem] md:text-[4.5rem]">
+                Promises need proof.
+              </h1>
+              <p className="mt-6 max-w-[760px] text-base leading-[1.7] text-white/66 md:text-lg">
+                Seventeen stalled street and transportation projects, placed back on the map—and a public checklist for the citywide actions that make every neighborhood safer.
+              </p>
+            </div>
+
+            <div className="border-l border-white/15 pl-5 sm:pl-6">
+              <p className="text-sm font-semibold leading-[1.65] text-white/78">
+                “We owe Louisa more than our grief. We owe her action.”
+              </p>
+              <p className="mt-3 text-[0.65rem] font-bold uppercase tracking-[0.12em] text-white/38">
+                Mayor Michelle Wu · City Hall vigil · July 16, 2026
+              </p>
+              <a
+                href="#citywide-actions"
+                className="mt-5 inline-flex items-center gap-1.5 border-b border-white/25 pb-0.5 text-xs font-bold text-white/68 transition-colors hover:border-white hover:text-white xl:hidden"
               >
-                <Plus className="w-5 h-5 mr-2" />
-                Report a Pain Point
-              </Link>
+                Review citywide commitments
+                <span className="material-symbols-outlined text-sm" aria-hidden="true">south</span>
+              </a>
             </div>
           </div>
+        </div>
+      </section>
 
-          {/* Recent Reports */}
-          <div className="mt-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">
-              Recent Reports
+      <section className="mx-auto max-w-[1600px] py-5 sm:px-5 sm:py-7 lg:px-7">
+        <ProjectAccountabilityMap />
+      </section>
+
+      <section className="border-t border-[#0a0a0a]/10 bg-[#e7e2d7]">
+        <div className="mx-auto grid max-w-7xl gap-7 px-4 py-10 sm:px-6 md:grid-cols-[220px_minmax(0,1fr)] md:gap-12 lg:px-8">
+          <p className="text-[0.65rem] font-bold uppercase tracking-[0.14em] text-[#a63d36]">
+            Draft framing
+          </p>
+          <div className="max-w-3xl">
+            <h2 className="text-2xl font-extrabold tracking-[-0.025em] text-[#0a0a0a] md:text-3xl">
+              A promise is not a safety intervention.
             </h2>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {painPoints.slice(0, 6).map((point) => (
-                <div
-                  key={point.id}
-                  className="bg-white rounded-lg border border-gray-200 p-4 hover:shadow-md transition-shadow"
-                >
-                  <div className="flex items-start gap-3">
-                    <AlertTriangle
-                      className="w-5 h-5 flex-shrink-0"
-                      style={{
-                        color:
-                          point.severity === "critical"
-                            ? "#dc2626"
-                            : point.severity === "high"
-                            ? "#ea580c"
-                            : point.severity === "medium"
-                            ? "#f59e0b"
-                            : "#84cc16",
-                      }}
-                    />
-                    <div>
-                      <h3 className="font-semibold text-gray-900">
-                        {point.title}
-                      </h3>
-                      <p className="text-sm text-gray-500 mt-1">
-                        {point.location}
-                      </p>
-                      <div className="flex items-center gap-2 mt-2">
-                        <span
-                          className={`px-2 py-0.5 text-xs rounded-full capitalize ${
-                            point.severity === "critical"
-                              ? "bg-red-100 text-red-700"
-                              : point.severity === "high"
-                              ? "bg-orange-100 text-orange-700"
-                              : point.severity === "medium"
-                              ? "bg-amber-100 text-amber-700"
-                              : "bg-green-100 text-green-700"
-                          }`}
-                        >
-                          {point.severity}
-                        </span>
-                        <span className="text-xs text-gray-500">
-                          {point.reportCount} reports
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <p className="mt-4 text-sm leading-[1.75] text-[#0a0a0a]/62 md:text-base">
+              Boston should be measured by what changes on the street: projects moving, funding protected, dangerous behavior deterred, crash findings published, and interim fixes installed while permanent work advances. This draft makes those outcomes visible in one place.
+            </p>
           </div>
         </div>
       </section>
