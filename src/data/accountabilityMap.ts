@@ -13,6 +13,7 @@ export type StalledProject = {
   location: string;
   coordinates: [number, number];
   corridors?: [number, number][][];
+  areas?: [number, number][][];
   website?: string;
 };
 
@@ -29,12 +30,8 @@ export type CitywideAction = {
   scope: "City" | "City + MBTA" | "State";
   status: ActionStatus;
   description: string;
-  measure: string;
   source?: string;
 };
-
-export const pressPlayUrl =
-  "https://app.notion.com/p/pressplayontransportation/Press-Play-on-Transportation-3374eb75300c807494e2f6446632e826?source=copy_link";
 
 export const statusColors: Record<ProjectStatus, string> = {
   Paused: "#b7342c",
@@ -145,6 +142,17 @@ export const stalledProjects: StalledProject[] = [
         [42.3515, -71.0628],
       ],
     ],
+    areas: [
+      [
+        [42.3592, -71.0612],
+        [42.3584, -71.0577],
+        [42.355, -71.059],
+        [42.3513, -71.0612],
+        [42.3523, -71.0645],
+        [42.356, -71.064],
+        [42.3592, -71.0612],
+      ],
+    ],
     website:
       "https://www.boston.gov/departments/public-works/project/downtown-crossing-street-improvements",
   },
@@ -162,6 +170,16 @@ export const stalledProjects: StalledProject[] = [
         [42.3192, -71.0988],
         [42.3158, -71.101],
         [42.312, -71.1035],
+      ],
+    ],
+    areas: [
+      [
+        [42.3185, -71.1001],
+        [42.3165, -71.0978],
+        [42.3122, -71.101],
+        [42.3115, -71.1045],
+        [42.315, -71.105],
+        [42.3185, -71.1001],
       ],
     ],
     website:
@@ -306,6 +324,16 @@ export const stalledProjects: StalledProject[] = [
         [42.3692, -71.0357],
       ],
     ],
+    areas: [
+      [
+        [42.3718, -71.0437],
+        [42.3722, -71.0382],
+        [42.3698, -71.0353],
+        [42.367, -71.0374],
+        [42.3673, -71.0425],
+        [42.3718, -71.0437],
+      ],
+    ],
     website:
       "https://www.boston.gov/departments/transportation/project/maverick-square-transportation-action-plan",
   },
@@ -330,6 +358,16 @@ export const stalledProjects: StalledProject[] = [
         [42.2865, -71.1268],
       ],
     ],
+    areas: [
+      [
+        [42.2907, -71.131],
+        [42.2894, -71.1269],
+        [42.2857, -71.1262],
+        [42.2838, -71.1307],
+        [42.2862, -71.1335],
+        [42.2907, -71.131],
+      ],
+    ],
   },
   {
     id: "lower-roxbury",
@@ -352,6 +390,16 @@ export const stalledProjects: StalledProject[] = [
         [42.3305, -71.081],
       ],
     ],
+    areas: [
+      [
+        [42.3385, -71.0822],
+        [42.3385, -71.0732],
+        [42.3333, -71.0717],
+        [42.3293, -71.0764],
+        [42.3302, -71.0826],
+        [42.3385, -71.0822],
+      ],
+    ],
     website:
       "https://www.boston.gov/departments/transportation/project/lower-roxbury-neighborhood-traffic-calming",
   },
@@ -371,6 +419,15 @@ export const stalledProjects: StalledProject[] = [
         [42.3527, -71.066],
         [42.3525, -71.071],
         [42.3564, -71.0714],
+      ],
+    ],
+    areas: [
+      [
+        [42.3571, -71.073],
+        [42.3575, -71.066],
+        [42.3518, -71.0654],
+        [42.3515, -71.0723],
+        [42.3571, -71.073],
       ],
     ],
     website:
@@ -416,8 +473,6 @@ export const citywideActions: CitywideAction[] = [
     status: "Promised",
     description:
       "Publish every fatal-crash street review, the fixes it triggers, and the delivery date.",
-    measure:
-      "Protocol · findings · responsible team · deadlines",
   },
   {
     id: "blocked-lanes",
@@ -426,8 +481,6 @@ export const citywideActions: CitywideAction[] = [
     status: "Needs proof",
     description:
       "Show that stepped-up enforcement is real, sustained, and applied to every vehicle.",
-    measure:
-      "Weekly citations and towing by violation and location",
   },
   {
     id: "bus-lane-cameras",
@@ -436,8 +489,6 @@ export const citywideActions: CitywideAction[] = [
     status: "Authorized",
     description:
       "Use the camera authority Massachusetts has already granted on the highest-delay corridors.",
-    measure:
-      "Launch corridors · equity review · public start date",
     source:
       "https://malegislature.gov/Laws/SessionLaws/Acts/2024/Chapter363",
   },
@@ -448,8 +499,6 @@ export const citywideActions: CitywideAction[] = [
     status: "State action",
     description:
       "Win state authority for a privacy-protective program on Boston's most dangerous streets.",
-    measure:
-      "Enabling law · proposed locations · safeguards",
     source: "https://malegislature.gov/Bills/194/S2344",
   },
   {
@@ -459,8 +508,6 @@ export const citywideActions: CitywideAction[] = [
     status: "Existing — verify",
     description:
       "Audit Boston's existing side-guard rule and expand safer-vehicle standards where possible.",
-    measure:
-      "Inspections · exemptions · violations · contractor compliance",
     source:
       "https://www.boston.gov/departments/innovation-and-technology/2013-truck-side-guard-pilot",
   },
@@ -471,8 +518,6 @@ export const citywideActions: CitywideAction[] = [
     status: "Needs proof",
     description:
       "Turn Boston's 2030 goal into yearly build targets the public can check.",
-    measure:
-      "Annual targets for high-crash fixes and safety infrastructure",
     source: "https://www.boston.gov/departments/transportation/vision-zero",
   },
   {
@@ -482,8 +527,6 @@ export const citywideActions: CitywideAction[] = [
     status: "Needs proof",
     description:
       "Give every project one public record instead of forcing residents to chase answers.",
-    measure:
-      "Owner · budget · next milestone · decision log · update date",
   },
   {
     id: "streets-cabinet-capacity",
@@ -492,8 +535,6 @@ export const citywideActions: CitywideAction[] = [
     status: "Promised",
     description:
       "Name the two senior staff assigned to delivery and make their authority clear.",
-    measure:
-      "Names · authority · assigned projects · deadlines",
   },
   {
     id: "quick-builds",
@@ -502,8 +543,6 @@ export const citywideActions: CitywideAction[] = [
     status: "Needs proof",
     description:
       "Reduce risk now while permanent projects move through design and construction.",
-    measure:
-      "A public 90-day list of quick-build fixes",
   },
   {
     id: "funding-delivery",
@@ -512,7 +551,5 @@ export const citywideActions: CitywideAction[] = [
     status: "Needs proof",
     description:
       "Stop preventable delays from forfeiting outside funds and years of completed work.",
-    measure:
-      "Every funding deadline and a recovery schedule",
   },
 ];

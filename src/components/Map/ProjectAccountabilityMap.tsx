@@ -4,7 +4,6 @@ import dynamic from "next/dynamic";
 import { useMemo, useState } from "react";
 import {
   citywideActions,
-  pressPlayUrl,
   stalledProjects,
   statusColors,
   type ActionStatus,
@@ -22,6 +21,10 @@ const TileLayer = dynamic(
 );
 const Polyline = dynamic(
   () => import("react-leaflet").then((module) => module.Polyline),
+  { ssr: false },
+);
+const Polygon = dynamic(
+  () => import("react-leaflet").then((module) => module.Polygon),
   { ssr: false },
 );
 const Tooltip = dynamic(
@@ -110,7 +113,10 @@ export default function ProjectAccountabilityMap() {
     [],
   );
 
-  const roadProjects = stalledProjects.filter((project) => project.corridors?.length);
+  const roadProjects = stalledProjects.filter(
+    (project) => project.corridors?.length && !project.areas?.length,
+  );
+  const areaProjects = stalledProjects.filter((project) => project.areas?.length);
   const betterBuffers = stalledProjects.find((project) => project.id === "better-buffers");
 
   return (
@@ -123,10 +129,10 @@ export default function ProjectAccountabilityMap() {
                 The project map
               </p>
               <h2 id="map-title" className="text-xl font-extrabold tracking-[-0.02em] text-[#0a0a0a] md:text-2xl">
-                Sixteen corridors—and one citywide program
+                Ten corridors, six project areas, one citywide program
               </h2>
               <p className="mt-2 text-xs leading-5 text-[#0a0a0a]/50">
-                Select a road to open its project record. The map begins with every corridor in view.
+                Select a highlighted road or shaded area to open its project record.
               </p>
             </div>
 
@@ -161,15 +167,6 @@ export default function ProjectAccountabilityMap() {
                 {status} {counts[status]}
               </span>
             ))}
-            <a
-              href={pressPlayUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-auto inline-flex items-center gap-1 font-bold text-[#0a0a0a]/62 transition-colors hover:text-[#2f6f4e]"
-            >
-              Press Play source
-              <span className="material-symbols-outlined text-xs" aria-hidden="true">north_east</span>
-            </a>
           </div>
         </div>
 
@@ -189,6 +186,37 @@ export default function ProjectAccountabilityMap() {
               url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
             />
             <ZoomControl position="bottomright" />
+
+            {areaProjects.flatMap((project) =>
+              project.areas!.map((area, areaIndex) => {
+                const color = statusColors[project.status];
+                const isSelected = selectedProject?.id === project.id;
+
+                return (
+                  <Polygon
+                    key={`${project.id}-area-${areaIndex}`}
+                    positions={area}
+                    pathOptions={{
+                      color,
+                      weight: isSelected ? 4 : 2.5,
+                      opacity: 0.9,
+                      fillColor: color,
+                      fillOpacity: isSelected ? 0.34 : 0.18,
+                      lineJoin: "round",
+                    }}
+                    eventHandlers={{ click: () => setSelectedProject(project) }}
+                  >
+                    <Tooltip sticky direction="top" offset={[0, -7]} opacity={1}>
+                      <div className="max-w-[210px] py-0.5">
+                        <strong>{project.shortName}</strong>
+                        <br />
+                        <span>{project.status} · Project area</span>
+                      </div>
+                    </Tooltip>
+                  </Polygon>
+                );
+              }),
+            )}
 
             {roadProjects.flatMap((project) =>
               project.corridors!.flatMap((corridor, corridorIndex) => {
@@ -259,8 +287,8 @@ export default function ProjectAccountabilityMap() {
         </div>
 
         <div className="flex flex-col gap-2 border-t border-[#0a0a0a]/10 px-4 py-3.5 text-[0.66rem] leading-5 text-[#0a0a0a]/44 sm:flex-row sm:items-center sm:justify-between sm:px-6 lg:px-8">
-          <p>Corridor lines are an editorial guide; City project plans define exact limits.</p>
-          <p>16 place-based projects · 1 citywide program</p>
+          <p>Map geometry is an editorial guide; City project plans define exact limits.</p>
+          <p>10 corridors · 6 project areas · 1 citywide program</p>
         </div>
       </section>
 
@@ -306,22 +334,18 @@ export default function ProjectAccountabilityMap() {
                   {action.title}
                 </h3>
                 <p className="mt-2 text-xs leading-[1.55] text-[#0a0a0a]/55">{action.description}</p>
-                <div className="mt-3 flex items-start justify-between gap-3 border-t border-[#0a0a0a]/8 pt-3">
-                  <p className="text-[0.64rem] leading-[1.5] text-[#0a0a0a]/42">
-                    <span className="font-bold text-[#0a0a0a]/55">Track:</span> {action.measure}
-                  </p>
-                  {action.source && (
-                    <a
-                      href={action.source}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Source for ${action.title}`}
-                      className="flex-none text-[#0a0a0a]/36 transition-colors hover:text-[#2f6f4e]"
-                    >
-                      <span className="material-symbols-outlined text-sm" aria-hidden="true">north_east</span>
-                    </a>
-                  )}
-                </div>
+                {action.source && (
+                  <a
+                    href={action.source}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Source for ${action.title}`}
+                    className="mt-3 inline-flex items-center gap-1 border-b border-[#0a0a0a]/14 pb-0.5 text-[0.6rem] font-bold uppercase tracking-[0.08em] text-[#0a0a0a]/38 transition-colors hover:border-[#2f6f4e] hover:text-[#2f6f4e]"
+                  >
+                    Source
+                    <span className="material-symbols-outlined text-[0.7rem]" aria-hidden="true">north_east</span>
+                  </a>
+                )}
               </div>
             </article>
           ))}
