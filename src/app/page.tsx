@@ -24,12 +24,12 @@ export default function Home() {
             src="/images/hero-community.jpg"
             alt="Boston Better Streets Coalition community members"
             fill
-            className="object-cover object-[62%_center] opacity-72 md:opacity-85"
+            className="object-cover object-[62%_center]"
             priority
           />
         </div>
-        <div className="absolute inset-0 bg-[#0a0a0a]/72 md:bg-[linear-gradient(90deg,#0a0a0a_0%,#0a0a0a_35%,rgba(10,10,10,.86)_52%,rgba(10,10,10,.28)_82%,rgba(10,10,10,.12)_100%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0a0a0a]/75 to-transparent" />
+        <div className="absolute inset-0 bg-[#0a0a0a]/58 md:bg-[linear-gradient(90deg,rgba(10,10,10,.92)_0%,rgba(10,10,10,.86)_38%,rgba(10,10,10,.68)_58%,rgba(10,10,10,.12)_84%,rgba(10,10,10,.03)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#0a0a0a]/45 to-transparent" />
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
           <div className="max-w-[700px]">
