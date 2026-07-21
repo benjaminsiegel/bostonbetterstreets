@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Boston Better Streets Coalition | Fighting for Safer Streets",
   description:
-    "We are a grassroots coalition demanding Boston deliver on its promises for safer streets, better bike lanes, and accessible public transit for everyone.",
+    "A resident-led coalition organizing Boston to deliver safer, lower-stress streets for everyone who walks, uses mobility devices, rides transit, bikes, or drives.",
   keywords: [
     "Boston",
     "street safety",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Boston Better Streets Coalition",
     description:
-      "Fighting for safer streets in Boston. Join 700+ residents demanding action.",
+      "We seek to make public support for safer streets impossible for City Hall to ignore.",
     type: "website",
     locale: "en_US",
   },

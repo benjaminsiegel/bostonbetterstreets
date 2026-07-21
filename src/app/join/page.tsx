@@ -1,72 +1,101 @@
+import type { Metadata } from "next";
+import JoinForm from "@/components/JoinForm";
+
+export const metadata: Metadata = {
+  title: "Join Us | Boston Better Streets Coalition",
+  description:
+    "Join Boston residents organizing to make support for safer streets impossible for City Hall to ignore.",
+};
+
+const whatToExpect = [
+  {
+    icon: "mail",
+    title: "Occasional updates",
+    description: "Clear reporting on what is moving, what is stalled, and why.",
+  },
+  {
+    icon: "campaign",
+    title: "Urgent action alerts",
+    description: "A note when an email, testimony, or public presence can matter.",
+  },
+  {
+    icon: "groups",
+    title: "Event invitations",
+    description: "Safety walks, hearings, gatherings, and other chances to act together.",
+  },
+];
+
 export default function JoinPage() {
   return (
-    <div className="bg-[#f0ece2] min-h-screen py-16">
-      <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl md:text-5xl font-bold text-[#0a0a0a] mb-6 text-center">
-          Join <span className="text-[#2f6f4e]">Us</span>
-        </h1>
-        <p className="text-lg text-[#0a0a0a]/70 mb-10 text-center">
-          Sign up to receive updates and get involved with the Boston Better Streets Coalition.
-        </p>
+    <main className="min-h-screen bg-[#f0ece2] text-[#0a0a0a]">
+      <section className="border-b border-[#0a0a0a]/12">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-14 sm:px-6 md:py-20 lg:grid-cols-[1fr_0.78fr] lg:items-end lg:gap-20 lg:px-8">
+          <header className="max-w-4xl">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.13em] text-[#a63d36]">
+              Join the coalition
+            </p>
+            <h1 className="mb-6 max-w-4xl text-4xl font-extrabold leading-[0.98] tracking-[-0.04em] sm:text-5xl md:text-[4.5rem]">
+              Boston agrees. Now we have to show it.
+            </h1>
+            <p className="max-w-3xl text-lg leading-relaxed text-[#0a0a0a]/66 md:text-xl">
+              If you live, work, study, or regularly travel in Boston, your voice
+              belongs here. Tell us how you move and how you might be willing to help.
+            </p>
+          </header>
 
-        <div className="bg-white border-2 border-[#0a0a0a] p-8 shadow-[6px_6px_0px_0px_#0a0a0a]">
-          <form
-            action="https://docs.google.com/forms/d/e/1FAIpQLSemMdPPy-7SJ0p5nr-EE9mgctE6f0fJATBc9CtYJ2BPdgX5Xw/viewform"
-            method="GET"
-            className="space-y-6"
-          >
-            <div>
-              <label htmlFor="name" className="block text-sm font-bold text-[#0a0a0a] mb-2">
-                Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                className="w-full px-4 py-3 border-2 border-[#0a0a0a] focus:border-[#2f6f4e] focus:outline-none transition-colors"
-                placeholder="Your name"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-bold text-[#0a0a0a] mb-2">
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                className="w-full px-4 py-3 border-2 border-[#0a0a0a] focus:border-[#2f6f4e] focus:outline-none transition-colors"
-                placeholder="your@email.com"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="neighborhood" className="block text-sm font-bold text-[#0a0a0a] mb-2">
-                Neighborhood
-              </label>
-              <input
-                type="text"
-                id="neighborhood"
-                name="neighborhood"
-                className="w-full px-4 py-3 border-2 border-[#0a0a0a] focus:border-[#2f6f4e] focus:outline-none transition-colors"
-                placeholder="Hyde Park, Jamaica Plain, etc."
-              />
-            </div>
-
-            <button
-              type="submit"
-              className="w-full py-4 bg-[#2f6f4e] text-white font-bold text-lg hover:bg-[#285f43] transition-colors shadow-[4px_4px_0px_0px_#0a0a0a] hover:shadow-[6px_6px_0px_0px_#0a0a0a] hover:translate-x-[-2px] hover:translate-y-[-2px]"
-            >
-              Sign Up
-            </button>
-          </form>
-
-          <p className="mt-6 text-sm text-[#0a0a0a]/50 text-center">
-            We&apos;ll never share your information with third parties.
-          </p>
+          <aside className="rounded-lg border border-[#0a0a0a]/14 bg-[#e4eadf] p-6 md:p-8">
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.12em] text-[#2f6f4e]">
+              One shared goal
+            </p>
+            <p className="text-xl font-bold leading-snug tracking-[-0.015em] md:text-2xl">
+              No one should die, be injured, or feel under imminent threat on a
+              neighborhood street.
+            </p>
+          </aside>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+        <div className="grid gap-14 lg:grid-cols-[0.72fr_1.28fr] lg:gap-20">
+          <div>
+            <p className="mb-3 text-xs font-bold uppercase tracking-[0.13em] text-[#a63d36]">
+              What to expect
+            </p>
+            <h2 className="mb-8 text-3xl font-extrabold tracking-[-0.03em] md:text-4xl">
+              A list that acts.
+            </h2>
+
+            <div className="space-y-7">
+              {whatToExpect.map((item) => (
+                <div key={item.title} className="grid grid-cols-[2.5rem_1fr] gap-4">
+                  <span
+                    className="material-symbols-outlined mt-0.5 flex h-10 w-10 items-center justify-center rounded-full bg-[#d8e2d3] text-lg text-[#2f6f4e]"
+                    aria-hidden="true"
+                  >
+                    {item.icon}
+                  </span>
+                  <div>
+                    <h3 className="mb-1 font-bold">{item.title}</h3>
+                    <p className="text-sm leading-relaxed text-[#0a0a0a]/58">
+                      {item.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 border-t border-[#0a0a0a]/14 pt-7">
+              <p className="text-sm leading-relaxed text-[#0a0a0a]/55">
+                BBSC is a volunteer-run coalition. We will use your answers to
+                send relevant updates and identify ways members can participate.
+                We will not sell your information.
+              </p>
+            </div>
+          </div>
+
+          <JoinForm />
+        </div>
+      </section>
+    </main>
   );
 }
