@@ -9,9 +9,6 @@ const navItems = [
   { name: "Updates", href: "/updates" },
 ];
 
-const stalledProjectsUrl =
-  "https://app.notion.com/p/pressplayontransportation/Press-Play-on-Transportation-3374eb75300c807494e2f6446632e826?source=copy_link";
-
 const enoughIsEnoughUrl = "https://benjaminsiegel.github.io/enough-is-enough/";
 
 const navItemsAfterProjects = [
@@ -70,17 +67,19 @@ export default function Navigation() {
                 </Link>
               ))}
 
-              <a
-                href={stalledProjectsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center whitespace-nowrap pb-1 text-xs font-bold text-white/75 transition-colors hover:text-[#d8e2d3] xl:text-sm"
+              <Link
+                href="/map"
+                className={`relative inline-flex items-center whitespace-nowrap pb-1 text-xs font-bold transition-colors xl:text-sm ${
+                  isActive("/map")
+                    ? "text-white"
+                    : "text-white/75 hover:text-[#d8e2d3]"
+                }`}
               >
                 Stalled Projects
-                <span className="material-symbols-outlined ml-1 text-sm" aria-hidden="true">
-                  open_in_new
-                </span>
-              </a>
+                {isActive("/map") && (
+                  <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#2f6f4e]" />
+                )}
+              </Link>
 
               {navItemsAfterProjects.map((item) => (
                 <Link
@@ -143,18 +142,17 @@ export default function Navigation() {
                   </Link>
                 ))}
 
-                <a
-                  href={stalledProjectsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-between py-2 text-base font-bold text-white/75 transition-colors hover:text-[#d8e2d3]"
+                <Link
+                  href="/map"
+                  className={`py-2 text-base font-bold transition-colors ${
+                    isActive("/map")
+                      ? "text-[#2f6f4e]"
+                      : "text-white/75 hover:text-[#d8e2d3]"
+                  }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   Stalled Projects
-                  <span className="material-symbols-outlined text-lg" aria-hidden="true">
-                    open_in_new
-                  </span>
-                </a>
+                </Link>
 
                 {navItemsAfterProjects.map((item) => (
                   <Link

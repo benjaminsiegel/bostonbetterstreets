@@ -11,9 +11,6 @@ const typeConfig: Record<UpdateType, { label: string; color: string; bgColor: st
   event: { label: "Event", color: "text-[#0a0a0a]", bgColor: "bg-[#b8c7d8]" },
 };
 
-const stalledProjectsUrl =
-  "https://app.notion.com/p/pressplayontransportation/Press-Play-on-Transportation-3374eb75300c807494e2f6446632e826?source=copy_link";
-
 export default function Home() {
   const recentUpdates = getRecentUpdates(3);
 
@@ -62,15 +59,13 @@ export default function Home() {
               >
                 Join Us
               </Link>
-              <a
-                href={stalledProjectsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/map"
                 className="inline-flex items-center gap-2 border-b border-white/45 pb-1 text-sm font-semibold text-white/78 transition-colors hover:border-white hover:text-white sm:text-base"
               >
                 See stalled projects
-                <span className="material-symbols-outlined text-base" aria-hidden="true">open_in_new</span>
-              </a>
+                <span className="material-symbols-outlined text-base" aria-hidden="true">arrow_forward</span>
+              </Link>
             </div>
           </div>
         </div>
