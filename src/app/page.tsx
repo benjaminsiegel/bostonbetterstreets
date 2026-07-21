@@ -12,7 +12,7 @@ const typeConfig: Record<UpdateType, { label: string; color: string; bgColor: st
 };
 
 export default function Home() {
-  const recentUpdates = getRecentUpdates(3);
+  const recentUpdates = getRecentUpdates(6);
 
   return (
     <div className="flex flex-col bg-[#f0ece2]">
