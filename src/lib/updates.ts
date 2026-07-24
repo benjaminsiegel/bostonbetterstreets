@@ -15,6 +15,7 @@ export interface Update {
   author: string;
   image?: string;
   imageAlt?: string;
+  imageFit?: "cover" | "contain";
   relatedProjectId?: string;
   featured?: boolean;
   tags: string[];
@@ -35,6 +36,8 @@ export function getUpdates(): Update[] {
       const date = data.date instanceof Date
         ? data.date.toISOString().split("T")[0]
         : String(data.date);
+      const imageFit: Update["imageFit"] =
+        data.imageFit === "contain" ? "contain" : "cover";
 
       return {
         id: data.slug,
@@ -47,6 +50,7 @@ export function getUpdates(): Update[] {
         author: data.author,
         image: data.image,
         imageAlt: data.imageAlt,
+        imageFit,
         relatedProjectId: data.relatedProjectId,
         featured: data.featured,
         tags: data.tags || [],

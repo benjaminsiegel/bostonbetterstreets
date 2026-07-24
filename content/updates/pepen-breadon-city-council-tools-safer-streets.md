@@ -7,6 +7,7 @@ author: BBSC Team
 excerpt: "Councilors Enrique Pepén and Liz Breadon used the Council’s limited tools to advance Vision Zero and demand public reporting on stalled street projects."
 image: /images/pepen-breadon-safe-streets.png
 imageAlt: "Safe Streets Can’t Wait sign beside a call for Boston to prioritize making its streets safer"
+imageFit: contain
 tags:
   - City Council
   - Vision Zero

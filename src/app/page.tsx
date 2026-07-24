@@ -109,7 +109,11 @@ export default function Home() {
                         alt={update.imageAlt || update.title}
                         fill
                         sizes="(min-width: 768px) 33vw, 100vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                        className={
+                          update.imageFit === "contain"
+                            ? "object-contain p-2 transition-opacity duration-300 group-hover:opacity-95"
+                            : "object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                        }
                       />
                     </div>
                   )}

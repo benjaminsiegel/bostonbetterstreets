@@ -66,7 +66,11 @@ export default function UpdatesPage() {
                   alt={featuredUpdate.imageAlt || featuredUpdate.title}
                   fill
                   sizes="(min-width: 1024px) 56vw, 100vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                  className={
+                    featuredUpdate.imageFit === "contain"
+                      ? "object-contain p-4 transition-opacity duration-300 group-hover:opacity-95 sm:p-6"
+                      : "object-cover transition-transform duration-700 group-hover:scale-[1.025]"
+                  }
                   priority
                 />
               ) : (
@@ -159,7 +163,11 @@ export default function UpdatesPage() {
                         alt={update.imageAlt || update.title}
                         fill
                         sizes="(min-width: 1024px) 300px, (min-width: 640px) 220px, 100vw"
-                        className="object-cover transition-transform duration-500 group-hover:scale-[1.035]"
+                        className={
+                          update.imageFit === "contain"
+                            ? "object-contain p-2 transition-opacity duration-300 group-hover:opacity-95"
+                            : "object-cover transition-transform duration-500 group-hover:scale-[1.035]"
+                        }
                       />
                     ) : (
                       <div className="absolute inset-0 flex items-end bg-[#d8e2d3] p-4 text-3xl font-black text-[#0a0a0a]/12">
