@@ -12,8 +12,8 @@ export default function MissionPage() {
     <div className="min-h-screen bg-[#f0ece2] text-[#0a0a0a]">
       <section className="border-b border-[#0a0a0a]/18">
         <div className="max-w-[1120px] mx-auto px-4 sm:px-6 py-14 md:py-20">
-          <p className="text-sm font-bold text-[#b7342c] mb-3">Mission</p>
-          <h1 className="text-4xl md:text-6xl font-black leading-none max-w-3xl mb-7">
+          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#b7342c] mb-4">Mission</p>
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-[-0.05em] leading-[0.96] max-w-3xl mb-7">
             Streets should work for the people who live on them.
           </h1>
           <p className="text-lg md:text-xl leading-relaxed text-[#0a0a0a]/70 max-w-3xl">
@@ -25,21 +25,21 @@ export default function MissionPage() {
       <section className="py-14 md:py-20">
         <div className="max-w-[1120px] mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-[260px_1fr] gap-8 lg:gap-14 border-b border-[#0a0a0a]/18 pb-12 mb-12">
-            <h2 className="text-2xl md:text-3xl font-black">What we believe</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-[-0.03em]">What we believe</h2>
             <p className="text-lg md:text-xl leading-relaxed text-[#0a0a0a]/75">
               Every neighborhood deserves streets that are safe, connected, and vibrant. Kids should be able to bike to school. Seniors should be able to cross without fear. Bus riders should not lose hours to streets designed only around car throughput. Accessibility and community well-being should be the foundation of street design, not an afterthought.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-[260px_1fr] gap-8 lg:gap-14 border-b border-[#0a0a0a]/18 pb-12 mb-12">
-            <h2 className="text-2xl md:text-3xl font-black">The problem</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-[-0.03em]">The problem</h2>
             <p className="text-lg md:text-xl leading-relaxed text-[#0a0a0a]/75">
               Boston once led on safe, sustainable mobility. Today, the vision is stalling. Projects are paused, bike and bus lanes are removed, and corridors like Hyde Park Avenue and Columbia Road are left behind. In the name of &quot;community process,&quot; bold plans are quietly shelved while residents are asked to accept delay as progress.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-[260px_1fr] gap-8 lg:gap-14">
-            <h2 className="text-2xl md:text-3xl font-black">What we do</h2>
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-[-0.03em]">What we do</h2>
             <div>
               <p className="text-lg md:text-xl leading-relaxed text-[#0a0a0a]/75 mb-8">
                 We track delays, document backslides, publish updates, organize residents, and push leaders to deliver the safer city they promised.
@@ -50,8 +50,8 @@ export default function MissionPage() {
                   ["Document", "Dangerous conditions and the public record behind stalled work."],
                   ["Organize", "Residents who want safer crossings, reliable buses, and protected bike routes."],
                 ].map(([title, body]) => (
-                  <div key={title} className="bg-white border border-[#0a0a0a]/16 p-5">
-                    <h3 className="font-black text-lg mb-2">{title}</h3>
+                  <div key={title} className="bg-[#f8f5ed] border border-[#0a0a0a]/16 rounded-md p-5">
+                    <h3 className="font-extrabold text-lg mb-2">{title}</h3>
                     <p className="text-sm leading-relaxed text-[#0a0a0a]/65">{body}</p>
                   </div>
                 ))}
@@ -64,7 +64,7 @@ export default function MissionPage() {
       <section className="py-14 md:py-16 bg-[#0a0a0a] text-white">
         <div className="max-w-[1120px] mx-auto px-4 sm:px-6 grid md:grid-cols-[1fr_auto] gap-8 items-center">
           <div>
-            <h2 className="text-3xl md:text-4xl font-black mb-4">
+            <h2 className="text-3xl md:text-4xl font-extrabold tracking-[-0.04em] mb-4">
               Help hold Boston accountable.
             </h2>
             <p className="text-lg text-white/70 max-w-2xl">
@@ -74,14 +74,14 @@ export default function MissionPage() {
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/take-action"
-              className="inline-flex items-center justify-center px-6 py-3 bg-[#2f6f4e] text-white font-bold rounded-full hover:bg-[#285f43] transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 bg-[#2f6f4e] text-white font-bold rounded-lg hover:bg-[#285f43] transition-colors"
             >
               <span className="material-symbols-outlined mr-2">campaign</span>
               Take Action
             </Link>
             <Link
               href="/updates"
-              className="inline-flex items-center justify-center px-6 py-3 border border-white/30 text-white font-bold rounded-full hover:bg-white hover:text-[#0a0a0a] transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 border border-white/30 text-white font-bold rounded-lg hover:bg-white hover:text-[#0a0a0a] transition-colors"
             >
               <span className="material-symbols-outlined mr-2">newspaper</span>
               Latest Updates

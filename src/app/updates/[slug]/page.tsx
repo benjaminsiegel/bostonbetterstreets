@@ -148,7 +148,7 @@ export default async function UpdatePage({ params }: UpdatePageProps) {
                   </span>
                 </div>
 
-                <h1 className="max-w-[940px] text-[2.55rem] font-black leading-[1.01] tracking-[-0.048em] sm:text-5xl md:text-[4.35rem]">
+                <h1 className="max-w-[940px] text-[2.55rem] font-extrabold leading-[1.01] tracking-[-0.048em] sm:text-5xl md:text-[4.35rem]">
                   {update.title}
                 </h1>
 
@@ -173,11 +173,12 @@ export default async function UpdatePage({ params }: UpdatePageProps) {
 
         {update.image && (
           <figure className="mx-auto max-w-[1060px] px-4 pt-8 sm:px-6 md:pt-12">
-            <div className="relative aspect-[16/9] w-full overflow-hidden border border-[#0a0a0a]/18 bg-[#ded8cb] shadow-[6px_6px_0_0_rgba(10,10,10,0.13)]">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-md border border-[#0a0a0a]/18 bg-[#ded8cb]">
               <Image
                 src={update.image}
                 alt={update.imageAlt || update.title}
                 fill
+                sizes="(min-width: 1060px) 1060px, 100vw"
                 className="object-contain"
                 priority
               />
@@ -236,7 +237,7 @@ export default async function UpdatePage({ params }: UpdatePageProps) {
                     href={`/projects/${relatedProject.slug}`}
                     className="group block"
                   >
-                    <h2 className="text-lg font-black leading-tight transition-colors group-hover:text-[#2f6f4e]">
+                    <h2 className="text-lg font-extrabold leading-tight transition-colors group-hover:text-[#2f6f4e]">
                       {relatedProject.name}
                     </h2>
                     <p className="mt-2 text-sm leading-relaxed text-[#0a0a0a]/55">
@@ -281,7 +282,7 @@ export default async function UpdatePage({ params }: UpdatePageProps) {
       <section className="border-t border-[#0a0a0a]/18 bg-[#e7e2d7]">
         <div className="mx-auto max-w-[1180px] px-4 py-12 sm:px-6 md:py-16">
           <div className="mb-7 flex items-end justify-between border-b border-[#0a0a0a]/28 pb-4">
-            <h2 className="text-2xl font-black tracking-[-0.025em]">
+            <h2 className="text-2xl font-extrabold tracking-[-0.025em]">
               Keep reading
             </h2>
             <Link
@@ -310,7 +311,7 @@ export default async function UpdatePage({ params }: UpdatePageProps) {
                     {format(parseISO(other.date), "MMM d, yyyy")}
                   </time>
                 </div>
-                <h3 className="text-lg font-black leading-[1.2] tracking-[-0.015em] transition-colors group-hover:text-[#2f6f4e]">
+                <h3 className="text-lg font-extrabold leading-[1.2] tracking-[-0.015em] transition-colors group-hover:text-[#2f6f4e]">
                   {other.title}
                 </h3>
                 <p className="mt-3 line-clamp-2 text-sm leading-[1.6] text-[#0a0a0a]/58">

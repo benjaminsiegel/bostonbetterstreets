@@ -9,53 +9,47 @@ export const metadata: Metadata = {
 
 export default function OfficialsPage() {
   return (
-    <div className="min-h-screen bg-[#f0ece2]">
-      {/* Header */}
-      <section className="bg-[#0a0a0a] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center px-4 py-2 bg-[#2f6f4e] text-white rounded-full text-xs font-bold mb-6">
-            <span className="material-symbols-outlined text-sm mr-2">
-              how_to_vote
-            </span>
+    <div className="min-h-screen bg-[#f0ece2] text-[#0a0a0a]">
+      <section className="border-b border-[#0a0a0a]/18">
+        <div className="max-w-[1120px] mx-auto px-4 sm:px-6 py-14 md:py-20">
+          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#b7342c] mb-4">
             Accountability
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Allies &<br />
-            <span className="text-[#b7342c]">Obstructionists</span>
+          </p>
+          <h1 className="text-4xl md:text-6xl lg:text-[4.5rem] font-extrabold tracking-[-0.05em] leading-[0.96] max-w-4xl mb-7">
+            Allies &amp; obstructionists.
           </h1>
-          <p className="text-xl text-white/70 max-w-3xl">
+          <p className="text-lg md:text-xl leading-relaxed text-[#0a0a0a]/70 max-w-3xl">
             Tracking which elected officials and city leaders are fighting for
             safer streets—and which ones are standing in the way.
           </p>
         </div>
       </section>
 
-      {/* Coming Soon Content */}
-      <section className="py-24">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-white border-2 border-[#0a0a0a] p-12 shadow-[8px_8px_0px_0px_#0a0a0a]">
-            <span className="material-symbols-outlined text-6xl text-[#0a0a0a]/30 mb-6">
+      <section className="py-14 md:py-20">
+        <div className="max-w-[900px] mx-auto px-4 sm:px-6">
+          <div className="bg-[#f8f5ed] border border-[#0a0a0a]/16 rounded-md p-8 md:p-12">
+            <span className="material-symbols-outlined text-5xl text-[#2f6f4e] mb-6">
               construction
             </span>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0a0a0a] mb-4">
-              Coming Soon
+            <h2 className="text-2xl md:text-3xl font-extrabold tracking-[-0.03em] mb-4">
+              This tracker is coming soon.
             </h2>
-            <p className="text-lg text-[#0a0a0a]/70 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg leading-relaxed text-[#0a0a0a]/70 mb-8 max-w-2xl">
               We&apos;re compiling records on Boston&apos;s elected officials, city
               councilors, and administration leaders. Soon you&apos;ll be able to see
               who&apos;s championing street safety and who&apos;s blocking progress.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/take-action"
-                className="inline-flex items-center justify-center px-8 py-4 bg-[#2f6f4e] text-white font-bold rounded-full transition-all shadow-[4px_4px_0px_0px_#0a0a0a] hover:shadow-[6px_6px_0px_0px_#0a0a0a] hover:translate-x-[-2px] hover:translate-y-[-2px]"
+                className="inline-flex items-center justify-center px-6 py-3 bg-[#2f6f4e] text-white font-bold rounded-lg hover:bg-[#285f43] transition-colors"
               >
                 <span className="material-symbols-outlined mr-2">campaign</span>
                 Take Action Now
               </Link>
               <Link
                 href="/updates"
-                className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#0a0a0a] text-[#0a0a0a] font-bold rounded-full hover:bg-[#0a0a0a] hover:text-white transition-all"
+                className="inline-flex items-center justify-center px-6 py-3 border border-[#0a0a0a]/30 text-[#0a0a0a] font-bold rounded-lg hover:bg-[#0a0a0a] hover:text-white transition-colors"
               >
                 <span className="material-symbols-outlined mr-2">newspaper</span>
                 Read Updates
@@ -65,51 +59,53 @@ export default function OfficialsPage() {
         </div>
       </section>
 
-      {/* What to Expect */}
-      <section className="py-16 bg-[#0a0a0a]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-12 text-center">
-            What We&apos;ll <span className="text-[#2f6f4e]">Track</span>
+      <section className="py-14 md:py-18 bg-[#0a0a0a] text-white">
+        <div className="max-w-[1120px] mx-auto px-4 sm:px-6">
+          <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#8fba9f] mb-3">
+            The public record
+          </p>
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-[-0.04em] mb-10">
+            What we&apos;ll track
           </h2>
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="border border-white/10 p-6">
-              <div className="w-12 h-12 bg-[#2f6f4e] rounded-full flex items-center justify-center mb-4">
-                <span className="material-symbols-outlined text-[#0a0a0a]">
+            <div className="border border-white/16 rounded-md p-6">
+              <div className="w-11 h-11 bg-[#2f6f4e] rounded-full flex items-center justify-center mb-5">
+                <span className="material-symbols-outlined text-white">
                   thumb_up
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">
+              <h3 className="text-lg font-extrabold mb-2">
                 Votes & Statements
               </h3>
-              <p className="text-white/60 text-sm">
+              <p className="text-white/64 text-sm leading-relaxed">
                 How officials have voted on street safety measures and what
                 they&apos;ve said publicly about transportation policy.
               </p>
             </div>
-            <div className="border border-white/10 p-6">
-              <div className="w-12 h-12 bg-[#b7342c] rounded-full flex items-center justify-center mb-4">
+            <div className="border border-white/16 rounded-md p-6">
+              <div className="w-11 h-11 bg-[#b7342c] rounded-full flex items-center justify-center mb-5">
                 <span className="material-symbols-outlined text-white">
                   block
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">
+              <h3 className="text-lg font-extrabold mb-2">
                 Opposition Tactics
               </h3>
-              <p className="text-white/60 text-sm">
+              <p className="text-white/64 text-sm leading-relaxed">
                 Documenting who has blocked, delayed, or watered down safety
                 projects in their districts or citywide.
               </p>
             </div>
-            <div className="border border-white/10 p-6">
-              <div className="w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center mb-4">
+            <div className="border border-white/16 rounded-md p-6">
+              <div className="w-11 h-11 bg-[#e7d5a0] rounded-full flex items-center justify-center mb-5">
                 <span className="material-symbols-outlined text-[#0a0a0a]">
                   attach_money
                 </span>
               </div>
-              <h3 className="text-lg font-bold text-white mb-2">
+              <h3 className="text-lg font-extrabold mb-2">
                 Campaign Donors
               </h3>
-              <p className="text-white/60 text-sm">
+              <p className="text-white/64 text-sm leading-relaxed">
                 Following the money to understand whose interests officials may
                 be serving when they oppose safety improvements.
               </p>

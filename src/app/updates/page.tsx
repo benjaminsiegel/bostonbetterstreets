@@ -35,7 +35,7 @@ export default function UpdatesPage() {
               <span className="h-px w-9 bg-[#a63d36]" aria-hidden="true" />
               From the coalition
             </p>
-            <h1 className="text-[3.6rem] font-black leading-[0.88] tracking-[-0.055em] sm:text-[5.25rem] md:text-[6.5rem]">
+            <h1 className="text-4xl font-extrabold leading-[0.98] tracking-[-0.04em] sm:text-5xl md:text-[4.5rem]">
               Updates
             </h1>
           </div>
@@ -57,7 +57,7 @@ export default function UpdatesPage() {
           </p>
           <Link
             href={`/updates/${featuredUpdate.slug}`}
-            className="group grid overflow-hidden border border-[#0a0a0a]/20 bg-[#0a0a0a] shadow-[7px_7px_0_0_#2f6f4e] lg:grid-cols-[1.15fr_0.85fr]"
+            className="group grid overflow-hidden rounded-md border border-[#0a0a0a]/20 bg-[#0a0a0a] lg:grid-cols-[1.15fr_0.85fr]"
           >
             <div className="relative aspect-[16/10] min-h-[280px] overflow-hidden bg-[#ded8cb] lg:aspect-auto">
               {featuredUpdate.image ? (
@@ -65,6 +65,7 @@ export default function UpdatesPage() {
                   src={featuredUpdate.image}
                   alt={featuredUpdate.imageAlt || featuredUpdate.title}
                   fill
+                  sizes="(min-width: 1024px) 56vw, 100vw"
                   className="object-cover transition-transform duration-700 group-hover:scale-[1.025]"
                   priority
                 />
@@ -87,7 +88,7 @@ export default function UpdatesPage() {
                     {format(parseISO(featuredUpdate.date), "MMMM d, yyyy")}
                   </time>
                 </div>
-                <h2 className="mb-6 text-3xl font-black leading-[1.06] tracking-[-0.035em] sm:text-4xl lg:text-[2.8rem]">
+                <h2 className="mb-6 text-3xl font-extrabold leading-[1.06] tracking-[-0.035em] sm:text-4xl lg:text-[2.8rem]">
                   {featuredUpdate.title}
                 </h2>
                 <p className="text-base leading-[1.7] text-white/67">
@@ -106,7 +107,7 @@ export default function UpdatesPage() {
 
         <section>
           <div className="mb-5 flex items-end justify-between border-b-2 border-[#0a0a0a] pb-4">
-            <h2 className="text-2xl font-black tracking-[-0.025em] sm:text-3xl">
+            <h2 className="text-2xl font-extrabold tracking-[-0.025em] sm:text-3xl">
               Latest dispatches
             </h2>
             <p className="hidden text-xs font-bold uppercase tracking-[0.1em] text-[#0a0a0a]/42 sm:block">
@@ -143,7 +144,7 @@ export default function UpdatesPage() {
                     >
                       {config.label}
                     </span>
-                    <h3 className="mb-3 max-w-2xl text-xl font-black leading-[1.14] tracking-[-0.025em] transition-colors group-hover:text-[#2f6f4e] md:text-2xl">
+                    <h3 className="mb-3 max-w-2xl text-xl font-extrabold leading-[1.14] tracking-[-0.025em] transition-colors group-hover:text-[#2f6f4e] md:text-2xl">
                       {update.title}
                     </h3>
                     <p className="line-clamp-2 max-w-2xl text-sm leading-[1.65] text-[#0a0a0a]/60 md:text-[0.95rem]">
@@ -151,12 +152,13 @@ export default function UpdatesPage() {
                     </p>
                   </div>
 
-                  <div className="relative aspect-[16/9] overflow-hidden bg-[#ded8cb] sm:order-none">
+                  <div className="relative aspect-[16/9] overflow-hidden rounded-md bg-[#ded8cb] sm:order-none">
                     {update.image ? (
                       <Image
                         src={update.image}
                         alt={update.imageAlt || update.title}
                         fill
+                        sizes="(min-width: 1024px) 300px, (min-width: 640px) 220px, 100vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.035]"
                       />
                     ) : (

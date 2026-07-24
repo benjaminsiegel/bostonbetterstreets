@@ -86,62 +86,59 @@ const governmentResources = [
 
 export default function ResourcesPage() {
   return (
-    <div className="min-h-screen bg-[#f0ece2]">
-      {/* Header */}
-      <section className="bg-[#0a0a0a] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center px-4 py-2 bg-[#2f6f4e] text-white rounded-full text-xs font-bold mb-6">
-            <span className="material-symbols-outlined text-sm mr-2">link</span>
-            Resources
+    <div className="min-h-screen bg-[#f0ece2] text-[#0a0a0a]">
+      <header className="border-b border-[#0a0a0a]/16">
+        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:px-6 md:py-20 lg:grid-cols-[minmax(0,1fr)_420px] lg:items-end lg:gap-16 lg:px-8">
+          <div>
+            <p className="mb-4 text-xs font-bold uppercase tracking-[0.13em] text-[#a63d36]">
+              Resources
+            </p>
+            <h1 className="text-4xl font-extrabold leading-[0.98] tracking-[-0.04em] sm:text-5xl md:text-[4.5rem]">
+              Tools for safer-streets advocacy.
+            </h1>
           </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-6">
-            Tools &
-            <br />
-            <span className="text-[#2f6f4e]">Resources</span>
-          </h1>
-          <p className="text-xl text-white/70 max-w-3xl">
-            Partner organizations and government contacts to support your
-            advocacy for safer streets.
+          <p className="border-l-2 border-[#2f6f4e] pl-6 text-lg leading-[1.65] text-[#0a0a0a]/68">
+            Partner organizations and government contacts to support your advocacy for safer streets.
           </p>
         </div>
-      </section>
+      </header>
 
       {/* Partner Organizations */}
-      <section className="py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="material-symbols-outlined text-3xl text-[#2f6f4e]">groups</span>
-            <h2 className="text-2xl font-bold text-[#0a0a0a]">
-              Partner Organizations
-            </h2>
-          </div>
-          <p className="text-[#0a0a0a]/70 mb-8 max-w-3xl">
+      <section className="py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.13em] text-[#a63d36]">
+            Community expertise
+          </p>
+          <h2 className="mb-4 text-3xl font-extrabold tracking-[-0.03em]">
+            Partner organizations
+          </h2>
+          <p className="mb-9 max-w-3xl leading-[1.7] text-[#0a0a0a]/65">
             We work alongside these organizations who share our commitment to
             safer, more accessible streets in Boston and beyond.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {partnerOrganizations.map((org, index) => (
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {partnerOrganizations.map((org) => (
               <a
-                key={index}
+                key={org.name}
                 href={org.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#0a0a0a] text-white p-6 transition-all hover:shadow-[6px_6px_0px_0px_#2f6f4e] group"
+                className="group flex min-h-[250px] flex-col rounded-md border border-[#0a0a0a]/15 bg-[#f8f5ed] p-6 transition-colors hover:border-[#2f6f4e]"
               >
-                <div className="flex items-start justify-between mb-4">
-                  <h3 className="font-bold group-hover:text-[#2f6f4e] transition-colors">
+                <div className="mb-4 flex items-start justify-between gap-4">
+                  <h3 className="font-extrabold tracking-[-0.01em] transition-colors group-hover:text-[#2f6f4e]">
                     {org.name}
                   </h3>
-                  <span className="material-symbols-outlined text-white/50 group-hover:text-[#2f6f4e] transition-colors">
+                  <span className="material-symbols-outlined text-lg text-[#0a0a0a]/35 transition-colors group-hover:text-[#2f6f4e]">
                     open_in_new
                   </span>
                 </div>
-                <p className="text-white/60 text-sm mb-4">{org.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {org.focus.map((tag, tagIndex) => (
+                <p className="mb-5 text-sm leading-[1.7] text-[#0a0a0a]/60">{org.description}</p>
+                <div className="mt-auto flex flex-wrap gap-2">
+                  {org.focus.map((tag) => (
                     <span
-                      key={tagIndex}
-                      className="px-3 py-1 bg-[#2f6f4e] text-white text-xs font-bold rounded-full"
+                      key={tag}
+                      className="rounded bg-[#d8e2d3] px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.06em] text-[#0a0a0a]/68"
                     >
                       {tag}
                     </span>
@@ -154,33 +151,33 @@ export default function ResourcesPage() {
       </section>
 
       {/* Government Resources */}
-      <section className="py-16 bg-[#0a0a0a] text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-3 mb-8">
-            <span className="material-symbols-outlined text-3xl text-[#2f6f4e]">account_balance</span>
-            <h2 className="text-2xl font-bold">
-              Government Resources
-            </h2>
-          </div>
-          <p className="text-white/70 mb-8 max-w-3xl">
+      <section className="bg-[#0a0a0a] py-14 text-white md:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <p className="mb-3 text-xs font-bold uppercase tracking-[0.13em] text-[#d8e2d3]/75">
+            Public agencies
+          </p>
+          <h2 className="mb-4 text-3xl font-extrabold tracking-[-0.03em]">
+            Government resources
+          </h2>
+          <p className="mb-9 max-w-3xl leading-[1.7] text-white/65">
             Official channels for reporting issues, attending hearings, and
             engaging with the city on transportation matters.
           </p>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {governmentResources.map((resource, index) => (
+          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            {governmentResources.map((resource) => (
               <a
-                key={index}
+                key={resource.name}
                 href={resource.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-start gap-4 p-6 border border-white/10 hover:border-[#2f6f4e] transition-colors group"
+                className="group flex items-start gap-4 rounded-md border border-white/14 p-6 transition-colors hover:border-[#8cb29a]"
               >
-                <span className="material-symbols-outlined text-[#2f6f4e]">location_city</span>
+                <span className="material-symbols-outlined text-[#8cb29a]">location_city</span>
                 <div>
-                  <h3 className="font-bold group-hover:text-[#2f6f4e] transition-colors">
+                  <h3 className="font-extrabold transition-colors group-hover:text-[#d8e2d3]">
                     {resource.name}
                   </h3>
-                  <p className="text-white/60 text-sm mt-2">
+                  <p className="mt-2 text-sm leading-[1.65] text-white/58">
                     {resource.description}
                   </p>
                 </div>
@@ -191,13 +188,13 @@ export default function ResourcesPage() {
       </section>
 
       {/* Disclaimer */}
-      <section className="py-12 bg-[#f0ece2]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-start gap-4 p-6 border-2 border-[#0a0a0a]">
-            <span className="material-symbols-outlined text-[#0a0a0a]">gavel</span>
+      <section className="bg-[#f0ece2] py-12">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div className="flex items-start gap-4 rounded-md border border-[#0a0a0a]/18 bg-[#f8f5ed] p-6">
+            <span className="material-symbols-outlined text-[#2f6f4e]">gavel</span>
             <div>
-              <h3 className="font-bold text-[#0a0a0a] mb-2">Disclaimer</h3>
-              <p className="text-sm text-[#0a0a0a]/70">
+              <h3 className="mb-2 font-extrabold">Disclaimer</h3>
+              <p className="text-sm leading-[1.65] text-[#0a0a0a]/62">
                 The Boston Better Streets Coalition is an independent grassroots
                 organization. Links to external websites are provided for
                 informational purposes only and do not constitute endorsement.

@@ -24,6 +24,7 @@ export default function Home() {
             src="/images/hero-community.jpg"
             alt="Boston Better Streets Coalition community members"
             fill
+            sizes="100vw"
             className="object-cover object-[62%_center]"
             priority
           />
@@ -107,6 +108,7 @@ export default function Home() {
                         src={update.image}
                         alt={update.imageAlt || update.title}
                         fill
+                        sizes="(min-width: 768px) 33vw, 100vw"
                         className="object-cover transition-transform duration-500 group-hover:scale-[1.025]"
                       />
                     </div>
