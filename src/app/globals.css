@@ -37,6 +37,7 @@
   --color-white: var(--white);
   --color-muted: var(--muted);
   --font-epilogue: 'Epilogue', sans-serif;
+  --font-source-serif: 'Source Serif 4', Georgia, serif;
 }
 
 body {
@@ -44,6 +45,104 @@ body {
   color: var(--foreground);
   font-family: 'Epilogue', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   text-rendering: optimizeLegibility;
+}
+
+.editorial-prose {
+  color: rgba(10, 10, 10, 0.78);
+  font-family: 'Source Serif 4', Georgia, "Times New Roman", serif;
+  font-size: clamp(1.08rem, 1.3vw, 1.18rem);
+  line-height: 1.82;
+}
+
+.editorial-prose > :first-child {
+  color: #0a0a0a;
+  font-size: 1.12em;
+  line-height: 1.72;
+}
+
+.editorial-prose p {
+  margin: 0 0 1.55em;
+}
+
+.editorial-prose h2,
+.editorial-prose h3,
+.editorial-prose h4 {
+  color: #0a0a0a;
+  font-family: 'Epilogue', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  line-height: 1.14;
+}
+
+.editorial-prose h2 {
+  border-top: 1px solid rgba(10, 10, 10, 0.22);
+  font-size: clamp(1.55rem, 3vw, 2.05rem);
+  margin: 2.2em 0 0.75em;
+  padding-top: 0.7em;
+}
+
+.editorial-prose h3 {
+  font-size: 1.28rem;
+  margin: 1.9em 0 0.7em;
+}
+
+.editorial-prose a {
+  color: #285f43;
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-color: rgba(47, 111, 78, 0.42);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.editorial-prose a:hover {
+  text-decoration-color: #285f43;
+}
+
+.editorial-prose strong {
+  color: #0a0a0a;
+  font-weight: 750;
+}
+
+.editorial-prose ul,
+.editorial-prose ol {
+  margin: 0 0 1.55em;
+  padding-left: 1.35em;
+}
+
+.editorial-prose li {
+  margin: 0.45em 0;
+  padding-left: 0.25em;
+}
+
+.editorial-prose ul {
+  list-style: disc;
+}
+
+.editorial-prose ol {
+  list-style: decimal;
+}
+
+.editorial-prose blockquote {
+  border-left: 4px solid #2f6f4e;
+  color: #0a0a0a;
+  font-size: 1.12em;
+  font-style: italic;
+  margin: 2em 0;
+  padding: 0.2em 0 0.2em 1.2em;
+}
+
+.editorial-prose hr {
+  border: 0;
+  border-top: 1px solid rgba(10, 10, 10, 0.22);
+  margin: 2.5em 0;
+}
+
+.editorial-prose img {
+  border: 1px solid rgba(10, 10, 10, 0.18);
+  height: auto;
+  margin: 2em 0;
+  width: 100%;
 }
 
 ::selection {

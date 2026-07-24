@@ -6,10 +6,11 @@ import { updates, getUpdateBySlug, UpdateType } from "@/lib/updates";
 import { projects } from "@/data/projects";
 import {
   ArrowLeft,
-  Calendar,
-  Share2,
-  AlertTriangle,
   ArrowRight,
+  AlertTriangle,
+  Calendar,
+  Clock3,
+  Share2,
 } from "lucide-react";
 import { format, parseISO } from "date-fns";
 import ReactMarkdown from "react-markdown";
@@ -34,7 +35,7 @@ export async function generateMetadata({ params }: UpdatePageProps): Promise<Met
     };
   }
 
-  const baseUrl = "https://bostonbetterstreets.vercel.app";
+  const baseUrl = "https://bostonbetterstreets.org";
   const imageUrl = update.image ? `${baseUrl}${update.image}` : `${baseUrl}/images/og-default.jpg`;
 
   return {
@@ -106,177 +107,220 @@ export default async function UpdatePage({ params }: UpdatePageProps) {
   }
 
   const config = typeConfig[update.type];
+  const readingMinutes = Math.max(
+    1,
+    Math.ceil(update.content.trim().split(/\s+/).length / 220),
+  );
   const relatedProject = update.relatedProjectId
-    ? projects.find((p) => p.id === update.relatedProjectId)
+    ? projects.find((project) => project.id === update.relatedProjectId)
     : null;
-
-  // Get other updates
   const otherUpdates = updates
-    .filter((u) => u.id !== update.id)
+    .filter((other) => other.id !== update.id)
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
     .slice(0, 3);
 
   return (
     <div className="min-h-screen bg-[#f0ece2] text-[#0a0a0a]">
       <article>
-        <header className="border-b border-[#0a0a0a]/18">
-          <div className="max-w-[1120px] mx-auto px-4 sm:px-6 py-10 md:py-14">
-          <Link
-            href="/updates"
-            className="inline-flex items-center text-[#0a0a0a]/60 hover:text-[#2f6f4e] mb-8 transition-colors font-semibold"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to dispatches
-          </Link>
-
-          <div className="flex flex-wrap items-center gap-3 mb-6">
-            <span
-              className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold ${config.bgColor} ${config.color}`}
+        <header className="border-b border-[#0a0a0a]/16">
+          <div className="mx-auto max-w-[1180px] px-4 py-10 sm:px-6 md:py-16">
+            <Link
+              href="/updates"
+              className="mb-10 inline-flex items-center gap-2 text-sm font-bold text-[#0a0a0a]/55 transition-colors hover:text-[#2f6f4e]"
             >
-              {config.label}
-            </span>
-            <span className="text-sm font-semibold text-[#0a0a0a]/48">
-              {update.author}
-            </span>
-          </div>
+              <ArrowLeft className="h-4 w-4" />
+              All updates
+            </Link>
 
-          <h1 className="text-4xl md:text-6xl font-black leading-[1.02] max-w-4xl mb-6">
-            {update.title}
-          </h1>
+            <div className="grid gap-7 lg:grid-cols-[130px_minmax(0,900px)] lg:gap-10">
+              <div className="hidden border-t border-[#0a0a0a]/30 pt-4 text-xs font-bold uppercase leading-[1.5] tracking-[0.08em] text-[#0a0a0a]/40 lg:block">
+                A dispatch from Boston&apos;s streets
+              </div>
+              <div>
+                <div className="mb-6 flex flex-wrap items-center gap-3">
+                  <span
+                    className={`inline-flex px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.09em] ${config.bgColor} ${config.color}`}
+                  >
+                    {config.label}
+                  </span>
+                  <span className="text-xs font-bold uppercase tracking-[0.08em] text-[#0a0a0a]/42">
+                    {update.author}
+                  </span>
+                </div>
 
-          <p className="text-lg md:text-xl leading-relaxed text-[#0a0a0a]/68 max-w-3xl mb-7">
-            {update.excerpt}
-          </p>
+                <h1 className="max-w-[940px] text-[2.55rem] font-black leading-[1.01] tracking-[-0.048em] sm:text-5xl md:text-[4.35rem]">
+                  {update.title}
+                </h1>
 
-          <div className="flex flex-wrap items-center gap-4 text-[#0a0a0a]/55">
-            <div className="flex items-center gap-2">
-              <Calendar className="w-4 h-4" />
-              <span>{format(parseISO(update.date), "MMMM d, yyyy")}</span>
+                <p className="mt-7 max-w-[780px] text-lg leading-[1.65] text-[#0a0a0a]/66 md:text-xl">
+                  {update.excerpt}
+                </p>
+
+                <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[#0a0a0a]/14 pt-5 text-sm font-semibold text-[#0a0a0a]/48">
+                  <span className="inline-flex items-center gap-2">
+                    <Calendar className="h-4 w-4" />
+                    {format(parseISO(update.date), "MMMM d, yyyy")}
+                  </span>
+                  <span className="inline-flex items-center gap-2">
+                    <Clock3 className="h-4 w-4" />
+                    {readingMinutes} min read
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
         </header>
 
         {update.image && (
-          <figure className="max-w-[1120px] mx-auto px-4 sm:px-6 pt-8 md:pt-10">
-            <div className="relative w-full min-h-[280px] md:min-h-[520px] bg-[#e8e2d6] border border-[#0a0a0a]/18 overflow-hidden">
+          <figure className="mx-auto max-w-[1060px] px-4 pt-8 sm:px-6 md:pt-12">
+            <div className="relative aspect-[16/9] w-full overflow-hidden border border-[#0a0a0a]/18 bg-[#ded8cb] shadow-[6px_6px_0_0_rgba(10,10,10,0.13)]">
               <Image
                 src={update.image}
                 alt={update.imageAlt || update.title}
                 fill
-                className="object-contain p-3 md:p-5"
+                className="object-contain"
                 priority
               />
             </div>
           </figure>
         )}
 
-        <section className="py-10 md:py-14">
-          <div className="max-w-[1120px] mx-auto px-4 sm:px-6">
-            <div className="grid lg:grid-cols-[minmax(0,720px)_260px] gap-10 lg:gap-16 items-start">
-              <div className="bg-white border border-[#0a0a0a]/16 p-6 md:p-10">
-                <div className="prose prose-lg max-w-none prose-p:text-[#0a0a0a]/75 prose-p:leading-relaxed prose-headings:text-[#0a0a0a] prose-headings:font-black prose-h2:text-3xl prose-h2:mt-10 prose-h2:mb-4 prose-a:text-[#2f6f4e] prose-a:font-semibold prose-a:underline prose-strong:text-[#0a0a0a]">
-                  <ReactMarkdown>{update.content}</ReactMarkdown>
-                </div>
-
-                <div className="mt-10 pt-6 border-t border-[#0a0a0a]/14">
-                  <div className="flex flex-wrap gap-2">
-                    {update.tags.map((tag, index) => (
-                      <span
-                        key={index}
-                        className="px-3 py-1 bg-[#f0ece2] text-[#0a0a0a]/65 text-sm rounded-full"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-6 pt-6 border-t border-[#0a0a0a]/14">
-                  <div className="flex items-center gap-4">
-                    <span className="text-[#0a0a0a]/60 font-medium">Share:</span>
-                    <a
-                      href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
-                        update.title
-                      )}&url=${encodeURIComponent(
-                        `https://bostonbetterstreets.org/updates/${update.slug}`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 bg-[#f0ece2] rounded-lg hover:bg-[#d8e2d3] transition-colors"
-                    >
-                      <Share2 className="w-5 h-5 text-[#0a0a0a]/70" />
-                    </a>
-                  </div>
-                </div>
+        <section className="py-12 md:py-18">
+          <div className="mx-auto grid max-w-[1080px] gap-12 px-4 sm:px-6 lg:grid-cols-[minmax(0,720px)_250px] lg:items-start lg:gap-20">
+            <div>
+              <div className="editorial-prose">
+                <ReactMarkdown>{update.content}</ReactMarkdown>
               </div>
 
-              <aside className="space-y-6 lg:sticky lg:top-32">
+              <footer className="mt-12 border-t-2 border-[#0a0a0a] pt-6">
+                <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-start">
+                  <div>
+                    <p className="mb-3 text-xs font-bold uppercase tracking-[0.1em] text-[#0a0a0a]/42">
+                      Filed under
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {update.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="border border-[#0a0a0a]/15 bg-[#e8e2d6] px-3 py-1.5 text-xs font-bold text-[#0a0a0a]/62"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                  <a
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(
+                      update.title,
+                    )}&url=${encodeURIComponent(
+                      `https://bostonbetterstreets.org/updates/${update.slug}`,
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-fit items-center gap-2 border-b border-[#0a0a0a]/30 pb-1 text-sm font-bold text-[#0a0a0a]/65 transition-colors hover:border-[#2f6f4e] hover:text-[#2f6f4e]"
+                  >
+                    <Share2 className="h-4 w-4" />
+                    Share this dispatch
+                  </a>
+                </div>
+              </footer>
+            </div>
+
+            <aside className="border-t border-[#0a0a0a]/25 pt-5 lg:sticky lg:top-32">
               {relatedProject && (
-                <div className="bg-white border border-[#0a0a0a]/16 p-5">
-                  <h3 className="font-bold text-[#0a0a0a] mb-3">
-                    Related Project
-                  </h3>
+                <div className="mb-8 border-b border-[#0a0a0a]/16 pb-8">
+                  <p className="mb-3 text-xs font-bold uppercase tracking-[0.1em] text-[#a63d36]">
+                    Related project
+                  </p>
                   <Link
                     href={`/projects/${relatedProject.slug}`}
-                    className="block bg-[#f0ece2] p-4 hover:bg-[#d8e2d3] transition-colors"
+                    className="group block"
                   >
-                    <div className="font-semibold text-[#0a0a0a] mb-1">
+                    <h2 className="text-lg font-black leading-tight transition-colors group-hover:text-[#2f6f4e]">
                       {relatedProject.name}
-                    </div>
-                    <div className="text-sm text-[#0a0a0a]/55">
+                    </h2>
+                    <p className="mt-2 text-sm leading-relaxed text-[#0a0a0a]/55">
                       {relatedProject.neighborhood}
-                    </div>
+                    </p>
+                    <span className="mt-4 inline-flex items-center gap-1 text-xs font-bold text-[#2f6f4e]">
+                      View project
+                      <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                    </span>
                   </Link>
                 </div>
               )}
 
               {update.type === "action-alert" && (
-                <div className="bg-[#b7342c] p-5 text-white">
-                  <AlertTriangle className="w-8 h-8 mb-3" />
-                  <h3 className="font-bold mb-2">Take Action</h3>
-                  <p className="text-white/80 text-sm mb-4">
+                <div className="mb-8 bg-[#b7342c] p-5 text-white">
+                  <AlertTriangle className="mb-3 h-7 w-7" />
+                  <h2 className="font-black">Take action</h2>
+                  <p className="mt-2 text-sm leading-relaxed text-white/78">
                     This alert needs your response. Every voice matters.
                   </p>
                   <Link
                     href="/take-action"
-                    className="inline-flex items-center w-full justify-center px-4 py-2 bg-white text-[#b7342c] font-semibold rounded-lg hover:bg-[#f0ece2] transition-colors"
+                    className="mt-5 inline-flex items-center gap-2 border-b border-white/45 pb-1 text-sm font-bold"
                   >
-                    Get Involved
-                    <ArrowRight className="w-4 h-4 ml-2" />
+                    Get involved
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                 </div>
               )}
 
-              <div className="bg-white border border-[#0a0a0a]/16 p-5">
-                <h3 className="font-bold text-[#0a0a0a] mb-4">More dispatches</h3>
-                <div className="space-y-4">
-                  {otherUpdates.map((other) => (
-                    <Link
-                      key={other.id}
-                      href={`/updates/${other.slug}`}
-                      className="block hover:bg-[#f0ece2] p-2 -mx-2 transition-colors"
-                    >
-                      <span
-                        className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium mb-1 ${typeConfig[other.type].bgColor} ${typeConfig[other.type].color}`}
-                      >
-                        {typeConfig[other.type].label}
-                      </span>
-                      <div className="font-medium text-[#0a0a0a] text-sm">
-                        {other.title}
-                      </div>
-                      <div className="text-xs text-[#0a0a0a]/50 mt-1">
-                        {format(parseISO(other.date), "MMM d, yyyy")}
-                      </div>
-                    </Link>
-                  ))}
-                </div>
-              </div>
-              </aside>
-            </div>
+              <p className="text-xs font-bold uppercase tracking-[0.1em] text-[#0a0a0a]/40">
+                About these updates
+              </p>
+              <p className="mt-3 text-sm leading-[1.7] text-[#0a0a0a]/58">
+                News and field notes from residents organizing for safer, more accessible streets across Boston.
+              </p>
+            </aside>
           </div>
         </section>
       </article>
+
+      <section className="border-t border-[#0a0a0a]/18 bg-[#e7e2d7]">
+        <div className="mx-auto max-w-[1180px] px-4 py-12 sm:px-6 md:py-16">
+          <div className="mb-7 flex items-end justify-between border-b border-[#0a0a0a]/28 pb-4">
+            <h2 className="text-2xl font-black tracking-[-0.025em]">
+              Keep reading
+            </h2>
+            <Link
+              href="/updates"
+              className="hidden items-center gap-1 text-sm font-bold text-[#0a0a0a]/55 hover:text-[#2f6f4e] sm:inline-flex"
+            >
+              All updates
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="grid gap-8 md:grid-cols-3">
+            {otherUpdates.map((other) => (
+              <Link
+                key={other.id}
+                href={`/updates/${other.slug}`}
+                className="group border-t-2 border-[#0a0a0a] pt-4"
+              >
+                <div className="mb-4 flex items-center justify-between gap-3">
+                  <span
+                    className={`px-2 py-1 text-[0.58rem] font-bold uppercase tracking-[0.08em] ${typeConfig[other.type].bgColor} ${typeConfig[other.type].color}`}
+                  >
+                    {typeConfig[other.type].label}
+                  </span>
+                  <time className="text-xs font-semibold text-[#0a0a0a]/42">
+                    {format(parseISO(other.date), "MMM d, yyyy")}
+                  </time>
+                </div>
+                <h3 className="text-lg font-black leading-[1.2] tracking-[-0.015em] transition-colors group-hover:text-[#2f6f4e]">
+                  {other.title}
+                </h3>
+                <p className="mt-3 line-clamp-2 text-sm leading-[1.6] text-[#0a0a0a]/58">
+                  {other.excerpt}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
