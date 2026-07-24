@@ -301,6 +301,25 @@ export default async function UpdatePage({ params }: UpdatePageProps) {
                 href={`/updates/${other.slug}`}
                 className="group border-t-2 border-[#0a0a0a] pt-4"
               >
+                <div className="relative mb-4 aspect-[16/9] overflow-hidden rounded-md border border-[#0a0a0a]/14 bg-[#ded8cb]">
+                  {other.image ? (
+                    <Image
+                      src={other.image}
+                      alt={other.imageAlt || other.title}
+                      fill
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className={
+                        other.imageFit === "contain"
+                          ? "object-contain p-2 transition-opacity duration-300 group-hover:opacity-95"
+                          : "object-cover transition-transform duration-500 group-hover:scale-[1.025]"
+                      }
+                    />
+                  ) : (
+                    <div className="absolute inset-0 flex items-end bg-[#d8e2d3] p-4 text-3xl font-black text-[#0a0a0a]/12">
+                      BBSC
+                    </div>
+                  )}
+                </div>
                 <div className="mb-4 flex items-center justify-between gap-3">
                   <span
                     className={`px-2 py-1 text-[0.58rem] font-bold uppercase tracking-[0.08em] ${typeConfig[other.type].bgColor} ${typeConfig[other.type].color}`}
